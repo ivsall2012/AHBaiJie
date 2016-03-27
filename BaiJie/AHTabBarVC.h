@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  AHTabBarVC.h
 //  BaiJie
 //
 //  Created by Andy Hurricane on 3/27/16.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface AHTabBarVC : UITabBarController
 
 @end
-

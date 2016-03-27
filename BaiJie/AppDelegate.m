@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "ViewController.h"
+#import "AHTabBarVC.h"
 @interface AppDelegate ()
 
 @end
@@ -18,8 +18,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc]init];
     self.window.frame = [UIScreen mainScreen].bounds;
-    ViewController *vc = [[ViewController alloc]init];
-    vc.view.backgroundColor = [UIColor redColor];
+    AHTabBarVC *vc = [[AHTabBarVC alloc]init];
     self.window.rootViewController = vc;
     [self.window makeKeyAndVisible];
     return YES;
