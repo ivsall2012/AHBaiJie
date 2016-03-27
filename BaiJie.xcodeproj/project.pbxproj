@@ -15,6 +15,8 @@
 		A16AF34F1CA88E9A0004BFCE /* AHNewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AF34E1CA88E9A0004BFCE /* AHNewVC.m */; };
 		A16AF3521CA88EAC0004BFCE /* AHFriendTrendsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AF3511CA88EAC0004BFCE /* AHFriendTrendsVC.m */; };
 		A16AF3551CA88EBB0004BFCE /* AHMeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AF3541CA88EBB0004BFCE /* AHMeVC.m */; };
+		A16AF3581CA8944B0004BFCE /* AHTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AF3571CA8944B0004BFCE /* AHTabBar.m */; };
+		A16AF35B1CA896450004BFCE /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AF35A1CA896450004BFCE /* UIView+Extension.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,10 @@
 		A16AF3511CA88EAC0004BFCE /* AHFriendTrendsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHFriendTrendsVC.m; sourceTree = "<group>"; };
 		A16AF3531CA88EBB0004BFCE /* AHMeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHMeVC.h; sourceTree = "<group>"; };
 		A16AF3541CA88EBB0004BFCE /* AHMeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHMeVC.m; sourceTree = "<group>"; };
+		A16AF3561CA8944B0004BFCE /* AHTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHTabBar.h; sourceTree = "<group>"; };
+		A16AF3571CA8944B0004BFCE /* AHTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHTabBar.m; sourceTree = "<group>"; };
+		A16AF3591CA896450004BFCE /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		A16AF35A1CA896450004BFCE /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +114,8 @@
 		A16AF33F1CA87DC90004BFCE /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				A16AF3591CA896450004BFCE /* UIView+Extension.h */,
+				A16AF35A1CA896450004BFCE /* UIView+Extension.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -129,6 +137,14 @@
 		A16AF3421CA87DD90004BFCE /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				A16AF34A1CA88E870004BFCE /* AHEssenceVC.h */,
+				A16AF34B1CA88E870004BFCE /* AHEssenceVC.m */,
+				A16AF34D1CA88E9A0004BFCE /* AHNewVC.h */,
+				A16AF34E1CA88E9A0004BFCE /* AHNewVC.m */,
+				A16AF3501CA88EAC0004BFCE /* AHFriendTrendsVC.h */,
+				A16AF3511CA88EAC0004BFCE /* AHFriendTrendsVC.m */,
+				A16AF3531CA88EBB0004BFCE /* AHMeVC.h */,
+				A16AF3541CA88EBB0004BFCE /* AHMeVC.m */,
 				A16AF3461CA88E3A0004BFCE /* WrapperVC */,
 			);
 			name = VC;
@@ -155,14 +171,8 @@
 			children = (
 				A16AF33A1CA87DB90004BFCE /* AHTabBarVC.h */,
 				A16AF33B1CA87DB90004BFCE /* AHTabBarVC.m */,
-				A16AF34A1CA88E870004BFCE /* AHEssenceVC.h */,
-				A16AF34B1CA88E870004BFCE /* AHEssenceVC.m */,
-				A16AF34D1CA88E9A0004BFCE /* AHNewVC.h */,
-				A16AF34E1CA88E9A0004BFCE /* AHNewVC.m */,
-				A16AF3501CA88EAC0004BFCE /* AHFriendTrendsVC.h */,
-				A16AF3511CA88EAC0004BFCE /* AHFriendTrendsVC.m */,
-				A16AF3531CA88EBB0004BFCE /* AHMeVC.h */,
-				A16AF3541CA88EBB0004BFCE /* AHMeVC.m */,
+				A16AF3561CA8944B0004BFCE /* AHTabBar.h */,
+				A16AF3571CA8944B0004BFCE /* AHTabBar.m */,
 			);
 			name = WrapperVC;
 			sourceTree = "<group>";
@@ -237,8 +247,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A16AF35B1CA896450004BFCE /* UIView+Extension.m in Sources */,
 				A16AF34C1CA88E870004BFCE /* AHEssenceVC.m in Sources */,
 				A16AF34F1CA88E9A0004BFCE /* AHNewVC.m in Sources */,
+				A16AF3581CA8944B0004BFCE /* AHTabBar.m in Sources */,
 				A16AF33C1CA87DB90004BFCE /* AHTabBarVC.m in Sources */,
 				A16AF3281CA873300004BFCE /* AppDelegate.m in Sources */,
 				A16AF3251CA873300004BFCE /* main.m in Sources */,

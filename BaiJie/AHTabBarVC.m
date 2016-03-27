@@ -11,15 +11,15 @@
 #import "AHNewVC.h"
 #import "AHFriendTrendsVC.h"
 #import "AHMeVC.h"
-
+#import "AHTabBar.h"
 
 @implementation AHTabBarVC
 +(void)initialize{
     UITabBarItem *barItem = [UITabBarItem appearance];
-    [barItem setTitleTextAttributes:@{NSFontAttributeName:AHTabBarFont} forState:UIControlStateNormal];
-    [barItem setTitleTextAttributes:@{NSFontAttributeName:AHTabBarFont} forState:UIControlStateSelected];
     [barItem setTitleTextAttributes:@{NSForegroundColorAttributeName:AHColor(140, 132, 128)} forState:UIControlStateNormal];
     [barItem setTitleTextAttributes:@{NSForegroundColorAttributeName:AHColor(81, 81, 81)} forState:UIControlStateSelected];
+    [barItem setTitleTextAttributes:@{NSFontAttributeName:AHTabBarFont} forState:UIControlStateNormal];
+    
 }
 
 -(void)viewDidLoad{
@@ -39,6 +39,9 @@
     [self createVC:vc4 title:@"我的" iamge:@"tabBar_me_icon" selectedImage:@"tabBar_me_click_icon"];
     
     self.viewControllers = @[vc1,vc2,vc3,vc4];
+    
+    AHTabBar *tabBar = [[AHTabBar alloc]init];
+    [self setValue:tabBar forKey:@"tabBar"];
 }
 -(void)createVC:(UIViewController *)vc title:(NSString *)title iamge:(NSString *)image selectedImage:(NSString *)selectedImage{
     vc.tabBarItem.title = title;
