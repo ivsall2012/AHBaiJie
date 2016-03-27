@@ -11,6 +11,10 @@
 		A16AF3281CA873300004BFCE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AF3271CA873300004BFCE /* AppDelegate.m */; };
 		A16AF3301CA873300004BFCE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A16AF32F1CA873300004BFCE /* Assets.xcassets */; };
 		A16AF33C1CA87DB90004BFCE /* AHTabBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AF33B1CA87DB90004BFCE /* AHTabBarVC.m */; };
+		A16AF34C1CA88E870004BFCE /* AHEssenceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AF34B1CA88E870004BFCE /* AHEssenceVC.m */; };
+		A16AF34F1CA88E9A0004BFCE /* AHNewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AF34E1CA88E9A0004BFCE /* AHNewVC.m */; };
+		A16AF3521CA88EAC0004BFCE /* AHFriendTrendsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AF3511CA88EAC0004BFCE /* AHFriendTrendsVC.m */; };
+		A16AF3551CA88EBB0004BFCE /* AHMeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AF3541CA88EBB0004BFCE /* AHMeVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +27,14 @@
 		A16AF33A1CA87DB90004BFCE /* AHTabBarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHTabBarVC.h; sourceTree = "<group>"; };
 		A16AF33B1CA87DB90004BFCE /* AHTabBarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHTabBarVC.m; sourceTree = "<group>"; };
 		A16AF3451CA87E720004BFCE /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		A16AF34A1CA88E870004BFCE /* AHEssenceVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHEssenceVC.h; sourceTree = "<group>"; };
+		A16AF34B1CA88E870004BFCE /* AHEssenceVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHEssenceVC.m; sourceTree = "<group>"; };
+		A16AF34D1CA88E9A0004BFCE /* AHNewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHNewVC.h; sourceTree = "<group>"; };
+		A16AF34E1CA88E9A0004BFCE /* AHNewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHNewVC.m; sourceTree = "<group>"; };
+		A16AF3501CA88EAC0004BFCE /* AHFriendTrendsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHFriendTrendsVC.h; sourceTree = "<group>"; };
+		A16AF3511CA88EAC0004BFCE /* AHFriendTrendsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHFriendTrendsVC.m; sourceTree = "<group>"; };
+		A16AF3531CA88EBB0004BFCE /* AHMeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHMeVC.h; sourceTree = "<group>"; };
+		A16AF3541CA88EBB0004BFCE /* AHMeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHMeVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,8 +122,6 @@
 		A16AF3411CA87DD50004BFCE /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A16AF33A1CA87DB90004BFCE /* AHTabBarVC.h */,
-				A16AF33B1CA87DB90004BFCE /* AHTabBarVC.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -119,6 +129,7 @@
 		A16AF3421CA87DD90004BFCE /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				A16AF3461CA88E3A0004BFCE /* WrapperVC */,
 			);
 			name = VC;
 			sourceTree = "<group>";
@@ -137,6 +148,23 @@
 				A16AF3271CA873300004BFCE /* AppDelegate.m */,
 			);
 			name = Other;
+			sourceTree = "<group>";
+		};
+		A16AF3461CA88E3A0004BFCE /* WrapperVC */ = {
+			isa = PBXGroup;
+			children = (
+				A16AF33A1CA87DB90004BFCE /* AHTabBarVC.h */,
+				A16AF33B1CA87DB90004BFCE /* AHTabBarVC.m */,
+				A16AF34A1CA88E870004BFCE /* AHEssenceVC.h */,
+				A16AF34B1CA88E870004BFCE /* AHEssenceVC.m */,
+				A16AF34D1CA88E9A0004BFCE /* AHNewVC.h */,
+				A16AF34E1CA88E9A0004BFCE /* AHNewVC.m */,
+				A16AF3501CA88EAC0004BFCE /* AHFriendTrendsVC.h */,
+				A16AF3511CA88EAC0004BFCE /* AHFriendTrendsVC.m */,
+				A16AF3531CA88EBB0004BFCE /* AHMeVC.h */,
+				A16AF3541CA88EBB0004BFCE /* AHMeVC.m */,
+			);
+			name = WrapperVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,9 +237,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A16AF34C1CA88E870004BFCE /* AHEssenceVC.m in Sources */,
+				A16AF34F1CA88E9A0004BFCE /* AHNewVC.m in Sources */,
 				A16AF33C1CA87DB90004BFCE /* AHTabBarVC.m in Sources */,
 				A16AF3281CA873300004BFCE /* AppDelegate.m in Sources */,
 				A16AF3251CA873300004BFCE /* main.m in Sources */,
+				A16AF3521CA88EAC0004BFCE /* AHFriendTrendsVC.m in Sources */,
+				A16AF3551CA88EBB0004BFCE /* AHMeVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,10 +7,15 @@
 //
 
 #import "AHTabBarVC.h"
+#import "AHEssenceVC.h"
+#import "AHNewVC.h"
+#import "AHFriendTrendsVC.h"
+#import "AHMeVC.h"
+
 
 @implementation AHTabBarVC
 +(void)initialize{
-    UIBarButtonItem *barItem = [UIBarButtonItem appearance];
+    UITabBarItem *barItem = [UITabBarItem appearance];
     [barItem setTitleTextAttributes:@{NSFontAttributeName:AHTabBarFont} forState:UIControlStateNormal];
     [barItem setTitleTextAttributes:@{NSFontAttributeName:AHTabBarFont} forState:UIControlStateSelected];
     [barItem setTitleTextAttributes:@{NSForegroundColorAttributeName:AHColor(140, 132, 128)} forState:UIControlStateNormal];
@@ -21,38 +26,26 @@
     [self setupVCs];
 }
 -(void)setupVCs{
-    UIViewController *vc1 = [[UIViewController alloc]init];
-    vc1.tabBarItem.title = @"精华";
-    vc1.tabBarItem.image = [UIImage imageNamed:@"tabBar_essence_icon"];
-    vc1.tabBarItem.selectedImage = [UIImage imageNamed:@"tabBar_essence_click_icon"];
-    vc1.view.backgroundColor = AHRandomColor;
-    [vc1.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:AHColor(140, 132, 128)} forState:UIControlStateNormal];
-    [vc1.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:AHColor(81, 81, 81)} forState:UIControlStateSelected];
-                                            
-    UIViewController *vc2 = [[UIViewController alloc]init];
-    vc2.tabBarItem.title = @"新帖";
-    vc2.tabBarItem.image = [UIImage imageNamed:@"tabBar_new_icon"];
-    vc2.tabBarItem.selectedImage = [UIImage imageNamed:@"tabBar_new_click_icon"];
-    vc2.view.backgroundColor = AHRandomColor;
-    [vc2.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:AHColor(140, 132, 128)} forState:UIControlStateNormal];
-    [vc2.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:AHColor(81, 81, 81)} forState:UIControlStateSelected];
+    AHEssenceVC *vc1 = [[AHEssenceVC alloc]init];
+    [self createVC:vc1 title:@"精华" iamge:@"tabBar_essence_icon" selectedImage:@"tabBar_essence_click_icon"];
     
-    UIViewController *vc3 = [[UIViewController alloc]init];
-    vc3.tabBarItem.title = @"关注";
-    vc3.tabBarItem.image = [UIImage imageNamed:@"tabBar_friendTrends_icon"];
-    vc3.tabBarItem.selectedImage = [UIImage imageNamed:@"tabBar_friendTrends_click_icon"];
-    vc3.view.backgroundColor = AHRandomColor;
-    [vc3.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:AHColor(140, 132, 128)} forState:UIControlStateNormal];
-    [vc3.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:AHColor(81, 81, 81)} forState:UIControlStateSelected];
+    AHNewVC *vc2 = [[AHNewVC alloc]init];
+    [self createVC:vc2 title:@"新帖" iamge:@"tabBar_new_icon" selectedImage:@"tabBar_new_click_icon"];
     
-    UIViewController *vc4 = [[UIViewController alloc]init];
-    vc4.tabBarItem.title = @"我的";
-    vc4.tabBarItem.image = [UIImage imageNamed:@"tabBar_me_icon"];
-    vc4.tabBarItem.selectedImage = [UIImage imageNamed:@"tabBar_me_click_icon"];
-    vc4.view.backgroundColor = AHRandomColor;
-    [vc4.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:AHColor(140, 132, 128)} forState:UIControlStateNormal];
-    [vc4.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:AHColor(81, 81, 81)} forState:UIControlStateSelected];
+    AHFriendTrendsVC *vc3 = [[AHFriendTrendsVC alloc]init];
+    [self createVC:vc3 title:@"关注" iamge:@"tabBar_friendTrends_icon" selectedImage:@"tabBar_friendTrends_click_icon"];
+    
+    AHMeVC *vc4 = [[AHMeVC alloc]init];
+    [self createVC:vc4 title:@"我的" iamge:@"tabBar_me_icon" selectedImage:@"tabBar_me_click_icon"];
     
     self.viewControllers = @[vc1,vc2,vc3,vc4];
+}
+-(void)createVC:(UIViewController *)vc title:(NSString *)title iamge:(NSString *)image selectedImage:(NSString *)selectedImage{
+    vc.tabBarItem.title = title;
+    vc.tabBarItem.image = [UIImage imageNamed:image];
+    vc.tabBarItem.selectedImage = [UIImage imageNamed:selectedImage];
+    vc.view.backgroundColor = AHRandomColor;
+    
+    [self addChildViewController:vc];
 }
 @end
