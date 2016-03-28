@@ -22,6 +22,7 @@
         [publishButton setImage:[UIImage imageNamed:@"tabBar_publish_icon"] forState:UIControlStateNormal];
         [publishButton setImage:[UIImage imageNamed:@"tabBar_publish_click_icon"] forState:UIControlStateHighlighted];
         [publishButton addTarget:self action:@selector(tabBarDidClickPublishButton) forControlEvents:UIControlEventTouchUpInside];
+        publishButton.size = publishButton.currentImage.size;
         [self addSubview:publishButton];
         self.publishButton = publishButton;
         
@@ -55,11 +56,7 @@
         button.height = buttonH;
         index++;
     }
-    // DO NOT USE stuff in self.frame, e.g. self.CenterY, self.X ---> those are based on their superClass, don't use to set publicshButon(its subview)
-    self.publishButton.centerX = self.width*0.5;
-    self.publishButton.centerY = self.height*0.5;
-    self.publishButton.width = buttonW;
-    self.publishButton.height = buttonH;
+    self.publishButton.center = CGPointMake(self.width*0.5, self.height*0.5);
 
 }
 @end

@@ -38,7 +38,6 @@
     AHMeVC *vc4 = [[AHMeVC alloc]init];
     [self createVC:vc4 title:@"我的" iamge:@"tabBar_me_icon" selectedImage:@"tabBar_me_click_icon"];
     
-    self.viewControllers = @[vc1,vc2,vc3,vc4];
     
     AHTabBar *tabBar = [[AHTabBar alloc]init];
     [self setValue:tabBar forKey:@"tabBar"];
@@ -48,7 +47,7 @@
     vc.tabBarItem.image = [UIImage imageNamed:image];
     vc.tabBarItem.selectedImage = [UIImage imageNamed:selectedImage];
     vc.view.backgroundColor = AHRandomColor;
-    
-    [self addChildViewController:vc];
+    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];
+    [self addChildViewController:nav];
 }
 @end

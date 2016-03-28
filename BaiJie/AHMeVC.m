@@ -16,22 +16,29 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.navigationItem.title = @"我的";
+    UIButton *settingBtn = [[UIButton alloc]init];
+    [settingBtn setImage:[UIImage imageNamed:@"mine-setting-icon"] forState:UIControlStateNormal];
+    [settingBtn setImage:[UIImage imageNamed:@"mine-setting-icon-click"] forState:UIControlStateHighlighted];
+    settingBtn.size = settingBtn.currentImage.size;
+    [settingBtn addTarget:self action:@selector(clickSettingBtn) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *skinBtn = [[UIButton alloc]init];
+    [skinBtn setImage:[UIImage imageNamed:@"mine-moon-icon"] forState:UIControlStateNormal];
+    [skinBtn setImage:[UIImage imageNamed:@"mine-moon-icon-click"] forState:UIControlStateHighlighted];
+    skinBtn.size = skinBtn.currentImage.size;
+    [skinBtn addTarget:self action:@selector(clickSkinBtn) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItems = @[
+                                               [[UIBarButtonItem alloc]initWithCustomView:settingBtn],
+                                               [[UIBarButtonItem alloc]initWithCustomView:skinBtn]
+    
+                                               ];
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)clickSettingBtn{
+    AHLogFunc;
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)clickSkinBtn{
+    AHLogFunc;
 }
-*/
-
 @end
