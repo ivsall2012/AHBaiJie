@@ -17,10 +17,11 @@
 }
 -(void)viewDidLoad{
     [super viewDidLoad];
-    
-    self.view.backgroundColor = AHGlobelViewColor;  
 }
 -(void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
+    // DO NOT TRY to share the same color by setting only for navVC's view -- makes animation transition bad when pushing
+    // setting color at the very beginning for all VCs sharing the same color
+    viewController.view.backgroundColor = AHGlobelViewColor;
     if (self.viewControllers.count >0) { // for left and right custome navigation side buttons
         // this doesn't include the first view and the view popped in(model)
         UIBarButtonItem *backButton = [UIBarButtonItem itemWithImage:@"navigationButtonReturn" highImage:@"navigationButtonReturnClick" target:self action:@selector(clickBackButton) settingBlock:^(UIButton *button) {

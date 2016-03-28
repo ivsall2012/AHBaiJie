@@ -8,6 +8,7 @@
 
 #import "AHFriendTrendsVC.h"
 #import "UIBarButtonItem+Extension.h"
+#import "AHRecommendVC.h"
 @interface AHFriendTrendsVC ()
 
 @end
@@ -25,6 +26,7 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:recommentBtn];
 }
 -(void)clickRecommentBtn{
-    AHLogFunc;
+    AHRecommendVC *recommendVC = [[AHRecommendVC alloc]init];
+    [self.navigationController pushViewController:recommendVC animated:YES];
 }
 @end
