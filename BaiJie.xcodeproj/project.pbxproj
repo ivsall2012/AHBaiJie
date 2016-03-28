@@ -17,6 +17,7 @@
 		A16AF3551CA88EBB0004BFCE /* AHMeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AF3541CA88EBB0004BFCE /* AHMeVC.m */; };
 		A16AF3581CA8944B0004BFCE /* AHTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AF3571CA8944B0004BFCE /* AHTabBar.m */; };
 		A16AF35B1CA896450004BFCE /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AF35A1CA896450004BFCE /* UIView+Extension.m */; };
+		A18082D71CA8B22800CD922C /* UIBarButtonItem+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A18082D61CA8B22800CD922C /* UIBarButtonItem+Extension.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,8 @@
 		A16AF3571CA8944B0004BFCE /* AHTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHTabBar.m; sourceTree = "<group>"; };
 		A16AF3591CA896450004BFCE /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
 		A16AF35A1CA896450004BFCE /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		A18082D51CA8B22800CD922C /* UIBarButtonItem+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Extension.h"; sourceTree = "<group>"; };
+		A18082D61CA8B22800CD922C /* UIBarButtonItem+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Extension.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +119,8 @@
 			children = (
 				A16AF3591CA896450004BFCE /* UIView+Extension.h */,
 				A16AF35A1CA896450004BFCE /* UIView+Extension.m */,
+				A18082D51CA8B22800CD922C /* UIBarButtonItem+Extension.h */,
+				A18082D61CA8B22800CD922C /* UIBarButtonItem+Extension.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -251,6 +256,7 @@
 				A16AF34C1CA88E870004BFCE /* AHEssenceVC.m in Sources */,
 				A16AF34F1CA88E9A0004BFCE /* AHNewVC.m in Sources */,
 				A16AF3581CA8944B0004BFCE /* AHTabBar.m in Sources */,
+				A18082D71CA8B22800CD922C /* UIBarButtonItem+Extension.m in Sources */,
 				A16AF33C1CA87DB90004BFCE /* AHTabBarVC.m in Sources */,
 				A16AF3281CA873300004BFCE /* AppDelegate.m in Sources */,
 				A16AF3251CA873300004BFCE /* main.m in Sources */,

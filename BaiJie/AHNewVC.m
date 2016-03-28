@@ -7,7 +7,7 @@
 //
 
 #import "AHNewVC.h"
-
+#import "UIBarButtonItem+Extension.h"
 @interface AHNewVC ()
 
 @end
@@ -17,13 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.titleView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"MainTitle"]];
-    
-    UIButton *tagBtn = [[UIButton alloc]init];
-    [tagBtn setImage:[UIImage imageNamed:@"MainTagSubIcon"] forState:UIControlStateNormal];
-    [tagBtn setImage:[UIImage imageNamed:@"MainTagSubIconClick"] forState:UIControlStateHighlighted];
-    tagBtn.size = tagBtn.currentImage.size;
-    [tagBtn addTarget:self action:@selector(clickTag) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:tagBtn];
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImage:@"MainTagSubIcon" highImage:@"MainTagSubIconClick" target:self action:@selector(clickTag)];
 }
 -(void)clickTag{
     AHLogFunc;

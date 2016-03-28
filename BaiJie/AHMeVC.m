@@ -7,7 +7,7 @@
 //
 
 #import "AHMeVC.h"
-
+#import "UIBarButtonItem+Extension.h"
 @interface AHMeVC ()
 
 @end
@@ -18,22 +18,11 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"我的";
-    UIButton *settingBtn = [[UIButton alloc]init];
-    [settingBtn setImage:[UIImage imageNamed:@"mine-setting-icon"] forState:UIControlStateNormal];
-    [settingBtn setImage:[UIImage imageNamed:@"mine-setting-icon-click"] forState:UIControlStateHighlighted];
-    settingBtn.size = settingBtn.currentImage.size;
-    [settingBtn addTarget:self action:@selector(clickSettingBtn) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *settingBtn = [UIBarButtonItem itemWithImage:@"mine-setting-icon" highImage:@"mine-setting-icon-click" target:self action:@selector(clickSettingBtn)];
     
-    UIButton *skinBtn = [[UIButton alloc]init];
-    [skinBtn setImage:[UIImage imageNamed:@"mine-moon-icon"] forState:UIControlStateNormal];
-    [skinBtn setImage:[UIImage imageNamed:@"mine-moon-icon-click"] forState:UIControlStateHighlighted];
-    skinBtn.size = skinBtn.currentImage.size;
-    [skinBtn addTarget:self action:@selector(clickSkinBtn) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.rightBarButtonItems = @[
-                                               [[UIBarButtonItem alloc]initWithCustomView:settingBtn],
-                                               [[UIBarButtonItem alloc]initWithCustomView:skinBtn]
+    UIBarButtonItem *skinBtn = [UIBarButtonItem itemWithImage:@"mine-moon-icon" highImage:@"mine-moon-icon-click" target:self action:@selector(clickSkinBtn)];
     
-                                               ];
+    self.navigationItem.rightBarButtonItems = @[settingBtn,skinBtn];
 }
 -(void)clickSettingBtn{
     AHLogFunc;

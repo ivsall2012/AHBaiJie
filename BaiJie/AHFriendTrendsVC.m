@@ -7,7 +7,7 @@
 //
 
 #import "AHFriendTrendsVC.h"
-
+#import "UIBarButtonItem+Extension.h"
 @interface AHFriendTrendsVC ()
 
 @end
