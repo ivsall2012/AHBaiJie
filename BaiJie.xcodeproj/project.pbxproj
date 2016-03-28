@@ -14,6 +14,7 @@
 		A10CE55A1CA8DA0F00895EAA /* TestVC_two.m in Sources */ = {isa = PBXBuildFile; fileRef = A10CE5541CA8DA0F00895EAA /* TestVC_two.m */; };
 		A10CE55B1CA8DA0F00895EAA /* TestVC_two.xib in Resources */ = {isa = PBXBuildFile; fileRef = A10CE5551CA8DA0F00895EAA /* TestVC_two.xib */; };
 		A10CE55E1CA8DD3600895EAA /* AHNavigationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A10CE55D1CA8DD3600895EAA /* AHNavigationVC.m */; };
+		A10CE5611CA8F55100895EAA /* AHFriendTrendsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A10CE5601CA8F55100895EAA /* AHFriendTrendsVC.xib */; };
 		A16AF3251CA873300004BFCE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AF3241CA873300004BFCE /* main.m */; };
 		A16AF3281CA873300004BFCE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AF3271CA873300004BFCE /* AppDelegate.m */; };
 		A16AF3301CA873300004BFCE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A16AF32F1CA873300004BFCE /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 		A10CE5551CA8DA0F00895EAA /* TestVC_two.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestVC_two.xib; sourceTree = "<group>"; };
 		A10CE55C1CA8DD3600895EAA /* AHNavigationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHNavigationVC.h; sourceTree = "<group>"; };
 		A10CE55D1CA8DD3600895EAA /* AHNavigationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHNavigationVC.m; sourceTree = "<group>"; };
+		A10CE5601CA8F55100895EAA /* AHFriendTrendsVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AHFriendTrendsVC.xib; sourceTree = "<group>"; };
 		A16AF3201CA873300004BFCE /* BaiJie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaiJie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A16AF3241CA873300004BFCE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A16AF3261CA873300004BFCE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -91,6 +93,16 @@
 			name = TestVC;
 			sourceTree = "<group>";
 		};
+		A10CE55F1CA8F53000895EAA /* FriendTrends */ = {
+			isa = PBXGroup;
+			children = (
+				A16AF3501CA88EAC0004BFCE /* AHFriendTrendsVC.h */,
+				A16AF3511CA88EAC0004BFCE /* AHFriendTrendsVC.m */,
+				A10CE5601CA8F55100895EAA /* AHFriendTrendsVC.xib */,
+			);
+			name = FriendTrends;
+			sourceTree = "<group>";
+		};
 		A16AF3171CA873300004BFCE = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +122,7 @@
 		A16AF3221CA873300004BFCE /* BaiJie */ = {
 			isa = PBXGroup;
 			children = (
+				A10CE55F1CA8F53000895EAA /* FriendTrends */,
 				A16AF33D1CA87DBD0004BFCE /* Main */,
 				A16AF32F1CA873300004BFCE /* Assets.xcassets */,
 				A16AF3341CA873300004BFCE /* Info.plist */,
@@ -181,8 +194,6 @@
 				A16AF34B1CA88E870004BFCE /* AHEssenceVC.m */,
 				A16AF34D1CA88E9A0004BFCE /* AHNewVC.h */,
 				A16AF34E1CA88E9A0004BFCE /* AHNewVC.m */,
-				A16AF3501CA88EAC0004BFCE /* AHFriendTrendsVC.h */,
-				A16AF3511CA88EAC0004BFCE /* AHFriendTrendsVC.m */,
 				A16AF3531CA88EBB0004BFCE /* AHMeVC.h */,
 				A16AF3541CA88EBB0004BFCE /* AHMeVC.m */,
 				A16AF3461CA88E3A0004BFCE /* WrapperVC */,
@@ -278,6 +289,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A10CE5611CA8F55100895EAA /* AHFriendTrendsVC.xib in Resources */,
 				A16AF3301CA873300004BFCE /* Assets.xcassets in Resources */,
 				A10CE55B1CA8DA0F00895EAA /* TestVC_two.xib in Resources */,
 				A10CE5571CA8DA0F00895EAA /* TestVC_one.xib in Resources */,
