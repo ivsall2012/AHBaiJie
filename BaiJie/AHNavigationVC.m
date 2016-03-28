@@ -14,6 +14,11 @@
     UINavigationBar *navItem = [UINavigationBar appearance];
     [navItem setBackgroundImage:[UIImage imageNamed:@"navigationbarBackgroundWhite"] forBarMetrics:0];
 }
+-(void)viewDidLoad{
+    [super viewDidLoad];
+    
+    self.view.backgroundColor = AHGlobelViewColor;
+}
 -(void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
     if (self.viewControllers.count >0) { // for left and right custome navigation side buttons
         // this doesn't include the first view and the view popped in(model)

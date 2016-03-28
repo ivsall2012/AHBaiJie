@@ -17,7 +17,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = AHGlobelViewColor;
     self.navigationItem.title = @"我的";
     UIBarButtonItem *settingBtn = [UIBarButtonItem itemWithImage:@"mine-setting-icon" highImage:@"mine-setting-icon-click" target:self action:@selector(clickSettingBtn)];
     
