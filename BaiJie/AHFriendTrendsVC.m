@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.view.backgroundColor = AHGlobelViewColor;
     self.navigationItem.title = @"我的关注";
     UIButton *recommentBtn = [[UIButton alloc]init];
     [recommentBtn setImage:[UIImage imageNamed:@"friendsRecommentIcon"] forState:UIControlStateNormal];

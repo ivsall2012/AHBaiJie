@@ -8,6 +8,7 @@
 
 #import "AHMeVC.h"
 #import "UIBarButtonItem+Extension.h"
+#import "TestVC_one.h"
 @interface AHMeVC ()
 
 @end
@@ -16,7 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.view.backgroundColor = AHGlobelViewColor;
     self.navigationItem.title = @"我的";
     UIBarButtonItem *settingBtn = [UIBarButtonItem itemWithImage:@"mine-setting-icon" highImage:@"mine-setting-icon-click" target:self action:@selector(clickSettingBtn)];
     
@@ -25,7 +26,7 @@
     self.navigationItem.rightBarButtonItems = @[settingBtn,skinBtn];
 }
 -(void)clickSettingBtn{
-    AHLogFunc;
+    [self.navigationController pushViewController:[[TestVC_one alloc]init] animated:YES];
 }
 -(void)clickSkinBtn{
     AHLogFunc;

@@ -12,14 +12,13 @@
 #import "AHFriendTrendsVC.h"
 #import "AHMeVC.h"
 #import "AHTabBar.h"
-
+#import "AHNavigationVC.h"
 @implementation AHTabBarVC
 +(void)initialize{
     UITabBarItem *barItem = [UITabBarItem appearance];
     [barItem setTitleTextAttributes:@{NSForegroundColorAttributeName:AHColor(140, 132, 128)} forState:UIControlStateNormal];
     [barItem setTitleTextAttributes:@{NSForegroundColorAttributeName:AHColor(81, 81, 81)} forState:UIControlStateSelected];
     [barItem setTitleTextAttributes:@{NSFontAttributeName:AHTabBarFont} forState:UIControlStateNormal];
-    
 }
 
 -(void)viewDidLoad{
@@ -46,8 +45,8 @@
     vc.tabBarItem.title = title;
     vc.tabBarItem.image = [UIImage imageNamed:image];
     vc.tabBarItem.selectedImage = [UIImage imageNamed:selectedImage];
-    vc.view.backgroundColor = AHRandomColor;
-    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];
+    // do not set view bgColor here because otherwise their views would be created too ealier, all in once
+    AHNavigationVC *nav = [[AHNavigationVC alloc]initWithRootViewController:vc];
     [self addChildViewController:nav];
 }
 @end
