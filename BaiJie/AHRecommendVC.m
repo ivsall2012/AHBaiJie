@@ -14,6 +14,10 @@
 #import "AHRecommendCategoryCell.h"
 #import "AHRecommendUserCell.h"
 #import "AHRecommendUser.h"
+#import <MJRefresh.h>
+
+#define AHRecommendCurrentSelectedCategory self.categoryArray[self.categoryTableView.indexPathForSelectedRow.row]
+
 @interface AHRecommendVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *categoryTableView;
 @property (weak, nonatomic) IBOutlet UITableView *userTableView;
@@ -27,9 +31,31 @@ static NSString * const recommendUserCellID = @"userCell";
     [super viewDidLoad];
     self.navigationItem.title = @"我的关注";
     [self initTableViews];
+    [self setupRefreshControl];
     [self sendRequstForCategories];
     self.userTableView.rowHeight = 70;
     
+}
+-(void)setupRefreshControl{
+    //                                 MJRefreshBackFooter doesn't work, you have to specify the class
+    self.userTableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreUsers)];
+}
+static int page =1;
+-(void)loadMoreUsers{
+    AHRecommendCategory *category = AHRecommendCurrentSelectedCategory;
+    [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php"
+                             parameters:@{@"a":@"list",@"c":@"subscribe",@"category_id":@(category.id),@"page":@(++page),@"pagesize":@(5)}
+                               progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSArray *users = [AHRecommendUser mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
+        // you can't just assign category.users = users, one is mutable, one is not, so just addObjectsFromArray
+        [category.users addObjectsFromArray:users];
+        [self.userTableView reloadData];
+        [self.userTableView.mj_footer endRefreshing];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        AHLog(@"error:%@",error);
+    }];
 }
 -(void)initTableViews{
     [self registerCells];
@@ -85,29 +111,22 @@ static NSString * const recommendUserCellID = @"userCell";
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (tableView == self.categoryTableView) {
-        AHRecommendCategory *category = self.categoryArray[indexPath.row];
-        // no matter what, refresh data, if there's data then cool.
-        // if there not, it can empty out the table, wait till the data from server and refresh again there
+        AHRecommendCategory *category = AHRecommendCurrentSelectedCategory;
+        // category.users.count doesn't matter you gotta refresh table view anyway, or empty it out when switching
         [self.userTableView reloadData];
-        if (category.users.count) {
-//            [self.userTableView reloadData];
-        }else{
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                
-                AHRecommendCategory *category = self.categoryArray[indexPath.row];
-                [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php" parameters:@{@"a":@"list",@"c":@"subscribe",@"category_id":@(category.id)} progress:^(NSProgress * _Nonnull downloadProgress) {
-                    
-                } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                    NSArray *users = [AHRecommendUser mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
-                    AHRecommendCategory *category = self.categoryArray[self.categoryTableView.indexPathForSelectedRow.row];
-                    // you can't just assign category.users = users, one is mutable, one is not, so just addObjectsFromArray
-                    [category.users addObjectsFromArray:users];
-                    [self.userTableView reloadData];
-                } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                    AHLog(@"error:%@",error);
-                }];
-            });
-        }
+        
+        [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php"
+                                 parameters:@{@"a":@"list",@"c":@"subscribe",@"category_id":@(category.id),@"pagesize":@(5)}
+                                   progress:^(NSProgress * _Nonnull downloadProgress) {
+            
+        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            NSArray *users = [AHRecommendUser mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
+            // you can't just assign category.users = users, one is mutable, one is not, so just addObjectsFromArray
+            [category.users addObjectsFromArray:users];
+            [self.userTableView reloadData];
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            AHLog(@"error:%@",error);
+        }];
     }
 }
 @end
