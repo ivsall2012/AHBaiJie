@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-
+@class AHRecommendUser;
 @interface AHRecommendCategory : NSObject
 @property (nonatomic, assign) NSInteger id;
 @property (nonatomic,copy) NSString *name;
 @property (nonatomic,assign) NSInteger count;
+@property (nonatomic, strong) NSMutableArray<AHRecommendUser *> *users;
 @end

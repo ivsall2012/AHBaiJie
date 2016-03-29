@@ -18,7 +18,6 @@
 @property (weak, nonatomic) IBOutlet UITableView *categoryTableView;
 @property (weak, nonatomic) IBOutlet UITableView *userTableView;
 @property (nonatomic, strong) NSArray<AHRecommendCategory *> *categoryArray;
-@property (nonatomic, strong) NSArray<AHRecommendUser *> *userArray;
 @end
 
 @implementation AHRecommendVC
@@ -65,7 +64,8 @@ static NSString * const recommendUserCellID = @"userCell";
     if (tableView == self.categoryTableView) {
         return self.categoryArray.count;
     }else{
-        return self.userArray.count;
+        AHRecommendCategory *category = self.categoryArray[self.categoryTableView.indexPathForSelectedRow.row];
+        return category.users.count;
     }
 }
 
@@ -76,21 +76,31 @@ static NSString * const recommendUserCellID = @"userCell";
         return cell;
     }else {
         AHRecommendUserCell *cell = [tableView dequeueReusableCellWithIdentifier:recommendUserCellID];
-        cell.user = self.userArray[indexPath.row];
+        AHRecommendCategory *category = self.categoryArray[self.categoryTableView.indexPathForSelectedRow.row];
+        cell.user = category.users[indexPath.row];
         return cell;
     }
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (tableView == self.categoryTableView) {
         AHRecommendCategory *category = self.categoryArray[indexPath.row];
-        [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php" parameters:@{@"a":@"list",@"c":@"subscribe",@"category_id":@(category.id)} progress:^(NSProgress * _Nonnull downloadProgress) {
-            
-        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            self.userArray = [AHRecommendUser mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
+        
+        if (category.users.count) {
             [self.userTableView reloadData];
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            AHLog(@"error:%@",error);
-        }];
+        }else{
+            AHRecommendCategory *category = self.categoryArray[indexPath.row];
+            [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php" parameters:@{@"a":@"list",@"c":@"subscribe",@"category_id":@(category.id)} progress:^(NSProgress * _Nonnull downloadProgress) {
+                
+            } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                NSArray *users = [AHRecommendUser mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
+                AHRecommendCategory *category = self.categoryArray[self.categoryTableView.indexPathForSelectedRow.row];
+                // you can't just assign category.users = users, one is mutable, one is not, so just addObjectsFromArray
+                [category.users addObjectsFromArray:users];
+                [self.userTableView reloadData];
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                AHLog(@"error:%@",error);
+            }];
+        }
     }
 }
 @end
