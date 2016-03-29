@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface AHRecommendCategory : NSObject
-@property (nonatomic, strong) NSString *id;
+@property (nonatomic, assign) NSInteger id;
 @property (nonatomic,copy) NSString *name;
 @property (nonatomic,assign) NSInteger count;
 @end
