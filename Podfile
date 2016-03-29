@@ -1,5 +1,6 @@
-platform :ios, "9.0"
+platform :ios, "7.1"
 
 pod 'AFNetworking'
 pod 'SDWebImage'
 pod 'SVProgressHUD'
+pod 'MJExtension'

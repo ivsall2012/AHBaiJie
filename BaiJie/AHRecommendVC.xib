@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AHRecommendVC">
             <connections>
+                <outlet property="categoryTableView" destination="00o-uq-y13" id="ESk-xn-xEy"/>
                 <outlet property="view" destination="iN0-l3-epB" id="f6o-Wg-nFV"/>
             </connections>
         </placeholder>
@@ -14,6 +15,24 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="00o-uq-y13">
+                    <rect key="frame" x="0.0" y="0.0" width="70" height="600"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="70" id="M7U-AE-Az6"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="TNd-Ic-v5D"/>
+                        <outlet property="delegate" destination="-1" id="PtU-0d-KcK"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="00o-uq-y13" secondAttribute="bottom" id="6lG-Vo-NuV"/>
+                <constraint firstItem="00o-uq-y13" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="6nU-UJ-aAH"/>
+                <constraint firstItem="00o-uq-y13" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="fu0-t6-TQL"/>
+            </constraints>
         </view>
     </objects>
 </document>
