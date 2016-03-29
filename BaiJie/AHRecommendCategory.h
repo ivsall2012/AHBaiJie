@@ -13,4 +13,6 @@
 @property (nonatomic,copy) NSString *name;
 @property (nonatomic,assign) NSInteger count;
 @property (nonatomic, strong) NSMutableArray<AHRecommendUser *> *users;
+@property (nonatomic,assign) NSInteger total;
+@property (nonatomic,assign) NSInteger currentPage;
 @end
