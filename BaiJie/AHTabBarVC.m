@@ -16,9 +16,9 @@
 @implementation AHTabBarVC
 +(void)initialize{
     UITabBarItem *barItem = [UITabBarItem appearance];
-    [barItem setTitleTextAttributes:@{NSForegroundColorAttributeName:AHColor(140, 132, 128)} forState:UIControlStateNormal];
+    // you have to set normal or selected states all at once, otherwise it only works on the latest settings.
+    [barItem setTitleTextAttributes:@{NSForegroundColorAttributeName:AHColor(140, 132, 128),NSFontAttributeName:AHTabBarFont} forState:UIControlStateNormal];
     [barItem setTitleTextAttributes:@{NSForegroundColorAttributeName:AHColor(81, 81, 81)} forState:UIControlStateSelected];
-    [barItem setTitleTextAttributes:@{NSFontAttributeName:AHTabBarFont} forState:UIControlStateNormal];
 }
 
 -(void)viewDidLoad{
