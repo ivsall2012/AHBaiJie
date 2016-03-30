@@ -78,30 +78,40 @@ static NSString * const recommendUserCellID = @"userCell";
                                progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        if(self.currentParams != params) return;
-        
         NSArray *users = [AHRecommendUser mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
         // you can't just assign category.users = users, one is mutable, one is not, so just addObjectsFromArray
         [category.users addObjectsFromArray:users];
+        
+        // here, if the category is not current, we save data for later
+        if(self.currentParams != params) return;
+        
         [self.userTableView reloadData];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        AHLog(@"error:%@",error);
+        if (self.currentParams != params) return;
+        
+        [SVProgressHUD showErrorWithStatus:@"加载用户数据失败"];
+        
+        [self.userTableView.mj_footer endRefreshing];
     }];
 }
 -(void)loadNewUsers{
+    AHRecommendCategory *category = AHRecommendCurrentSelectedCategory;
+    // first for user list, set page to 1
+    category.currentPage =1;
+    AHLog(@"enter loadNewUsers id:%ld %@",category.id,category.name);
+    NSDictionary *params = @{@"a":@"list",@"c":@"subscribe",@"category_id":@(category.id),@"page":@(category.currentPage)};
+    self.currentParams = params;
+    
+    
+    // dispatch delay makes current category not accurate, for previous calls, when fast switching so get category assignment outside
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
-        AHRecommendCategory *category = AHRecommendCurrentSelectedCategory;
-        NSDictionary *params = @{@"a":@"list",@"c":@"subscribe",@"category_id":@(category.id),@"page":@(category.currentPage)};
-        self.currentParams = params;
-        // first for user list, set page to 1
-        category.currentPage =1;
         [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php"
              parameters:params
                progress:^(NSProgress * _Nonnull downloadProgress) {
                    
                } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                   if(self.currentParams != params) return;
+                   
                    
                    NSArray *users = [AHRecommendUser mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
                    
@@ -113,13 +123,21 @@ static NSString * const recommendUserCellID = @"userCell";
                    
                    category.total = [responseObject[@"total"] integerValue];
                    
+                   // here, if the category is not current, we save data for later
+                   AHLog(@"loadNewUsers: id:%ld %@",category.id,category.name);
+                   if(self.currentParams != params) return;
                    
                    [self.userTableView reloadData];
                    [self.userTableView.mj_header endRefreshing];
-                   AHLog(@"%@",responseObject);
+                   
                } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                    
-                   AHLog(@"error:%@",error);
+                   if (self.currentParams != params) return;
+                   
+
+                   [SVProgressHUD showErrorWithStatus:@"加载用户数据失败"];
+                   
+                   [self.userTableView.mj_header endRefreshing];
                }];
     });
 }
@@ -149,7 +167,8 @@ static NSString * const recommendUserCellID = @"userCell";
         //                                         creating indexPath for row, not collectionView's cell(item)
         [self.categoryTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
         // above instance method won't call delegate method, so we call it ourselves
-        [self tableView:self.categoryTableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+        [self.userTableView.mj_header beginRefreshing];
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [SVProgressHUD showErrorWithStatus:error.debugDescription];
     }];
@@ -182,14 +201,18 @@ static NSString * const recommendUserCellID = @"userCell";
         [self.userTableView.mj_footer endRefreshing];
         
         AHRecommendCategory *category = AHRecommendCurrentSelectedCategory;
+        AHLog(@"didSelectRowAtIndexPath id:%ld %@",category.id,category.name);
         // ues if else statment!!!
         if (category.users.count) {
+            AHLogFunc;
             [self.userTableView reloadData];
         }else{
+             AHLog(@"didSelectRowAtIndexPath %@ PointA",category.name);
             // category.users.count doesn't matter you gotta refresh table view anyway, or empty it out when switching
             [self.userTableView reloadData];
             // first time load refresh data through refreshControl
             [self.userTableView.mj_header beginRefreshing];
+            AHLog(@"didSelectRowAtIndexPath %@ PointB",category.name);
         }
 
     }
