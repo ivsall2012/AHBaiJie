@@ -9,11 +9,15 @@
 #import "AHFriendTrendsVC.h"
 #import "UIBarButtonItem+Extension.h"
 #import "AHRecommendVC.h"
+#import "AHLoginRegisterVC.h"
+
 @interface AHFriendTrendsVC ()
+
 
 @end
 
 @implementation AHFriendTrendsVC
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -28,5 +32,9 @@
 -(void)clickRecommentBtn{
     AHRecommendVC *recommendVC = [[AHRecommendVC alloc]init];
     [self.navigationController pushViewController:recommendVC animated:YES];
+}
+- (IBAction)loginRegister {
+    AHLoginRegisterVC *loginRegisterVC = [[AHLoginRegisterVC alloc]init];
+    [self presentViewController:loginRegisterVC animated:YES completion:nil];
 }
 @end

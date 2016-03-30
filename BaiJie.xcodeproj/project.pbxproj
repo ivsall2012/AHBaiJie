@@ -38,6 +38,9 @@
 		A17504101CA9FD740074328E /* AHRecommendCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A175040E1CA9FD740074328E /* AHRecommendCategoryCell.xib */; };
 		A17504131CA9FDA30074328E /* AHRecommendCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = A17504121CA9FDA30074328E /* AHRecommendCategory.m */; };
 		A18082D71CA8B22800CD922C /* UIBarButtonItem+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A18082D61CA8B22800CD922C /* UIBarButtonItem+Extension.m */; };
+		A1FCF6DC1CAC9187003A5547 /* AHLoginRegisterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FCF6DA1CAC9187003A5547 /* AHLoginRegisterVC.m */; };
+		A1FCF6DD1CAC9187003A5547 /* AHLoginRegisterVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1FCF6DB1CAC9187003A5547 /* AHLoginRegisterVC.xib */; };
+		A1FCF6E01CAC9B1E003A5547 /* AHStackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FCF6DF1CAC9B1E003A5547 /* AHStackButton.m */; };
 		E12E5B04C17FC86ED0C3D74F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F17C034FAFDD017F169D004B /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +100,11 @@
 		A17504121CA9FDA30074328E /* AHRecommendCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHRecommendCategory.m; sourceTree = "<group>"; };
 		A18082D51CA8B22800CD922C /* UIBarButtonItem+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Extension.h"; sourceTree = "<group>"; };
 		A18082D61CA8B22800CD922C /* UIBarButtonItem+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Extension.m"; sourceTree = "<group>"; };
+		A1FCF6D91CAC9187003A5547 /* AHLoginRegisterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHLoginRegisterVC.h; sourceTree = "<group>"; };
+		A1FCF6DA1CAC9187003A5547 /* AHLoginRegisterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHLoginRegisterVC.m; sourceTree = "<group>"; };
+		A1FCF6DB1CAC9187003A5547 /* AHLoginRegisterVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AHLoginRegisterVC.xib; sourceTree = "<group>"; };
+		A1FCF6DE1CAC9B1E003A5547 /* AHStackButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHStackButton.h; sourceTree = "<group>"; };
+		A1FCF6DF1CAC9B1E003A5547 /* AHStackButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHStackButton.m; sourceTree = "<group>"; };
 		D4017AA8DC76DE38070F8C8B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		E3D7BBEEEE2C9BCF929665CF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F17C034FAFDD017F169D004B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -339,15 +347,14 @@
 		A175040A1CA9FBD40074328E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A17504041CA9F35A0074328E /* AHRecommendVC.h */,
-				A17504051CA9F35A0074328E /* AHRecommendVC.m */,
-				A17504071CA9F3BE0074328E /* AHRecommendVC.xib */,
 				A175040C1CA9FD740074328E /* AHRecommendCategoryCell.h */,
 				A175040D1CA9FD740074328E /* AHRecommendCategoryCell.m */,
 				A175040E1CA9FD740074328E /* AHRecommendCategoryCell.xib */,
 				A13A23C81CAA2EF5001BDD4B /* AHRecommendUserCell.h */,
 				A13A23C91CAA2EF5001BDD4B /* AHRecommendUserCell.m */,
 				A13A23CA1CAA2EF5001BDD4B /* AHRecommendUserCell.xib */,
+				A1FCF6DE1CAC9B1E003A5547 /* AHStackButton.h */,
+				A1FCF6DF1CAC9B1E003A5547 /* AHStackButton.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -358,6 +365,12 @@
 				A16AF3501CA88EAC0004BFCE /* AHFriendTrendsVC.h */,
 				A16AF3511CA88EAC0004BFCE /* AHFriendTrendsVC.m */,
 				A10CE5601CA8F55100895EAA /* AHFriendTrendsVC.xib */,
+				A17504041CA9F35A0074328E /* AHRecommendVC.h */,
+				A17504051CA9F35A0074328E /* AHRecommendVC.m */,
+				A17504071CA9F3BE0074328E /* AHRecommendVC.xib */,
+				A1FCF6D91CAC9187003A5547 /* AHLoginRegisterVC.h */,
+				A1FCF6DA1CAC9187003A5547 /* AHLoginRegisterVC.m */,
+				A1FCF6DB1CAC9187003A5547 /* AHLoginRegisterVC.xib */,
 			);
 			name = VC;
 			sourceTree = "<group>";
@@ -426,6 +439,7 @@
 			files = (
 				A10CE5611CA8F55100895EAA /* AHFriendTrendsVC.xib in Resources */,
 				A16AF3301CA873300004BFCE /* Assets.xcassets in Resources */,
+				A1FCF6DD1CAC9187003A5547 /* AHLoginRegisterVC.xib in Resources */,
 				A128328E1CABBAC300389300 /* AHRecommendSubscribeCell.xib in Resources */,
 				A13A23CC1CAA2EF5001BDD4B /* AHRecommendUserCell.xib in Resources */,
 				A17504101CA9FD740074328E /* AHRecommendCategoryCell.xib in Resources */,
@@ -502,7 +516,9 @@
 				A18082D71CA8B22800CD922C /* UIBarButtonItem+Extension.m in Sources */,
 				A13A23CF1CAA33F6001BDD4B /* AHRecommendUser.m in Sources */,
 				A175040F1CA9FD740074328E /* AHRecommendCategoryCell.m in Sources */,
+				A1FCF6DC1CAC9187003A5547 /* AHLoginRegisterVC.m in Sources */,
 				A16AF33C1CA87DB90004BFCE /* AHTabBarVC.m in Sources */,
+				A1FCF6E01CAC9B1E003A5547 /* AHStackButton.m in Sources */,
 				A10CE55A1CA8DA0F00895EAA /* TestVC_two.m in Sources */,
 				A16AF3281CA873300004BFCE /* AppDelegate.m in Sources */,
 				A10CE5561CA8DA0F00895EAA /* TestVC_one.m in Sources */,
