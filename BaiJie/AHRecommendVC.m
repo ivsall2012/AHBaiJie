@@ -38,10 +38,33 @@ static NSString * const recommendUserCellID = @"userCell";
 }
 -(void)setupRefreshControl{
     //                                 MJRefreshBackFooter doesn't work, you have to specify the class
-    self.userTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreUsers)];
+    self.userTableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreUsers)];
+    self.userTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewUsers)];
     self.userTableView.mj_footer.hidden = YES;
 }
+-(void)checkFooterState{
+    /*
+     *  only 3 situations need to check footer state --> 
+     *  all come to one route, [self.userTableView reloadData] which is where it goes when data is ready
+     *
+     *  1) when switching to new category
+     *  2) scroll down to load newest data(have to destroy old data though)
+     *  3) scroll up to load more data see if this is the last batch
+     */
+    AHRecommendCategory *currentCategory = AHRecommendCurrentSelectedCategory;
+    self.userTableView.mj_footer.hidden = (currentCategory.users.count == 0);
+    if (!self.userTableView.mj_footer.hidden) {
+        // if not hidden then decide which state the footer wnats to display
+        if (currentCategory.total == currentCategory.users.count) {
+            // last batch
+            [self.userTableView.mj_footer endRefreshingWithNoMoreData];
+        }else{
+            // current total data models not reaching total yet, end refreshing
+            [self.userTableView.mj_footer endRefreshing];
+        }
+    }
 
+}
 -(void)loadMoreUsers{
     AHRecommendCategory *category = AHRecommendCurrentSelectedCategory;
     [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php"
@@ -53,16 +76,41 @@ static NSString * const recommendUserCellID = @"userCell";
         // you can't just assign category.users = users, one is mutable, one is not, so just addObjectsFromArray
         [category.users addObjectsFromArray:users];
         [self.userTableView reloadData];
-        if (category.total == category.users.count) {
-            // last batch
-            [self.userTableView.mj_footer endRefreshingWithNoMoreData];
-        }else{
-            // current total data models not reaching total yet, end refreshing
-            [self.userTableView.mj_footer endRefreshing];
-        }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         AHLog(@"error:%@",error);
     }];
+}
+-(void)loadNewUsers{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        
+        AHRecommendCategory *category = AHRecommendCurrentSelectedCategory;
+        // first for user list, set page to 1
+        category.currentPage =1;
+        [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php"
+             parameters:@{@"a":@"list",@"c":@"subscribe",@"category_id":@(category.id),@"page":@(category.currentPage)}
+               progress:^(NSProgress * _Nonnull downloadProgress) {
+                   
+               } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                   NSArray *users = [AHRecommendUser mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
+                   
+                   // for scrool down refresh
+                   [category.users removeAllObjects];
+                   
+                   // you can't just assign category.users = users, one is mutable, one is not, so just addObjectsFromArray
+                   [category.users addObjectsFromArray:users];
+                   
+                   category.total = [responseObject[@"total"] integerValue];
+                   
+                   
+                   [self.userTableView reloadData];
+                   [self.userTableView.mj_header endRefreshing];
+                   AHLog(@"%@",responseObject);
+               } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                   
+                   AHLog(@"error:%@",error);
+               }];
+    });
 }
 -(void)initTableViews{
     [self registerCells];
@@ -100,6 +148,7 @@ static NSString * const recommendUserCellID = @"userCell";
         return self.categoryArray.count;
     }else{
         AHRecommendCategory *category = self.categoryArray[self.categoryTableView.indexPathForSelectedRow.row];
+        [self checkFooterState];
         return category.users.count;
     }
 }
@@ -118,42 +167,20 @@ static NSString * const recommendUserCellID = @"userCell";
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (tableView == self.categoryTableView) {
+        [self.userTableView.mj_header endRefreshing];
+        [self.userTableView.mj_footer endRefreshing];
+        
         AHRecommendCategory *category = AHRecommendCurrentSelectedCategory;
-        // category.users.count doesn't matter you gotta refresh table view anyway, or empty it out when switching
-        [self.userTableView reloadData];
-        
-        // this one for switching to other category, emptying out table data, hide it
-        self.userTableView.mj_footer.hidden = YES;
-        
-        // first for user list, set page to 1
-        category.currentPage =1;
-        [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php"
-                                 parameters:@{@"a":@"list",@"c":@"subscribe",@"category_id":@(category.id),@"page":@(category.currentPage)}
-                                   progress:^(NSProgress * _Nonnull downloadProgress) {
-            
-        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            NSArray *users = [AHRecommendUser mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
-            // you can't just assign category.users = users, one is mutable, one is not, so just addObjectsFromArray
-            [category.users addObjectsFromArray:users];
-            
-            // always show refresher when data is ready
-            self.userTableView.mj_footer.hidden = NO;
-            
-            category.total = [responseObject[@"total"] integerValue];
-            if (category.total == category.users.count) {
-                // last batch
-                [self.userTableView.mj_footer endRefreshingWithNoMoreData];
-            }else{
-                // current total data models not reaching total yet, end refreshing
-                [self.userTableView.mj_footer endRefreshing];
-            }
-            
+        // ues if else statment!!!
+        if (category.users.count) {
             [self.userTableView reloadData];
-            
-            AHLog(@"%@",responseObject);
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            AHLog(@"error:%@",error);
-        }];
+        }else{
+            // category.users.count doesn't matter you gotta refresh table view anyway, or empty it out when switching
+            [self.userTableView reloadData];
+            // first time load refresh data through refreshControl
+            [self.userTableView.mj_header beginRefreshing];
+        }
+
     }
 }
 @end
