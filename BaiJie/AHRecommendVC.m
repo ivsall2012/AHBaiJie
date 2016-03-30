@@ -22,6 +22,10 @@
 @property (weak, nonatomic) IBOutlet UITableView *categoryTableView;
 @property (weak, nonatomic) IBOutlet UITableView *userTableView;
 @property (nonatomic, strong) NSArray<AHRecommendCategory *> *categoryArray;
+/**
+ *  currentParams keeps track the latest request
+ */
+@property (nonatomic, strong) NSDictionary *currentParams;
 @end
 
 @implementation AHRecommendVC
@@ -67,11 +71,15 @@ static NSString * const recommendUserCellID = @"userCell";
 }
 -(void)loadMoreUsers{
     AHRecommendCategory *category = AHRecommendCurrentSelectedCategory;
+    NSDictionary *params = @{@"a":@"list",@"c":@"subscribe",@"category_id":@(category.id),@"page":@(++category.currentPage)};
+    self.currentParams = params;
     [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php"
-                             parameters:@{@"a":@"list",@"c":@"subscribe",@"category_id":@(category.id),@"page":@(++category.currentPage)}
+                             parameters:params
                                progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if(self.currentParams != params) return;
+        
         NSArray *users = [AHRecommendUser mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
         // you can't just assign category.users = users, one is mutable, one is not, so just addObjectsFromArray
         [category.users addObjectsFromArray:users];
@@ -83,15 +91,18 @@ static NSString * const recommendUserCellID = @"userCell";
 -(void)loadNewUsers{
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
-        
         AHRecommendCategory *category = AHRecommendCurrentSelectedCategory;
+        NSDictionary *params = @{@"a":@"list",@"c":@"subscribe",@"category_id":@(category.id),@"page":@(category.currentPage)};
+        self.currentParams = params;
         // first for user list, set page to 1
         category.currentPage =1;
         [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php"
-             parameters:@{@"a":@"list",@"c":@"subscribe",@"category_id":@(category.id),@"page":@(category.currentPage)}
+             parameters:params
                progress:^(NSProgress * _Nonnull downloadProgress) {
                    
                } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                   if(self.currentParams != params) return;
+                   
                    NSArray *users = [AHRecommendUser mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
                    
                    // for scrool down refresh
@@ -182,5 +193,8 @@ static NSString * const recommendUserCellID = @"userCell";
         }
 
     }
+}
+-(void)dealloc{
+    [[AFHTTPSessionManager manager].operationQueue cancelAllOperations];
 }
 @end
