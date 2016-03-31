@@ -9,6 +9,7 @@
 #import "AHLoginRegisterVC.h"
 
 @interface AHLoginRegisterVC ()
+@property (weak, nonatomic) IBOutlet UIButton *loginNow;
 
 @end
 
@@ -19,7 +20,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    [self.loginNow setValue:@(5) forKeyPath:@"layer.cornerRadius"];
+    [self.loginNow setValue:@(1) forKeyPath:@"layer.masksToBounds"];
 }
 
 - (void)didReceiveMemoryWarning {
