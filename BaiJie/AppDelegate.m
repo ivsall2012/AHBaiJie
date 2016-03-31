@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "AHTabBarVC.h"
+#import "AHPushGuideView.h"
 @interface AppDelegate ()
 
 @end
@@ -21,6 +22,7 @@
     AHTabBarVC *vc = [[AHTabBarVC alloc]init];
     self.window.rootViewController = vc;
     [self.window makeKeyAndVisible];
+    [AHPushGuideView pushGuideCheck];
     return YES;
 }
 
