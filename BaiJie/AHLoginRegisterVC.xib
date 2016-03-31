@@ -45,7 +45,7 @@
                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jBR-ms-zeQ" userLabel="login">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jBR-ms-zeQ" userLabel="fast login">
                     <rect key="frame" x="0.0" y="450" width="600" height="150"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hJt-Q4-6sB">
@@ -115,10 +115,10 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yok-r3-Qxg" userLabel="login frame">
                     <rect key="frame" x="0.0" y="80" width="600" height="200"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FMJ-rM-Ury">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FMJ-rM-Ury" userLabel="login wrapper">
                             <rect key="frame" x="167" y="0.0" width="266" height="92"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" highlightedImage="login_rgister_textfield_bg" translatesAutoresizingMaskIntoConstraints="NO" id="g8O-t0-5f7">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_rgister_textfield_bg" translatesAutoresizingMaskIntoConstraints="NO" id="g8O-t0-5f7" userLabel="login bg">
                                     <rect key="frame" x="0.0" y="0.0" width="266" height="92"/>
                                 </imageView>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J79-wW-10o" userLabel="phone number">
