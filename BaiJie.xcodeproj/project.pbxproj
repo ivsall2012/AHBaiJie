@@ -22,6 +22,7 @@
 		A13A23CB1CAA2EF5001BDD4B /* AHRecommendUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A13A23C91CAA2EF5001BDD4B /* AHRecommendUserCell.m */; };
 		A13A23CC1CAA2EF5001BDD4B /* AHRecommendUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A13A23CA1CAA2EF5001BDD4B /* AHRecommendUserCell.xib */; };
 		A13A23CF1CAA33F6001BDD4B /* AHRecommendUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A13A23CE1CAA33F6001BDD4B /* AHRecommendUser.m */; };
+		A143E1EE1CAD040F00A72147 /* AHLoginTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = A143E1ED1CAD040F00A72147 /* AHLoginTextField.m */; };
 		A16AF3251CA873300004BFCE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AF3241CA873300004BFCE /* main.m */; };
 		A16AF3281CA873300004BFCE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AF3271CA873300004BFCE /* AppDelegate.m */; };
 		A16AF3301CA873300004BFCE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A16AF32F1CA873300004BFCE /* Assets.xcassets */; };
@@ -69,6 +70,8 @@
 		A13A23CA1CAA2EF5001BDD4B /* AHRecommendUserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AHRecommendUserCell.xib; sourceTree = "<group>"; };
 		A13A23CD1CAA33F6001BDD4B /* AHRecommendUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHRecommendUser.h; sourceTree = "<group>"; };
 		A13A23CE1CAA33F6001BDD4B /* AHRecommendUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHRecommendUser.m; sourceTree = "<group>"; };
+		A143E1EC1CAD040F00A72147 /* AHLoginTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHLoginTextField.h; sourceTree = "<group>"; };
+		A143E1ED1CAD040F00A72147 /* AHLoginTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHLoginTextField.m; sourceTree = "<group>"; };
 		A16AF3201CA873300004BFCE /* BaiJie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaiJie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A16AF3241CA873300004BFCE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A16AF3261CA873300004BFCE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -355,6 +358,8 @@
 				A13A23CA1CAA2EF5001BDD4B /* AHRecommendUserCell.xib */,
 				A1FCF6DE1CAC9B1E003A5547 /* AHStackButton.h */,
 				A1FCF6DF1CAC9B1E003A5547 /* AHStackButton.m */,
+				A143E1EC1CAD040F00A72147 /* AHLoginTextField.h */,
+				A143E1ED1CAD040F00A72147 /* AHLoginTextField.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -520,6 +525,7 @@
 				A16AF33C1CA87DB90004BFCE /* AHTabBarVC.m in Sources */,
 				A1FCF6E01CAC9B1E003A5547 /* AHStackButton.m in Sources */,
 				A10CE55A1CA8DA0F00895EAA /* TestVC_two.m in Sources */,
+				A143E1EE1CAD040F00A72147 /* AHLoginTextField.m in Sources */,
 				A16AF3281CA873300004BFCE /* AppDelegate.m in Sources */,
 				A10CE5561CA8DA0F00895EAA /* TestVC_one.m in Sources */,
 				A12832831CABB8AB00389300 /* AHRecommendSubsribeVC.m in Sources */,

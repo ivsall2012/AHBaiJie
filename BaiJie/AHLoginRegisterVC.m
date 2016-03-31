@@ -32,5 +32,8 @@
 -(UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
 }
-
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    // have to use endEditing, resignFirstResponder wont work
+    [self.view endEditing:YES];
+}
 @end
