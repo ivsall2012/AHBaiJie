@@ -10,10 +10,27 @@
 
 @interface AHLoginRegisterVC ()
 @property (weak, nonatomic) IBOutlet UIButton *loginNow;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *loginFrameRightConstrant;
 
 @end
 
 @implementation AHLoginRegisterVC
+- (IBAction)clickRegisterBtn:(UIButton *)registerBtn {
+    [self.view endEditing:YES];
+    registerBtn.selected = !registerBtn.selected;
+    
+    // the constant here is the same constant in autolayout pannel -- offset, not the exact x of the edge.
+    if (self.loginFrameRightConstrant.constant == 0) {
+        self.loginFrameRightConstrant.constant = -self.view.width;
+    }else{
+        self.loginFrameRightConstrant.constant = 0;
+    }
+    [UIView animateWithDuration:0.25 animations:^{
+        // layoutIfNeeded has to be placed within animation and the setting can be here or outside, dont know why yet:)
+        [self.view layoutIfNeeded];
+    }];
+    
+}
 - (IBAction)cancelBtn {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
