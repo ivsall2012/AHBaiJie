@@ -11,7 +11,7 @@
 #import "AHRecommendSubsribeVC.h"
 #import "AHSectionTabBar.h"
 @interface AHEssenceVC ()<AHSectionTabBarDelegate>
-
+@property (nonatomic, weak) AHSectionTabBar *sectionTabBar;
 @end
 
 @implementation AHEssenceVC
@@ -27,6 +27,19 @@
     sectionTabBar.Y = 64;
     sectionTabBar.delegate = self;
     [self.view addSubview:sectionTabBar];
+    self.sectionTabBar = sectionTabBar;
+    
+}
+
+// this method will be called twice -- the delegate twice as well, button couldnt be empty, need more code for filtering...
+//-(void)viewDidLayoutSubviews{
+//    [super viewDidLayoutSubviews];
+//    [self.sectionTabBar selectButtonType:AHSectionTabBarButtonTypeRecommend];
+//}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self.sectionTabBar selectButtonType:AHSectionTabBarButtonTypeRecommend];
 }
 -(void)clickTag{
     AHRecommendSubsribeVC *recommendSubcribeVC = [[AHRecommendSubsribeVC alloc]init];

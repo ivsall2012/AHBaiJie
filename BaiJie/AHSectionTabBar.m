@@ -60,24 +60,27 @@
     [self.buttonArray addObject:btn];
     
 }
+// this is public, an interface for outsider to select buttons.
+-(void)selectButtonType:(AHSectionTabBarButtonType)type{
+    UIButton *btn = [self viewWithTag:type];
+    [self sectionTabBarDidSelectionButton:btn];
+}
 -(void)sectionTabBarDidSelectionButton:(UIButton *)button{
     self.currentButton.enabled = YES;
     button.enabled = NO;
     self.currentButton = button;
     
-    if (!self.currentButton.enabled) {
-        // now we know which button being clicked on, indicator's width/x/y can be certain
-        if (_bottomIndicator == nil) {
-            // bottomIndicator is lazy loading, no animation for the first time
+    // now we know which button being clicked on, indicator's width/x/y can be certain
+    if (_bottomIndicator == nil) {
+        // bottomIndicator is lazy loading, no animation for the first time
+        [self indicatorSetup:button];
+    }else{
+        [UIView animateWithDuration:0.25 animations:^{
             [self indicatorSetup:button];
-        }else{
-            [UIView animateWithDuration:0.25 animations:^{
-                [self indicatorSetup:button];
-            }];
-        }
-        if ([self.delegate respondsToSelector:@selector(sectionTabBar:didSelectionButtonType:)]) {
-            [self. delegate sectionTabBar:self didSelectionButtonType:(AHSectionTabBarButtonType)button.tag];
-        }
+        }];
+    }
+    if ([self.delegate respondsToSelector:@selector(sectionTabBar:didSelectionButtonType:)]) {
+        [self. delegate sectionTabBar:self didSelectionButtonType:(AHSectionTabBarButtonType)button.tag];
     }
     
 }
@@ -97,9 +100,6 @@
         btn.width = width;
         btn.X = i * width;
         btn.Y = 0;
-        if (i == 0) {
-            [self sectionTabBarDidSelectionButton:btn];
-        }
     }
 }
 @end

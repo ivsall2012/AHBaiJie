@@ -25,4 +25,5 @@ typedef enum{
 @end
 @interface AHSectionTabBar : UIView
 @property (nonatomic, weak) id<AHSectionTabBarDelegate> delegate;
+-(void)selectButtonType:(AHSectionTabBarButtonType)type;
 @end
