@@ -53,12 +53,12 @@
 -(void)setupTableViews{
     AHAllKindsVC *allVC = [[AHAllKindsVC alloc]init];
     AHVideoVC *videoVC = [[AHVideoVC alloc]init];
-    AHVoiceVC *voiceVC = [[AHVoiceVC alloc]init];
     AHPictureVC *pictureVc = [[AHPictureVC alloc]init];
     AHJokeVC *jokeVC = [[AHJokeVC alloc]init];
+    AHVoiceVC *voiceVC = [[AHVoiceVC alloc]init];
     
 //    self.childViewControllers = @[allVC,videoVC,voiceVC,pictureVc,jokeVC];
-    [self setValue:@[allVC,videoVC,voiceVC,pictureVc,jokeVC] forKey:@"childViewControllers"];
+    [self setValue:@[allVC,videoVC,pictureVc,jokeVC,voiceVC] forKey:@"childViewControllers"];
 }
 -(void)SetupSectionTabBar{
     AHSectionTabBar *sectionTabBar = [[AHSectionTabBar alloc]init];
@@ -67,6 +67,13 @@
     sectionTabBar.X = 0;
     sectionTabBar.Y = 64;
     sectionTabBar.delegate = self;
+    
+    [sectionTabBar createTabButtonWithTitle:@"推荐" buttonType:AHSectionTabBarButtonTypeRecommend];
+    [sectionTabBar createTabButtonWithTitle:@"视频" buttonType:AHSectionTabBarButtonTypeVideo];
+    [sectionTabBar createTabButtonWithTitle:@"图片" buttonType:AHSectionTabBarButtonTypePicture];
+    [sectionTabBar createTabButtonWithTitle:@"段子" buttonType:AHSectionTabBarButtonTypeJoke];
+    [sectionTabBar createTabButtonWithTitle:@"声音" buttonType:AHSectionTabBarButtonTypeVoice];
+    
     [self.view addSubview:sectionTabBar];
     self.sectionTabBar = sectionTabBar;
 }
@@ -97,11 +104,14 @@
     VC.tableView.X = scrollView.contentOffset.x;
     VC.tableView.Y = 0;
     
-//    VC.tableView.bounds = scrollView.bounds; // dont have to tell VC size of their tableView
+//    VC.tableView.bounds = scrollView.bounds; // dont have to tell VC size of their tableView. it affects tableView x/y,weird..
+    VC.tableView.height = scrollView.height;
+    VC.tableView.width = scrollView.width;
+
     CGFloat topInset = CGRectGetMaxY(self.sectionTabBar.frame);
     CGFloat bottomInset = self.tabBarController.tabBar.height;
     VC.tableView.contentInset = UIEdgeInsetsMake(topInset, 0, bottomInset, 0);
-//    VC.tableView.contentOffset = CGPointMake(topInset, 0);
+    VC.tableView.scrollIndicatorInsets = VC.tableView.contentInset;
     [self.mainScrollView addSubview:VC.tableView];
 }
 
@@ -112,6 +122,6 @@
     // click button manually
     NSInteger page = scrollView.contentOffset.x/scrollView.width;
     AHSectionTabBarButtonType type = (AHSectionTabBarButtonType)((long)AHSectionTabBarButtonTypeRecommend + (long)page);
-    [self sectionTabBar:self.sectionTabBar didSelectionButtonType:type];
+    [self.sectionTabBar selectButtonType:type];
 }
 @end

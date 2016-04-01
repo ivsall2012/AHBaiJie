@@ -42,7 +42,7 @@ static NSString * const recommendUserCellID = @"userCell";
 }
 -(void)setupRefreshControl{
     //                                 MJRefreshBackFooter doesn't work, you have to specify the class
-    self.userTableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreUsers)];
+    self.userTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreUsers)];
     self.userTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewUsers)];
     self.userTableView.mj_footer.hidden = YES;
 }

@@ -37,7 +37,6 @@
     self = [super init];
     if (self) {
         self.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.7];
-        [self initButtons];
     }
     return self;
 }

@@ -11,9 +11,11 @@
 typedef enum{
     AHSectionTabBarButtonTypeRecommend=99,
     AHSectionTabBarButtonTypeVideo,
-    AHSectionTabBarButtonTypeVoice,
+    AHSectionTabBarButtonTypePicture,
     AHSectionTabBarButtonTypeJoke,
-    AHSectionTabBarButtonTypePicture
+    AHSectionTabBarButtonTypeVoice
+    
+    
 } AHSectionTabBarButtonType;
 
 @class AHSectionTabBar;
@@ -26,4 +28,5 @@ typedef enum{
 @interface AHSectionTabBar : UIView
 @property (nonatomic, weak) id<AHSectionTabBarDelegate> delegate;
 -(void)selectButtonType:(AHSectionTabBarButtonType)type;
+-(void)createTabButtonWithTitle:(NSString *)title buttonType:(AHSectionTabBarButtonType)type;
 @end
