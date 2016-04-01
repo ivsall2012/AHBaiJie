@@ -30,9 +30,10 @@
     [super viewDidLoad];
     self.navigationItem.titleView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"MainTitle"]];
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImage:@"MainTagSubIcon" highImage:@"MainTagSubIconClick" target:self action:@selector(clickTag)];
-    [self setupMainScrollView];
+    
     [self setupTableViews];
     [self SetupSectionTabBar];
+    [self setupMainScrollView];
     
 }
 -(void)setupMainScrollView{
@@ -44,6 +45,8 @@
     mainScrollView.contentSize = CGSizeMake(AHNumberOfSectionTableViews * mainScrollView.width, 0);
     [self.view insertSubview:mainScrollView atIndex:0];
     self.mainScrollView = mainScrollView;
+    
+    [self scrollViewDidEndScrollingAnimation:mainScrollView];
     
     
 }
@@ -90,15 +93,16 @@
     // here we need absolute page number -- index of child VCs
     NSInteger page = scrollView.contentOffset.x/scrollView.width;
     UITableViewController *VC = self.childViewControllers[page];
-    if (VC.tableView.X ==0 ) {
-        VC.tableView.X = scrollView.contentOffset.x;
-        VC.tableView.Y = 0;
-//        VC.tableView.bounds = scrollView.bounds; // dont have to tell VC size of their tableView
-        CGFloat topInset = CGRectGetMaxY(self.sectionTabBar.frame);
-        CGFloat bottomInset = self.tabBarController.tabBar.height;
-        VC.tableView.contentInset = UIEdgeInsetsMake(topInset, 0, bottomInset, 0);
-        [self.mainScrollView addSubview:VC.tableView];
-    }
+    // tableView will adjust its y automatically, cant skip these settings
+    VC.tableView.X = scrollView.contentOffset.x;
+    VC.tableView.Y = 0;
+    
+//    VC.tableView.bounds = scrollView.bounds; // dont have to tell VC size of their tableView
+    CGFloat topInset = CGRectGetMaxY(self.sectionTabBar.frame);
+    CGFloat bottomInset = self.tabBarController.tabBar.height;
+    VC.tableView.contentInset = UIEdgeInsetsMake(topInset, 0, bottomInset, 0);
+//    VC.tableView.contentOffset = CGPointMake(topInset, 0);
+    [self.mainScrollView addSubview:VC.tableView];
 }
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{

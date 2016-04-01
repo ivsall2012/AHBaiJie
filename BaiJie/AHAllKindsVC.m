@@ -36,4 +36,9 @@
     cell.textLabel.text = [NSString stringWithFormat:@"%@ --> %ld",[self class],indexPath.row];
     return cell;
 }
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    AHLog(@"%@",NSStringFromCGRect(tableView.frame));
+    AHLog(@"%@",NSStringFromUIEdgeInsets(tableView.contentInset));
+    
+}
 @end
