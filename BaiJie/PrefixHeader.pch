@@ -26,5 +26,5 @@
 #define AHGlobelViewColor AHColor(234,234,234)
 #define AHTextFont [UIFont systemFontOfSize:14]
 #define AHTabBarFont [UIFont systemFontOfSize:12]
-
+#define AHRedColor AHColor(255,0.0,0.0)
 #endif /* PrefixHeader_pch */
