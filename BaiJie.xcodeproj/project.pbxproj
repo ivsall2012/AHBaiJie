@@ -15,6 +15,7 @@
 		A10CE55B1CA8DA0F00895EAA /* TestVC_two.xib in Resources */ = {isa = PBXBuildFile; fileRef = A10CE5551CA8DA0F00895EAA /* TestVC_two.xib */; };
 		A10CE55E1CA8DD3600895EAA /* AHNavigationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A10CE55D1CA8DD3600895EAA /* AHNavigationVC.m */; };
 		A10CE5611CA8F55100895EAA /* AHFriendTrendsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A10CE5601CA8F55100895EAA /* AHFriendTrendsVC.xib */; };
+		A11736631CAF4B87001B47FF /* AHTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = A11736621CAF4B87001B47FF /* AHTopic.m */; };
 		A12832831CABB8AB00389300 /* AHRecommendSubsribeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A12832821CABB8AB00389300 /* AHRecommendSubsribeVC.m */; };
 		A12832891CABBA7600389300 /* AHRecommendSubsriber.m in Sources */ = {isa = PBXBuildFile; fileRef = A12832881CABBA7600389300 /* AHRecommendSubsriber.m */; };
 		A128328D1CABBAC300389300 /* AHRecommendSubscribeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A128328B1CABBAC300389300 /* AHRecommendSubscribeCell.m */; };
@@ -66,6 +67,8 @@
 		A10CE55C1CA8DD3600895EAA /* AHNavigationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHNavigationVC.h; sourceTree = "<group>"; };
 		A10CE55D1CA8DD3600895EAA /* AHNavigationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHNavigationVC.m; sourceTree = "<group>"; };
 		A10CE5601CA8F55100895EAA /* AHFriendTrendsVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AHFriendTrendsVC.xib; sourceTree = "<group>"; };
+		A11736611CAF4B87001B47FF /* AHTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHTopic.h; sourceTree = "<group>"; };
+		A11736621CAF4B87001B47FF /* AHTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHTopic.m; sourceTree = "<group>"; };
 		A12832811CABB8AB00389300 /* AHRecommendSubsribeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHRecommendSubsribeVC.h; sourceTree = "<group>"; };
 		A12832821CABB8AB00389300 /* AHRecommendSubsribeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHRecommendSubsribeVC.m; sourceTree = "<group>"; };
 		A12832871CABBA7600389300 /* AHRecommendSubsriber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHRecommendSubsriber.h; sourceTree = "<group>"; };
@@ -230,6 +233,8 @@
 			children = (
 				A12832871CABBA7600389300 /* AHRecommendSubsriber.h */,
 				A12832881CABBA7600389300 /* AHRecommendSubsriber.m */,
+				A11736611CAF4B87001B47FF /* AHTopic.h */,
+				A11736621CAF4B87001B47FF /* AHTopic.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -561,6 +566,7 @@
 				A16AF35B1CA896450004BFCE /* UIView+Extension.m in Sources */,
 				A16AF34C1CA88E870004BFCE /* AHEssenceVC.m in Sources */,
 				A17504131CA9FDA30074328E /* AHRecommendCategory.m in Sources */,
+				A11736631CAF4B87001B47FF /* AHTopic.m in Sources */,
 				A128328D1CABBAC300389300 /* AHRecommendSubscribeCell.m in Sources */,
 				A16AF34F1CA88E9A0004BFCE /* AHNewVC.m in Sources */,
 				A12832891CABBA7600389300 /* AHRecommendSubsriber.m in Sources */,
