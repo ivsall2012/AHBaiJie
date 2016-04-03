@@ -8,25 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-typedef enum{
-    AHSectionTabBarButtonTypeRecommend=99,
-    AHSectionTabBarButtonTypeVideo,
-    AHSectionTabBarButtonTypePicture,
-    AHSectionTabBarButtonTypeJoke,
-    AHSectionTabBarButtonTypeVoice
-    
-    
-} AHSectionTabBarButtonType;
-
 @class AHSectionTabBar;
 @protocol AHSectionTabBarDelegate <NSObject>
 
 @optional
--(void)sectionTabBar:(AHSectionTabBar *)sectionTabBar didSelectionButtonType:(AHSectionTabBarButtonType)type;
+-(void)sectionTabBar:(AHSectionTabBar *)sectionTabBar didSelectionTabBarTitle:(NSString *)title;
 
 @end
 @interface AHSectionTabBar : UIView
 @property (nonatomic, weak) id<AHSectionTabBarDelegate> delegate;
--(void)selectButtonType:(AHSectionTabBarButtonType)type;
--(void)createTabButtonWithTitle:(NSString *)title buttonType:(AHSectionTabBarButtonType)type;
+-(void)addTabBarByTitle:(NSString *)title;
+-(void)selectTabBarByTitle:(NSString *)title;
 @end

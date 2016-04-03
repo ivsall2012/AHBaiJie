@@ -10,27 +10,27 @@
 #define AHSectionTabBarFont [UIFont systemFontOfSize:16]
 
 @interface AHSectionTabBar()
-@property (nonatomic, strong) UIButton *currentButton;
-@property (nonatomic, weak) UIView *bottomIndicator;
-@property (nonatomic, strong) NSMutableArray *buttonArray;
+@property (nonatomic, strong) UIButton *currentTabBar;
+@property (nonatomic, weak) UIView *indicator;
+@property (nonatomic, strong) NSMutableArray *tabBarArray;
 @end
 @implementation AHSectionTabBar
--(NSMutableArray *)buttonArray{
-    if (!_buttonArray) {
-        _buttonArray = [NSMutableArray array];
+-(NSMutableArray *)tabBarArray{
+    if (!_tabBarArray) {
+        _tabBarArray = [NSMutableArray array];
     }
-    return _buttonArray;
+    return _tabBarArray;
 }
--(UIView *)bottomIndicator{
-    if (!_bottomIndicator) {
+-(UIView *)indicator{
+    if (!_indicator) {
         UIView *indicator = [[UIView alloc]init];
         indicator.height =2;
         indicator.backgroundColor = [UIColor redColor];
         [self addSubview:indicator];
-        self.bottomIndicator = indicator;
+        self.indicator = indicator;
         // set it's width/x/y later since the width is based on its corresponding self/buttons
     }
-    return _bottomIndicator;
+    return _indicator;
 }
 - (instancetype)init
 {
@@ -40,61 +40,58 @@
     }
     return self;
 }
--(void)initButtons{
-    [self createTabButtonWithTitle:@"推荐" buttonType:AHSectionTabBarButtonTypeRecommend];
-    [self createTabButtonWithTitle:@"视频" buttonType:AHSectionTabBarButtonTypeVideo];
-    [self createTabButtonWithTitle:@"图片" buttonType:AHSectionTabBarButtonTypePicture];
-    [self createTabButtonWithTitle:@"段子" buttonType:AHSectionTabBarButtonTypeJoke];
-    [self createTabButtonWithTitle:@"声音" buttonType:AHSectionTabBarButtonTypeVoice];
-}
--(void)createTabButtonWithTitle:(NSString *)title buttonType:(AHSectionTabBarButtonType)type{
+-(void)addTabBarByTitle:(NSString *)title{
     UIButton *btn =[[UIButton alloc]init];
     btn.titleLabel.font = AHSectionTabBarFont;
     [btn setTitle:title forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor redColor] forState:UIControlStateDisabled];
-    btn.tag= type;
-    [btn addTarget:self action:@selector(sectionTabBarDidSelectionButton:) forControlEvents:UIControlEventTouchDown];
+    [btn addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchDown];
     [self addSubview:btn];
-    [self.buttonArray addObject:btn];
-    
+    [self.tabBarArray addObject:btn];
 }
-// this is public, an interface for outsider to select buttons.
--(void)selectButtonType:(AHSectionTabBarButtonType)type{
-    UIButton *btn = [self viewWithTag:type];
-    [self sectionTabBarDidSelectionButton:btn];
-}
--(void)sectionTabBarDidSelectionButton:(UIButton *)button{
-    self.currentButton.enabled = YES;
+-(void)clickButton:(UIButton *)button{
+    self.currentTabBar.enabled = YES;
     button.enabled = NO;
-    self.currentButton = button;
+    self.currentTabBar = button;
     
     // now we know which button being clicked on, indicator's width/x/y can be certain
-    if (_bottomIndicator == nil) {
-        // bottomIndicator is lazy loading, no animation for the first time
+    if (_indicator == nil) {
+        // indicator is lazy loading, no animation for the first time
         [self indicatorSetup:button];
     }else{
         [UIView animateWithDuration:0.25 animations:^{
             [self indicatorSetup:button];
         }];
     }
-    if ([self.delegate respondsToSelector:@selector(sectionTabBar:didSelectionButtonType:)]) {
-        [self. delegate sectionTabBar:self didSelectionButtonType:(AHSectionTabBarButtonType)button.tag];
+    if ([self.delegate respondsToSelector:@selector(sectionTabBar:didSelectionTabBarTitle:)]) {
+        [self.delegate sectionTabBar:self didSelectionTabBarTitle:button.titleLabel.text];
     }
+}
+-(void)selectTabBarByTitle:(NSString *)title{
+    UIButton *selectedBtn = nil;
+    for (UIButton *btn in self.tabBarArray) {
+        if ([btn.titleLabel.text isEqualToString:title]) {
+            selectedBtn = btn;
+            break;
+        }
+    }
+    [self clickButton:selectedBtn];
     
 }
+
 -(void)indicatorSetup:(UIButton *)button{
-    self.bottomIndicator.width = button.titleLabel.width;
-    self.bottomIndicator.centerX = button.centerX; // DO NOT button.titleLabel.centerX
-    self.bottomIndicator.Y = self.height - self.bottomIndicator.height;
+    self.indicator.width = button.titleLabel.width;
+    self.indicator.centerX = button.centerX; // DO NOT =button.titleLabel.centerX
+    self.indicator.Y = self.height - self.indicator.height;
 }
 -(void)layoutSubviews{
     [super layoutSubviews];
     
-    CGFloat width = self.width/self.buttonArray.count;
+    CGFloat width = self.width/self.tabBarArray.count;
     CGFloat height = self.height;
-    for (int i=0; i<self.buttonArray.count; i++) {
-        UIButton *btn = self.buttonArray[i];
+    for (int i=0; i<self.tabBarArray.count; i++) {
+        UIButton *btn = self.tabBarArray[i];
         btn.height = height;
         btn.width = width;
         btn.X = i * width;

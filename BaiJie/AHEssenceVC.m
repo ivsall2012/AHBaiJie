@@ -34,7 +34,13 @@
     [self setupTableViews];
     [self SetupSectionTabBar];
     [self setupMainScrollView];
-    
+}
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [self.sectionTabBar selectTabBarByTitle:@"视频"];
+    });
 }
 -(void)setupMainScrollView{
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -52,10 +58,20 @@
 }
 -(void)setupTableViews{
     AHAllKindsVC *allVC = [[AHAllKindsVC alloc]init];
+    allVC.title = @"推荐";
+    
     AHVideoVC *videoVC = [[AHVideoVC alloc]init];
+    videoVC.title = @"视频";
+    
     AHPictureVC *pictureVc = [[AHPictureVC alloc]init];
+    pictureVc.title = @"图片";
+    
     AHJokeVC *jokeVC = [[AHJokeVC alloc]init];
+    jokeVC.title = @"段子";
+    
     AHVoiceVC *voiceVC = [[AHVoiceVC alloc]init];
+    voiceVC.title = @"声音";
+    
     
 //    self.childViewControllers = @[allVC,videoVC,voiceVC,pictureVc,jokeVC];
     [self setValue:@[allVC,videoVC,pictureVc,jokeVC,voiceVC] forKey:@"childViewControllers"];
@@ -67,27 +83,28 @@
     sectionTabBar.X = 0;
     sectionTabBar.Y = 64;
     sectionTabBar.delegate = self;
-    
-    [sectionTabBar createTabButtonWithTitle:@"推荐" buttonType:AHSectionTabBarButtonTypeRecommend];
-    [sectionTabBar createTabButtonWithTitle:@"视频" buttonType:AHSectionTabBarButtonTypeVideo];
-    [sectionTabBar createTabButtonWithTitle:@"图片" buttonType:AHSectionTabBarButtonTypePicture];
-    [sectionTabBar createTabButtonWithTitle:@"段子" buttonType:AHSectionTabBarButtonTypeJoke];
-    [sectionTabBar createTabButtonWithTitle:@"声音" buttonType:AHSectionTabBarButtonTypeVoice];
-    
+    for (UIViewController *vc in self.childViewControllers) {
+        [sectionTabBar addTabBarByTitle:vc.title];
+    }
     [self.view addSubview:sectionTabBar];
     self.sectionTabBar = sectionTabBar;
+
 }
 
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    [self.sectionTabBar selectButtonType:AHSectionTabBarButtonTypeRecommend];
-}
 -(void)clickTag{
     AHRecommendSubsribeVC *recommendSubcribeVC = [[AHRecommendSubsribeVC alloc]init];
     [self.navigationController pushViewController:recommendSubcribeVC animated:YES];
 }
--(void)sectionTabBar:(AHSectionTabBar *)sectionTabBar didSelectionButtonType:(AHSectionTabBarButtonType)type{
-    NSInteger index = type - AHSectionTabBarButtonTypeRecommend; // 0 1 2 3 4 for child VCs
+-(void)sectionTabBar:(AHSectionTabBar *)sectionTabBar didSelectionTabBarTitle:(NSString *)title{
+    NSInteger index;
+    for (int i=0; i<self.childViewControllers.count; i++) {
+        UIViewController *vc = self.childViewControllers[i];
+        if ([vc.title isEqualToString:title]) {
+            index = i;
+            break;
+        }
+    }
+    
     CGPoint offSet  = self.mainScrollView.contentOffset;
     offSet.x = index * self.mainScrollView.width;
     // this setter for offSet with animated param leads to scrollViewDidEndScrollingAnimation which is the place we add VCs' views
@@ -121,7 +138,7 @@
     
     // click button manually
     NSInteger page = scrollView.contentOffset.x/scrollView.width;
-    AHSectionTabBarButtonType type = (AHSectionTabBarButtonType)((long)AHSectionTabBarButtonTypeRecommend + (long)page);
-    [self.sectionTabBar selectButtonType:type];
+    UIViewController *vc = self.childViewControllers[page];
+    [self.sectionTabBar selectTabBarByTitle:vc.title];
 }
 @end

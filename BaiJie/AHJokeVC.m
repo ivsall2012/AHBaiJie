@@ -80,6 +80,7 @@
     AHTopic *topic = self.topicArray[indexPath.row];
     cell.textLabel.text = topic.name;
     cell.detailTextLabel.text = topic.text;
+    cell.autoresizingMask = UIViewAutoresizingNone;
     [cell.imageView sd_setImageWithURL:[NSURL URLWithString:topic.profile_image] placeholderImage:[UIImage imageNamed:@"defaultUserIcon"]];
     return cell;
 }
