@@ -33,10 +33,7 @@
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        [self.sectionTabBar selectTabBarByTitle:@"视频"];
-    });
+    [self.sectionTabBar selectTabBarByTitle:@"声音"];
 }
 -(void)setupMainScrollView{
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -48,11 +45,13 @@
     [self.view insertSubview:mainScrollView atIndex:0];
     self.mainScrollView = mainScrollView;
     
-    [self scrollViewDidEndScrollingAnimation:mainScrollView];
-    
     
 }
 -(void)setupTableViews{
+    AHTopicVC *pictureVC = [[AHTopicVC alloc]init];
+    pictureVC.title = @"图片";
+    pictureVC.topicType = AHTopicTypePicture;
+    
     AHTopicVC *allVC = [[AHTopicVC alloc]init];
     allVC.title = @"推荐";
     allVC.topicType = AHTopicTypeAllKinds;
@@ -61,9 +60,7 @@
     videoVC.title = @"视频";
     videoVC.topicType = AHTopicTypeVideo;
     
-    AHTopicVC *pictureVC = [[AHTopicVC alloc]init];
-    pictureVC.title = @"图片";
-    pictureVC.topicType = AHTopicTypePicture;
+    
     
     AHTopicVC *jokeVC = [[AHTopicVC alloc]init];
     jokeVC.title = @"段子";
@@ -75,7 +72,8 @@
     
     
 //    self.childViewControllers = @[allVC,videoVC,voiceVC,pictureVc,jokeVC];
-    [self setValue:@[allVC,videoVC,pictureVC,jokeVC,voiceVC] forKey:@"childViewControllers"];
+    // the order of VCs here is the order on display
+    [self setValue:@[pictureVC,allVC,videoVC,jokeVC,voiceVC] forKey:@"childViewControllers"];
 }
 -(void)SetupSectionTabBar{
     AHSectionTabBar *sectionTabBar = [[AHSectionTabBar alloc]init];
@@ -97,7 +95,7 @@
     [self.navigationController pushViewController:recommendSubcribeVC animated:YES];
 }
 -(void)sectionTabBar:(AHSectionTabBar *)sectionTabBar didSelectionTabBarTitle:(NSString *)title{
-    NSInteger index;
+    NSInteger index = -1;
     for (int i=0; i<self.childViewControllers.count; i++) {
         UIViewController *vc = self.childViewControllers[i];
         if ([vc.title isEqualToString:title]) {
@@ -109,8 +107,8 @@
     CGPoint offSet  = self.mainScrollView.contentOffset;
     offSet.x = index * self.mainScrollView.width;
     // this setter for offSet with animated param leads to scrollViewDidEndScrollingAnimation which is the place we add VCs' views
-    [self.mainScrollView setContentOffset:offSet animated:YES];
-    
+    [self.mainScrollView setContentOffset:offSet animated:NO]; // doesn't work (even animated) for the first time
+    [self scrollViewDidEndScrollingAnimation:self.mainScrollView]; // to let scrollView know where to go
 }
 #pragma mark - mainScrollView delegate
 // when it sense offSet changes, try to add views

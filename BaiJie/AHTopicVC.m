@@ -35,6 +35,7 @@ static NSString *TopicCellID = @"TopicCellID";
     [self setupRefreshControl];
     [self registerTopicCell];
     self.tableView.backgroundColor = [UIColor clearColor];
+    AHLog(@"VC.title %@",self.title);
     
 }
 -(void)registerTopicCell{
@@ -69,6 +70,16 @@ static NSString *TopicCellID = @"TopicCellID";
     [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php" parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
         if(self.params != params) return;
         NSMutableArray *newTopics = [AHTopic mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
+        NSArray *imageArray = responseObject[@"list"];
+        for (NSDictionary *imageDict in imageArray) {
+            NSString *image0 = imageDict[@"image0"];
+            NSString *image1 = imageDict[@"image1"];
+            NSString *image2 = imageDict[@"image2"];
+            AHLog(@"\nname:%@\nimage0:%@\nimage1:%@\nimage2:%@\nwidth:%@ height:%@\n",imageDict[@"name"],image0,image1,image2,imageDict[@"width"],imageDict[@"height"]);
+            AHLog(@"################################################");
+        }
+        
+        
         self.maxtime = responseObject[@"info"][@"maxtime"];
         self.topicArray = newTopics;
         [self.tableView reloadData];

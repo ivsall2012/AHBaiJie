@@ -17,5 +17,17 @@
 @property (nonatomic,copy) NSString *cai;
 @property (nonatomic,copy) NSString *ding;
 @property (nonatomic,copy) NSString *created_at;
+
+/**
+ *  the following width and height are for images/videos
+ */
+@property (nonatomic,copy) NSString *width;
+@property (nonatomic,copy) NSString *height;
+
+
+
+
+
+
 @property (nonatomic,assign) CGFloat cellHeight;
 @end
