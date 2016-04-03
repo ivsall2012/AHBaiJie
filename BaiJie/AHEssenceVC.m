@@ -11,11 +11,7 @@
 #import "AHRecommendSubsribeVC.h"
 #import "AHSectionTabBar.h"
 
-#import "AHAllKindsVC.h"
-#import "AHVideoVC.h"
-#import "AHVoiceVC.h"
-#import "AHPictureVC.h"
-#import "AHJokeVC.h"
+#import "AHTopicVC.h"
 
 
 #define AHNumberOfSectionTableViews 5
@@ -57,24 +53,29 @@
     
 }
 -(void)setupTableViews{
-    AHAllKindsVC *allVC = [[AHAllKindsVC alloc]init];
+    AHTopicVC *allVC = [[AHTopicVC alloc]init];
     allVC.title = @"推荐";
+    allVC.topicType = AHTopicTypeAllKinds;
     
-    AHVideoVC *videoVC = [[AHVideoVC alloc]init];
+    AHTopicVC *videoVC = [[AHTopicVC alloc]init];
     videoVC.title = @"视频";
+    videoVC.topicType = AHTopicTypeVideo;
     
-    AHPictureVC *pictureVc = [[AHPictureVC alloc]init];
-    pictureVc.title = @"图片";
+    AHTopicVC *pictureVC = [[AHTopicVC alloc]init];
+    pictureVC.title = @"图片";
+    pictureVC.topicType = AHTopicTypePicture;
     
-    AHJokeVC *jokeVC = [[AHJokeVC alloc]init];
+    AHTopicVC *jokeVC = [[AHTopicVC alloc]init];
     jokeVC.title = @"段子";
+    jokeVC.topicType = AHTopicTypeJoke;
     
-    AHVoiceVC *voiceVC = [[AHVoiceVC alloc]init];
+    AHTopicVC *voiceVC = [[AHTopicVC alloc]init];
     voiceVC.title = @"声音";
+    voiceVC.topicType = AHTopicTypeVoice;
     
     
 //    self.childViewControllers = @[allVC,videoVC,voiceVC,pictureVc,jokeVC];
-    [self setValue:@[allVC,videoVC,pictureVc,jokeVC,voiceVC] forKey:@"childViewControllers"];
+    [self setValue:@[allVC,videoVC,pictureVC,jokeVC,voiceVC] forKey:@"childViewControllers"];
 }
 -(void)SetupSectionTabBar{
     AHSectionTabBar *sectionTabBar = [[AHSectionTabBar alloc]init];

@@ -1,25 +1,27 @@
 //
-//  AHJokeVC.m
+//  AHTopicVC.m
 //  BaiJie
 //
-//  Created by Andy Hurricane on 3/31/16.
+//  Created by Andy Hurricane on 4/2/16.
 //  Copyright © 2016 Andy Hurricane. All rights reserved.
 //
 
-#import "AHJokeVC.h"
+#import "AHTopicVC.h"
+
 #import <AFNetworking.h>
 #import <MJExtension.h>
 #import <UIImageView+WebCache.h>
 #import <MJRefresh.h>
 #import "AHTopic.h"
 #import "AHTopicCell.h"
-@interface AHJokeVC ()
+
+@interface AHTopicVC ()
 @property (nonatomic, copy) NSString *maxtime;
 @property (nonatomic, strong) NSMutableArray *topicArray;
 @property (nonatomic, strong) NSDictionary *params;
 @end
 
-@implementation AHJokeVC
+@implementation AHTopicVC
 static NSString *TopicCellID = @"TopicCellID";
 
 -(NSMutableArray *)topicArray{
@@ -47,7 +49,7 @@ static NSString *TopicCellID = @"TopicCellID";
 }
 -(void)loadMoreTopics{
     [self.tableView.mj_header endRefreshing];
-    NSDictionary *params = @{@"a":@"list",@"c":@"data",@"type":@(29),@"maxtime":self.maxtime};
+    NSDictionary *params = @{@"a":@"list",@"c":@"data",@"type":@(self.topicType),@"maxtime":self.maxtime};
     self.params = params;
     [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php" parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
         if(self.params != params) return;
@@ -62,7 +64,7 @@ static NSString *TopicCellID = @"TopicCellID";
 }
 -(void)loadNewTopics{
     [self.tableView.mj_footer endRefreshing];
-    NSDictionary *params = @{@"a":@"list",@"c":@"data",@"type":@(29)};
+    NSDictionary *params = @{@"a":@"list",@"c":@"data",@"type":@(self.topicType)};
     self.params = params;
     [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php" parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
         if(self.params != params) return;
@@ -80,7 +82,7 @@ static NSString *TopicCellID = @"TopicCellID";
     return self.topicArray.count;
 }
 -(AHTopicCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-
+    
     AHTopicCell *cell = [tableView dequeueReusableCellWithIdentifier:TopicCellID];
     AHTopic *topic = self.topicArray[indexPath.row];
     cell.topic = topic;

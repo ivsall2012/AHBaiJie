@@ -13,7 +13,7 @@
     if (!_cellHeight) {
         CGFloat maxWidth = [UIScreen mainScreen].bounds.size.width - 4*8;
         CGSize cellSize = [self.text boundingRectWithSize:CGSizeMake(maxWidth, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:AHTextFont} context:nil].size;
-        _cellHeight = 66 + cellSize.height + 35 + 10;
+        _cellHeight = 66 + cellSize.height + 35 + 8 + 8;
     }
     return _cellHeight;
 }

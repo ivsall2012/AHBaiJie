@@ -26,6 +26,7 @@
 		A143E1EE1CAD040F00A72147 /* AHLoginTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = A143E1ED1CAD040F00A72147 /* AHLoginTextField.m */; };
 		A153E9DC1CB0C36500A30AA8 /* AHTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A153E9DA1CB0C36500A30AA8 /* AHTopicCell.m */; };
 		A153E9DD1CB0C36500A30AA8 /* AHTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A153E9DB1CB0C36500A30AA8 /* AHTopicCell.xib */; };
+		A153E9E01CB0E75700A30AA8 /* AHTopicVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A153E9DF1CB0E75700A30AA8 /* AHTopicVC.m */; };
 		A16AF3251CA873300004BFCE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AF3241CA873300004BFCE /* main.m */; };
 		A16AF3281CA873300004BFCE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AF3271CA873300004BFCE /* AppDelegate.m */; };
 		A16AF3301CA873300004BFCE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A16AF32F1CA873300004BFCE /* Assets.xcassets */; };
@@ -45,11 +46,6 @@
 		A19AAB1C1CADB8A8004941B0 /* AHPushGuideView.m in Sources */ = {isa = PBXBuildFile; fileRef = A19AAB1B1CADB8A8004941B0 /* AHPushGuideView.m */; };
 		A19AAB1E1CADB8C0004941B0 /* AHPushGuideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A19AAB1D1CADB8C0004941B0 /* AHPushGuideView.xib */; };
 		A1A0D2A21CADEEC00064943B /* AHSectionTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A0D2A11CADEEC00064943B /* AHSectionTabBar.m */; };
-		A1A0D2A61CAE419A0064943B /* AHAllKindsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A0D2A51CAE419A0064943B /* AHAllKindsVC.m */; };
-		A1A0D2A91CAE41A70064943B /* AHVideoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A0D2A81CAE41A70064943B /* AHVideoVC.m */; };
-		A1A0D2AC1CAE41B80064943B /* AHVoiceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A0D2AB1CAE41B80064943B /* AHVoiceVC.m */; };
-		A1A0D2AF1CAE41C30064943B /* AHPictureVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A0D2AE1CAE41C30064943B /* AHPictureVC.m */; };
-		A1A0D2B21CAE41D10064943B /* AHJokeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A0D2B11CAE41D10064943B /* AHJokeVC.m */; };
 		A1FCF6DC1CAC9187003A5547 /* AHLoginRegisterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FCF6DA1CAC9187003A5547 /* AHLoginRegisterVC.m */; };
 		A1FCF6DD1CAC9187003A5547 /* AHLoginRegisterVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1FCF6DB1CAC9187003A5547 /* AHLoginRegisterVC.xib */; };
 		A1FCF6E01CAC9B1E003A5547 /* AHStackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FCF6DF1CAC9B1E003A5547 /* AHStackButton.m */; };
@@ -88,6 +84,8 @@
 		A153E9D91CB0C36500A30AA8 /* AHTopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHTopicCell.h; sourceTree = "<group>"; };
 		A153E9DA1CB0C36500A30AA8 /* AHTopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHTopicCell.m; sourceTree = "<group>"; };
 		A153E9DB1CB0C36500A30AA8 /* AHTopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AHTopicCell.xib; sourceTree = "<group>"; };
+		A153E9DE1CB0E75700A30AA8 /* AHTopicVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHTopicVC.h; sourceTree = "<group>"; };
+		A153E9DF1CB0E75700A30AA8 /* AHTopicVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHTopicVC.m; sourceTree = "<group>"; };
 		A16AF3201CA873300004BFCE /* BaiJie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaiJie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A16AF3241CA873300004BFCE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A16AF3261CA873300004BFCE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -124,16 +122,6 @@
 		A19AAB1D1CADB8C0004941B0 /* AHPushGuideView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AHPushGuideView.xib; sourceTree = "<group>"; };
 		A1A0D2A01CADEEC00064943B /* AHSectionTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHSectionTabBar.h; sourceTree = "<group>"; };
 		A1A0D2A11CADEEC00064943B /* AHSectionTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHSectionTabBar.m; sourceTree = "<group>"; };
-		A1A0D2A41CAE419A0064943B /* AHAllKindsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHAllKindsVC.h; sourceTree = "<group>"; };
-		A1A0D2A51CAE419A0064943B /* AHAllKindsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHAllKindsVC.m; sourceTree = "<group>"; };
-		A1A0D2A71CAE41A70064943B /* AHVideoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHVideoVC.h; sourceTree = "<group>"; };
-		A1A0D2A81CAE41A70064943B /* AHVideoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHVideoVC.m; sourceTree = "<group>"; };
-		A1A0D2AA1CAE41B80064943B /* AHVoiceVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHVoiceVC.h; sourceTree = "<group>"; };
-		A1A0D2AB1CAE41B80064943B /* AHVoiceVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHVoiceVC.m; sourceTree = "<group>"; };
-		A1A0D2AD1CAE41C30064943B /* AHPictureVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHPictureVC.h; sourceTree = "<group>"; };
-		A1A0D2AE1CAE41C30064943B /* AHPictureVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHPictureVC.m; sourceTree = "<group>"; };
-		A1A0D2B01CAE41D10064943B /* AHJokeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHJokeVC.h; sourceTree = "<group>"; };
-		A1A0D2B11CAE41D10064943B /* AHJokeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHJokeVC.m; sourceTree = "<group>"; };
 		A1FCF6D91CAC9187003A5547 /* AHLoginRegisterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHLoginRegisterVC.h; sourceTree = "<group>"; };
 		A1FCF6DA1CAC9187003A5547 /* AHLoginRegisterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHLoginRegisterVC.m; sourceTree = "<group>"; };
 		A1FCF6DB1CAC9187003A5547 /* AHLoginRegisterVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AHLoginRegisterVC.xib; sourceTree = "<group>"; };
@@ -425,16 +413,8 @@
 		A1A0D2A31CAE41220064943B /* TableViewVC */ = {
 			isa = PBXGroup;
 			children = (
-				A1A0D2A41CAE419A0064943B /* AHAllKindsVC.h */,
-				A1A0D2A51CAE419A0064943B /* AHAllKindsVC.m */,
-				A1A0D2A71CAE41A70064943B /* AHVideoVC.h */,
-				A1A0D2A81CAE41A70064943B /* AHVideoVC.m */,
-				A1A0D2AA1CAE41B80064943B /* AHVoiceVC.h */,
-				A1A0D2AB1CAE41B80064943B /* AHVoiceVC.m */,
-				A1A0D2AD1CAE41C30064943B /* AHPictureVC.h */,
-				A1A0D2AE1CAE41C30064943B /* AHPictureVC.m */,
-				A1A0D2B01CAE41D10064943B /* AHJokeVC.h */,
-				A1A0D2B11CAE41D10064943B /* AHJokeVC.m */,
+				A153E9DE1CB0E75700A30AA8 /* AHTopicVC.h */,
+				A153E9DF1CB0E75700A30AA8 /* AHTopicVC.m */,
 			);
 			name = TableViewVC;
 			sourceTree = "<group>";
@@ -582,18 +562,13 @@
 				A12832891CABBA7600389300 /* AHRecommendSubsriber.m in Sources */,
 				A16AF3581CA8944B0004BFCE /* AHTabBar.m in Sources */,
 				A19AAB1C1CADB8A8004941B0 /* AHPushGuideView.m in Sources */,
-				A1A0D2A61CAE419A0064943B /* AHAllKindsVC.m in Sources */,
-				A1A0D2A91CAE41A70064943B /* AHVideoVC.m in Sources */,
 				A1A0D2A21CADEEC00064943B /* AHSectionTabBar.m in Sources */,
 				A18082D71CA8B22800CD922C /* UIBarButtonItem+Extension.m in Sources */,
 				A13A23CF1CAA33F6001BDD4B /* AHRecommendUser.m in Sources */,
-				A1A0D2AF1CAE41C30064943B /* AHPictureVC.m in Sources */,
 				A175040F1CA9FD740074328E /* AHRecommendCategoryCell.m in Sources */,
-				A1A0D2B21CAE41D10064943B /* AHJokeVC.m in Sources */,
 				A1FCF6DC1CAC9187003A5547 /* AHLoginRegisterVC.m in Sources */,
 				A16AF33C1CA87DB90004BFCE /* AHTabBarVC.m in Sources */,
 				A1FCF6E01CAC9B1E003A5547 /* AHStackButton.m in Sources */,
-				A1A0D2AC1CAE41B80064943B /* AHVoiceVC.m in Sources */,
 				A10CE55A1CA8DA0F00895EAA /* TestVC_two.m in Sources */,
 				A143E1EE1CAD040F00A72147 /* AHLoginTextField.m in Sources */,
 				A16AF3281CA873300004BFCE /* AppDelegate.m in Sources */,
@@ -601,6 +576,7 @@
 				A12832831CABB8AB00389300 /* AHRecommendSubsribeVC.m in Sources */,
 				A16AF3251CA873300004BFCE /* main.m in Sources */,
 				A10CE5581CA8DA0F00895EAA /* TestVC_three.m in Sources */,
+				A153E9E01CB0E75700A30AA8 /* AHTopicVC.m in Sources */,
 				A16AF3521CA88EAC0004BFCE /* AHFriendTrendsVC.m in Sources */,
 				A16AF3551CA88EBB0004BFCE /* AHMeVC.m in Sources */,
 				A10CE55E1CA8DD3600895EAA /* AHNavigationVC.m in Sources */,
