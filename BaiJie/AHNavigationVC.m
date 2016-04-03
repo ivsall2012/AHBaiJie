@@ -47,7 +47,6 @@
     [self popViewControllerAnimated:YES];
 }
 -(void)clickForwardButton{
-    AHLogFunc;
 //    [self.navigationController popToRootViewControllerAnimated:YES];
     [self popToRootViewControllerAnimated:YES];
 }

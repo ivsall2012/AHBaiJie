@@ -17,5 +17,5 @@
 @property (nonatomic,copy) NSString *cai;
 @property (nonatomic,copy) NSString *ding;
 @property (nonatomic,copy) NSString *created_at;
-
+@property (nonatomic,assign) CGFloat cellHeight;
 @end

@@ -12,6 +12,7 @@
 #import <UIImageView+WebCache.h>
 #import <MJRefresh.h>
 #import "AHTopic.h"
+#import "AHTopicCell.h"
 @interface AHJokeVC ()
 @property (nonatomic, copy) NSString *maxtime;
 @property (nonatomic, strong) NSMutableArray *topicArray;
@@ -19,6 +20,8 @@
 @end
 
 @implementation AHJokeVC
+static NSString *TopicCellID = @"TopicCellID";
+
 -(NSMutableArray *)topicArray{
     if (!_topicArray) {
         _topicArray = [NSMutableArray array];
@@ -28,7 +31,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupRefreshControl];
+    [self registerTopicCell];
+    self.tableView.backgroundColor = [UIColor clearColor];
     
+}
+-(void)registerTopicCell{
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([AHTopicCell class]) bundle:nil] forCellReuseIdentifier:TopicCellID];
 }
 -(void)setupRefreshControl{
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewTopics)];
@@ -71,17 +79,15 @@
     self.tableView.mj_footer.hidden = self.topicArray.count == 0;
     return self.topicArray.count;
 }
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *ID = @"cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-    if (cell ==nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
-    }
+-(AHTopicCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    AHTopicCell *cell = [tableView dequeueReusableCellWithIdentifier:TopicCellID];
     AHTopic *topic = self.topicArray[indexPath.row];
-    cell.textLabel.text = topic.name;
-    cell.detailTextLabel.text = topic.text;
-    cell.autoresizingMask = UIViewAutoresizingNone;
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:topic.profile_image] placeholderImage:[UIImage imageNamed:@"defaultUserIcon"]];
+    cell.topic = topic;
     return cell;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    AHTopic *topic = self.topicArray[indexPath.row];
+    return topic.cellHeight;
 }
 @end
