@@ -31,6 +31,8 @@
 		A1689F011CB1D6DD00BFEA6B /* AHTopicCellPictureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1689F001CB1D6DD00BFEA6B /* AHTopicCellPictureView.xib */; };
 		A1689F041CB1DEEB00BFEA6B /* AHConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = A1689F031CB1DEEB00BFEA6B /* AHConstants.m */; };
 		A1689F071CB206D300BFEA6B /* AHProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = A1689F061CB206D300BFEA6B /* AHProgress.m */; };
+		A1689F0B1CB20ABE00BFEA6B /* AHFullPictureVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A1689F091CB20ABE00BFEA6B /* AHFullPictureVC.m */; };
+		A1689F0C1CB20ABE00BFEA6B /* AHFullPictureVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1689F0A1CB20ABE00BFEA6B /* AHFullPictureVC.xib */; };
 		A16AF3251CA873300004BFCE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AF3241CA873300004BFCE /* main.m */; };
 		A16AF3281CA873300004BFCE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AF3271CA873300004BFCE /* AppDelegate.m */; };
 		A16AF3301CA873300004BFCE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A16AF32F1CA873300004BFCE /* Assets.xcassets */; };
@@ -97,6 +99,9 @@
 		A1689F031CB1DEEB00BFEA6B /* AHConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHConstants.m; sourceTree = "<group>"; };
 		A1689F051CB206D300BFEA6B /* AHProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHProgress.h; sourceTree = "<group>"; };
 		A1689F061CB206D300BFEA6B /* AHProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHProgress.m; sourceTree = "<group>"; };
+		A1689F081CB20ABE00BFEA6B /* AHFullPictureVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHFullPictureVC.h; sourceTree = "<group>"; };
+		A1689F091CB20ABE00BFEA6B /* AHFullPictureVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHFullPictureVC.m; sourceTree = "<group>"; };
+		A1689F0A1CB20ABE00BFEA6B /* AHFullPictureVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AHFullPictureVC.xib; sourceTree = "<group>"; };
 		A16AF3201CA873300004BFCE /* BaiJie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaiJie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A16AF3241CA873300004BFCE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A16AF3261CA873300004BFCE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -236,6 +241,9 @@
 				A1689F001CB1D6DD00BFEA6B /* AHTopicCellPictureView.xib */,
 				A1689F051CB206D300BFEA6B /* AHProgress.h */,
 				A1689F061CB206D300BFEA6B /* AHProgress.m */,
+				A1689F081CB20ABE00BFEA6B /* AHFullPictureVC.h */,
+				A1689F091CB20ABE00BFEA6B /* AHFullPictureVC.m */,
+				A1689F0A1CB20ABE00BFEA6B /* AHFullPictureVC.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -512,6 +520,7 @@
 				A10CE5571CA8DA0F00895EAA /* TestVC_one.xib in Resources */,
 				A17504081CA9F3BE0074328E /* AHRecommendVC.xib in Resources */,
 				A10CE5591CA8DA0F00895EAA /* TestVC_three.xib in Resources */,
+				A1689F0C1CB20ABE00BFEA6B /* AHFullPictureVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -603,6 +612,7 @@
 				A16AF3551CA88EBB0004BFCE /* AHMeVC.m in Sources */,
 				A10CE55E1CA8DD3600895EAA /* AHNavigationVC.m in Sources */,
 				A17504061CA9F35A0074328E /* AHRecommendVC.m in Sources */,
+				A1689F0B1CB20ABE00BFEA6B /* AHFullPictureVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

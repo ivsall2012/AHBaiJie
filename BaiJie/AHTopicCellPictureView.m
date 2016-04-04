@@ -10,6 +10,7 @@
 #import "AHTopic.h"
 #import <UIImageView+WebCache.h>
 #import "AHProgress.h"
+#import "AHFullPictureVC.h"
 @interface AHTopicCellPictureView()
 @property (weak, nonatomic) IBOutlet UIImageView *mainImageView;
 @property (weak, nonatomic) IBOutlet UIButton *fullPicBtn;
@@ -22,6 +23,13 @@
 @implementation AHTopicCellPictureView
 -(void)awakeFromNib{
     self.autoresizingMask = UIViewAutoresizingNone;
+    [self addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapImage)]];
+}
+-(void)tapImage{
+    AHFullPictureVC *fullVC = [[AHFullPictureVC alloc]init];
+    fullVC.topic = self.topic;
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    [window.rootViewController presentViewController:fullVC animated:NO completion:nil];
 }
 +(instancetype)pictureView{
     return [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self) owner:nil options:nil] lastObject];
