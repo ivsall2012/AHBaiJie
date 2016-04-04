@@ -53,9 +53,15 @@
     CGFloat screenW = [UIScreen mainScreen].bounds.size.width;
     UIImageView *imageView = [[UIImageView alloc]init];
     CGFloat pictureH = (AHTopicCellMaxWidth * topic.height)/topic.width;
+    self.view.backgroundColor = [UIColor blackColor]; // just to wake up self.view...
+    [self.scrollView addSubview:imageView];
+    self.imageView = imageView;
+    self.imageView.userInteractionEnabled = YES;
+    [self.imageView addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapImage)]];
     imageView.size = CGSizeMake(AHTopicCellMaxWidth, pictureH);
     if (pictureH > screenH) {
-        imageView.X = imageView.Y = 0;
+        imageView.centerX = screenW*0.5;
+        imageView.Y = 50;
         self.scrollView.contentSize = CGSizeMake(0, pictureH);
     }else{
         // here self.scrollView haven't waken up frim nib till the view is used(view is lazy loading even in xib)
@@ -65,10 +71,7 @@
         
         self.scrollView.contentSize = CGSizeZero;
     }
-    [self.view addSubview:imageView];
-    self.imageView = imageView;
-    self.imageView.userInteractionEnabled = YES;
-    [self.imageView addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapImage)]];
+    
     
     [self.progressView setProgress:topic.imageProgress animated:NO];
     [imageView sd_setImageWithURL:[NSURL URLWithString:topic.largeImage] placeholderImage:nil options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {

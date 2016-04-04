@@ -47,13 +47,22 @@
         
     } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         self.progressView.hidden = YES;
+        if (topic.isPictureTooBig) {
+            UIGraphicsBeginImageContextWithOptions(CGSizeMake(AHTopicCellMaxWidth, AHTopicCellNomalHeight), YES, 1.0);
+            CGFloat imageH = (AHTopicCellMaxWidth * topic.height) / topic.width;
+            CGFloat imageW = AHTopicCellMaxWidth;
+            [image drawInRect:CGRectMake(0, 0, imageW, imageH)];
+            self.mainImageView.image = UIGraphicsGetImageFromCurrentImageContext();
+            UIGraphicsEndImageContext();
+            
+        }
     }];
     
     NSString *urlExtension = topic.largeImage.pathExtension;
     self.gifView.hidden = ![urlExtension.lowercaseString isEqualToString:@"gif"];
     if (topic.isPictureTooBig) {
         self.fullPicBtn.hidden = NO;
-        self.mainImageView.contentMode = UIViewContentModeTop;
+//        self.mainImageView.contentMode = UIViewContentModeTop;
     }else{
         self.fullPicBtn.hidden = YES;
         self.mainImageView.contentMode = UIViewContentModeScaleToFill;
