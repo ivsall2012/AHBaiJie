@@ -32,5 +32,7 @@
 @property (nonatomic,assign) CGRect pictureFrame;
 
 @property (nonatomic, assign,getter=isPictureTooBig) BOOL pictureTooBig;
+
+@property (nonatomic, assign) CGFloat imageProgress;
 @property (nonatomic,assign) CGFloat cellHeight;
 @end

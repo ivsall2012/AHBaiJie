@@ -22,7 +22,7 @@
     AHTabBarVC *vc = [[AHTabBarVC alloc]init];
     self.window.rootViewController = vc;
     [self.window makeKeyAndVisible];
-    [AHPushGuideView pushGuideCheck];
+//    [AHPushGuideView pushGuideCheck];
     return YES;
 }
 
