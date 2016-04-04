@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@class AHTopic;
+#import "AHTopic.h"
 @interface AHTopicCell : UITableViewCell
 @property (nonatomic, strong) AHTopic *topic;
 @end

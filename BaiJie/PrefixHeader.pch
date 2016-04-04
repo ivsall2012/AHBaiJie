@@ -19,6 +19,7 @@
 
 
 #import "UIView+Extension.h"
+#import "AHConstants.h"
 #define AHNotificationCenter [NSNotificationCenter defaultCenter]
 #define AHUserDefault [NSUserDefaults standardUserDefaults]
 #define AHColor(r,g,b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
@@ -27,4 +28,7 @@
 #define AHTextFont [UIFont systemFontOfSize:14]
 #define AHTabBarFont [UIFont systemFontOfSize:12]
 #define AHRedColor AHColor(255,0.0,0.0)
+#define AHTopicCellMargin 8
+#define AHTopicCellMaxWidth ([UIScreen mainScreen].bounds.size.width - 4*8)
+#define AHTopicCellMaxHeight 1200
 #endif /* PrefixHeader_pch */

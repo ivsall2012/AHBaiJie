@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-
 @interface AHTopic : NSObject
 @property (nonatomic,copy) NSString *text;
 @property (nonatomic,copy) NSString *profile_image;
@@ -17,17 +16,20 @@
 @property (nonatomic,copy) NSString *cai;
 @property (nonatomic,copy) NSString *ding;
 @property (nonatomic,copy) NSString *created_at;
+@property (nonatomic,assign) AHTopicType type;
 
-/**
- *  the following width and height are for images/videos
- */
-@property (nonatomic,copy) NSString *width;
-@property (nonatomic,copy) NSString *height;
+@property (nonatomic,assign) CGFloat width;
+@property (nonatomic,assign) CGFloat height;
 
+@property (nonatomic,copy) NSString *image0; // small
+@property (nonatomic,copy) NSString *image1; // big
+@property (nonatomic,copy) NSString *image2; // medium
 
+@property (nonatomic,copy) NSString *largeImage;
+@property (nonatomic,copy) NSString *smallImage;
+@property (nonatomic,copy) NSString *mediumImage;
 
-
-
+@property (nonatomic,assign) CGRect pictureFrame;
 
 @property (nonatomic,assign) CGFloat cellHeight;
 @end

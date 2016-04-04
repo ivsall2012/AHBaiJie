@@ -33,7 +33,7 @@
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [self.sectionTabBar selectTabBarByTitle:@"声音"];
+    [self.sectionTabBar selectTabBarByTitle:@"图片"];
 }
 -(void)setupMainScrollView{
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -111,7 +111,7 @@
     [self scrollViewDidEndScrollingAnimation:self.mainScrollView]; // to let scrollView know where to go
 }
 #pragma mark - mainScrollView delegate
-// when it sense offSet changes, try to add views
+// when it senses offSet changes, try to add views
 -(void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
     // here we need absolute page number -- index of child VCs
     NSInteger page = scrollView.contentOffset.x/scrollView.width;
@@ -131,6 +131,7 @@
     [self.mainScrollView addSubview:VC.tableView];
 }
 
+// this method deals with finger scrolling when scrolling stops
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     // when stop scrolling, try to add views
     [self scrollViewDidEndScrollingAnimation:scrollView];

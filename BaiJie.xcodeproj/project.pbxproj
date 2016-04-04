@@ -27,6 +27,9 @@
 		A153E9DC1CB0C36500A30AA8 /* AHTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A153E9DA1CB0C36500A30AA8 /* AHTopicCell.m */; };
 		A153E9DD1CB0C36500A30AA8 /* AHTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A153E9DB1CB0C36500A30AA8 /* AHTopicCell.xib */; };
 		A153E9E01CB0E75700A30AA8 /* AHTopicVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A153E9DF1CB0E75700A30AA8 /* AHTopicVC.m */; };
+		A1689EFF1CB1D6CE00BFEA6B /* AHTopicCellPictureView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1689EFE1CB1D6CE00BFEA6B /* AHTopicCellPictureView.m */; };
+		A1689F011CB1D6DD00BFEA6B /* AHTopicCellPictureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1689F001CB1D6DD00BFEA6B /* AHTopicCellPictureView.xib */; };
+		A1689F041CB1DEEB00BFEA6B /* AHConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = A1689F031CB1DEEB00BFEA6B /* AHConstants.m */; };
 		A16AF3251CA873300004BFCE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AF3241CA873300004BFCE /* main.m */; };
 		A16AF3281CA873300004BFCE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A16AF3271CA873300004BFCE /* AppDelegate.m */; };
 		A16AF3301CA873300004BFCE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A16AF32F1CA873300004BFCE /* Assets.xcassets */; };
@@ -86,6 +89,11 @@
 		A153E9DB1CB0C36500A30AA8 /* AHTopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AHTopicCell.xib; sourceTree = "<group>"; };
 		A153E9DE1CB0E75700A30AA8 /* AHTopicVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHTopicVC.h; sourceTree = "<group>"; };
 		A153E9DF1CB0E75700A30AA8 /* AHTopicVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHTopicVC.m; sourceTree = "<group>"; };
+		A1689EFD1CB1D6CE00BFEA6B /* AHTopicCellPictureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHTopicCellPictureView.h; sourceTree = "<group>"; };
+		A1689EFE1CB1D6CE00BFEA6B /* AHTopicCellPictureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHTopicCellPictureView.m; sourceTree = "<group>"; };
+		A1689F001CB1D6DD00BFEA6B /* AHTopicCellPictureView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AHTopicCellPictureView.xib; sourceTree = "<group>"; };
+		A1689F021CB1DEEB00BFEA6B /* AHConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHConstants.h; sourceTree = "<group>"; };
+		A1689F031CB1DEEB00BFEA6B /* AHConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHConstants.m; sourceTree = "<group>"; };
 		A16AF3201CA873300004BFCE /* BaiJie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaiJie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A16AF3241CA873300004BFCE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A16AF3261CA873300004BFCE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -220,6 +228,9 @@
 				A153E9D91CB0C36500A30AA8 /* AHTopicCell.h */,
 				A153E9DA1CB0C36500A30AA8 /* AHTopicCell.m */,
 				A153E9DB1CB0C36500A30AA8 /* AHTopicCell.xib */,
+				A1689EFD1CB1D6CE00BFEA6B /* AHTopicCellPictureView.h */,
+				A1689EFE1CB1D6CE00BFEA6B /* AHTopicCellPictureView.m */,
+				A1689F001CB1D6DD00BFEA6B /* AHTopicCellPictureView.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -271,6 +282,8 @@
 			children = (
 				A16AF3241CA873300004BFCE /* main.m */,
 				A16AF3451CA87E720004BFCE /* PrefixHeader.pch */,
+				A1689F021CB1DEEB00BFEA6B /* AHConstants.h */,
+				A1689F031CB1DEEB00BFEA6B /* AHConstants.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -481,6 +494,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1689F011CB1D6DD00BFEA6B /* AHTopicCellPictureView.xib in Resources */,
 				A19AAB1E1CADB8C0004941B0 /* AHPushGuideView.xib in Resources */,
 				A10CE5611CA8F55100895EAA /* AHFriendTrendsVC.xib in Resources */,
 				A16AF3301CA873300004BFCE /* Assets.xcassets in Resources */,
@@ -565,6 +579,7 @@
 				A1A0D2A21CADEEC00064943B /* AHSectionTabBar.m in Sources */,
 				A18082D71CA8B22800CD922C /* UIBarButtonItem+Extension.m in Sources */,
 				A13A23CF1CAA33F6001BDD4B /* AHRecommendUser.m in Sources */,
+				A1689F041CB1DEEB00BFEA6B /* AHConstants.m in Sources */,
 				A175040F1CA9FD740074328E /* AHRecommendCategoryCell.m in Sources */,
 				A1FCF6DC1CAC9187003A5547 /* AHLoginRegisterVC.m in Sources */,
 				A16AF33C1CA87DB90004BFCE /* AHTabBarVC.m in Sources */,
@@ -573,6 +588,7 @@
 				A143E1EE1CAD040F00A72147 /* AHLoginTextField.m in Sources */,
 				A16AF3281CA873300004BFCE /* AppDelegate.m in Sources */,
 				A10CE5561CA8DA0F00895EAA /* TestVC_one.m in Sources */,
+				A1689EFF1CB1D6CE00BFEA6B /* AHTopicCellPictureView.m in Sources */,
 				A12832831CABB8AB00389300 /* AHRecommendSubsribeVC.m in Sources */,
 				A16AF3251CA873300004BFCE /* main.m in Sources */,
 				A10CE5581CA8DA0F00895EAA /* TestVC_three.m in Sources */,
