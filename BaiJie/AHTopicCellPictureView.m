@@ -28,5 +28,15 @@
     _topic = topic;
     
     [self.mainImageView sd_setImageWithURL:[NSURL URLWithString:topic.largeImage] placeholderImage:nil];
+    
+    NSString *urlExtension = topic.largeImage.pathExtension;
+    self.gifView.hidden = ![urlExtension.lowercaseString isEqualToString:@"gif"];
+    if (topic.isPictureTooBig) {
+        self.fullPicBtn.hidden = NO;
+        self.mainImageView.contentMode = UIViewContentModeTop;
+    }else{
+        self.fullPicBtn.hidden = YES;
+        self.mainImageView.contentMode = UIViewContentModeScaleToFill;
+    }
 }
 @end

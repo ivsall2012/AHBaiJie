@@ -17,7 +17,7 @@
                         <constraint firstAttribute="height" constant="35" id="UcL-pj-PaW"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XYb-8X-0wp" userLabel="mainImage">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XYb-8X-0wp" userLabel="mainImage">
                     <rect key="frame" x="0.0" y="0.0" width="322" height="359"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="common-gif" translatesAutoresizingMaskIntoConstraints="NO" id="JFq-PW-krJ">
@@ -52,6 +52,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="fullPicBtn" destination="ULq-MF-otb" id="PSd-Je-rt0"/>
                 <outlet property="gifView" destination="JFq-PW-krJ" id="WY1-Qf-0zo"/>
                 <outlet property="mainImageView" destination="XYb-8X-0wp" id="ZSg-ng-V2z"/>
             </connections>

@@ -34,10 +34,14 @@
             }
                 
             case AHTopicTypePicture:{
-                    CGFloat pictureH = (AHTopicCellMaxWidth * self.height) / self.width;
-                    self.pictureFrame = CGRectMake(AHTopicCellMargin, _cellHeight, AHTopicCellMaxWidth, pictureH);
-                    _cellHeight += pictureH;
-                
+                CGFloat pictureH = (AHTopicCellMaxWidth * self.height) / self.width;
+                if (pictureH >= AHTopicCellMaxHeight) {
+                    // click to see full picture
+                    pictureH = AHTopicCellNomalHeight;
+                    self.pictureTooBig = YES;
+                }// else is within (0,AHTopicCellMaxHeight) ok to scroll several screen-width
+                self.pictureFrame = CGRectMake(AHTopicCellMargin, _cellHeight, AHTopicCellMaxWidth, pictureH);
+                _cellHeight += pictureH;
                 break;
             }
             case AHTopicTypeVideo:{
