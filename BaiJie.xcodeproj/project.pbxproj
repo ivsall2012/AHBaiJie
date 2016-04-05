@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A10343C91CB3344D008542AB /* AHPublishView.m in Sources */ = {isa = PBXBuildFile; fileRef = A10343C81CB3344D008542AB /* AHPublishView.m */; };
 		A10CE5561CA8DA0F00895EAA /* TestVC_one.m in Sources */ = {isa = PBXBuildFile; fileRef = A10CE54E1CA8DA0F00895EAA /* TestVC_one.m */; };
 		A10CE5571CA8DA0F00895EAA /* TestVC_one.xib in Resources */ = {isa = PBXBuildFile; fileRef = A10CE54F1CA8DA0F00895EAA /* TestVC_one.xib */; };
 		A10CE5581CA8DA0F00895EAA /* TestVC_three.m in Sources */ = {isa = PBXBuildFile; fileRef = A10CE5511CA8DA0F00895EAA /* TestVC_three.m */; };
@@ -59,6 +60,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A10343C71CB3344D008542AB /* AHPublishView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHPublishView.h; sourceTree = "<group>"; };
+		A10343C81CB3344D008542AB /* AHPublishView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHPublishView.m; sourceTree = "<group>"; };
 		A10CE54D1CA8DA0F00895EAA /* TestVC_one.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestVC_one.h; sourceTree = "<group>"; };
 		A10CE54E1CA8DA0F00895EAA /* TestVC_one.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestVC_one.m; sourceTree = "<group>"; };
 		A10CE54F1CA8DA0F00895EAA /* TestVC_one.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestVC_one.xib; sourceTree = "<group>"; };
@@ -346,6 +349,8 @@
 				A19AAB1A1CADB8A8004941B0 /* AHPushGuideView.h */,
 				A19AAB1B1CADB8A8004941B0 /* AHPushGuideView.m */,
 				A19AAB1D1CADB8C0004941B0 /* AHPushGuideView.xib */,
+				A10343C71CB3344D008542AB /* AHPublishView.h */,
+				A10343C81CB3344D008542AB /* AHPublishView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -608,6 +613,7 @@
 				A16AF3251CA873300004BFCE /* main.m in Sources */,
 				A10CE5581CA8DA0F00895EAA /* TestVC_three.m in Sources */,
 				A153E9E01CB0E75700A30AA8 /* AHTopicVC.m in Sources */,
+				A10343C91CB3344D008542AB /* AHPublishView.m in Sources */,
 				A16AF3521CA88EAC0004BFCE /* AHFriendTrendsVC.m in Sources */,
 				A16AF3551CA88EBB0004BFCE /* AHMeVC.m in Sources */,
 				A10CE55E1CA8DD3600895EAA /* AHNavigationVC.m in Sources */,

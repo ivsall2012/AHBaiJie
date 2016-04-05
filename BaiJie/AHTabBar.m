@@ -7,7 +7,7 @@
 //
 
 #import "AHTabBar.h"
-
+#import "AHPublishView.h"
 @interface AHTabBar()
 @property (nonatomic, weak) UIButton *publishButton;
 @end
@@ -31,7 +31,7 @@
     return self;
 }
 -(void)tabBarDidClickPublishButton{
-    AHLogFunc;
+    [AHPublishView show];
 }
 -(void)layoutSubviews{
     [super layoutSubviews];
