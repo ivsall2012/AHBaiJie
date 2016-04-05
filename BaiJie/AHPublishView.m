@@ -8,13 +8,14 @@
 
 #import "AHPublishView.h"
 #import "AHStackButton.h"
-
+#import <POP.h>
 #define screenW [UIScreen mainScreen].bounds.size.width
 #define screenH [UIScreen mainScreen].bounds.size.height
 
 @interface AHPublishView()
 @property (nonatomic, weak) UIButton *calcelButton;
 @property (nonatomic, strong) NSMutableArray *buttonArray;
+@property (nonatomic, weak) UIImageView *sloganView;
 @end
 @implementation AHPublishView
 -(NSArray *)buttonArray{
@@ -27,7 +28,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.7];
+        self.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.8];
         [self setupCancelButton];
         [self setupButtons];
     }
@@ -62,29 +63,103 @@
         [button setTitle:titles[i] forState:UIControlStateNormal];
         button.titleLabel.font = [UIFont systemFontOfSize:12];
         [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        button.width = buttonWidth;
-        button.height = buttonHeight;
-        button.X = margin + (i%3) * (buttonWidth+padding);
-        button.Y = buttonStartY + (i/3)*buttonHeight;
-        
         [self addSubview:button];
+        [self.buttonArray addObject:button];
+        
+//        button.width = buttonWidth;
+//        button.height = buttonHeight;
+//        button.X = margin + (i%3) * (buttonWidth+padding);
+//        button.Y = buttonStartY + (i/3)*buttonHeight;
+        
+        CGFloat buttonX = margin + (i%3) * (buttonWidth+padding);
+        CGFloat endY = buttonStartY + (i/3)*buttonHeight;
+        CGFloat startY = endY - screenH;
+        POPSpringAnimation *springAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewFrame];
+        springAnimation.fromValue = [NSValue valueWithCGRect:CGRectMake(buttonX, startY, buttonWidth, buttonHeight)];
+        springAnimation.toValue = [NSValue valueWithCGRect:CGRectMake(buttonX, endY, buttonWidth, buttonHeight)];
+        springAnimation.springBounciness = 7;
+        springAnimation.springSpeed = 20;
+        springAnimation.beginTime = CACurrentMediaTime() + 0.05*(images.count - 1 - i);
+        [button pop_addAnimation:springAnimation forKey:nil];
+        
     }
     
     UIImageView *slogan = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"app_slogan"]];
-    CGFloat startY = screenH*0.2;
-    slogan.centerX = screenW*0.5;
-    slogan.Y = startY;
     [self addSubview:slogan];
+    self.sloganView = slogan;
+    
+    CGFloat endY = screenH*0.2;
+    CGFloat centerX = screenW*0.5;
+    CGFloat startY = endY - screenH;
+    
+    POPSpringAnimation *springAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewCenter];
+    springAnimation.fromValue = [NSValue valueWithCGPoint:CGPointMake(centerX, startY)];
+    springAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(centerX, endY)];
+    springAnimation.springBounciness = 7;
+    springAnimation.springSpeed = 20;
+    springAnimation.beginTime = CACurrentMediaTime() + 0.05*images.count;
+    [slogan pop_addAnimation:springAnimation forKey:nil];
     
     
 }
 -(void)clickButton:(AHStackButton *)buttom{
+    [self cancelWithCompletion:^{
+        AHLog(@"%@",buttom.titleLabel.text);
+    }];
+}
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self cancelWithCompletion:nil];
+}
+-(void)cancelWithCompletion:(void(^)())completionBlock{
+    self.userInteractionEnabled = NO;
+    
+    
+    POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewAlpha];
+    animation.toValue = @(0);
+    animation.beginTime = CACurrentMediaTime() + 0.05*self.buttonArray.count;
+    [self pop_addAnimation:animation forKey:nil];
+    
+    for (int i=0; i <self.buttonArray.count; i++) {
+        AHStackButton *button = self.buttonArray[i];
+        CGFloat endCenterY = CGRectGetMaxY(self.frame) + 72 + 20;
+        POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewCenter];
+        animation.fromValue = [NSValue valueWithCGPoint:CGPointMake(button.centerX, button.centerY)];
+        animation.toValue = [NSValue valueWithCGPoint:CGPointMake(button.centerX, endCenterY)];
+        animation.springBounciness = 5;
+        animation.springSpeed = 20;
+        animation.beginTime = CACurrentMediaTime() + 0.01*i;
+        [button pop_addAnimation:animation forKey:nil];
+        if (i == self.buttonArray.count-1) {
+            [animation setCompletionBlock:^(POPAnimation *anim, BOOL finished) {
+                [self removeFromSuperview];
+                _window.hidden = YES;
+                _window = nil;
+                !completionBlock?:completionBlock();
+                
+            }];
+        }
+    }
+    
+//    CGFloat endCenterY = self.sloganView.centerY + screenH;
+//    POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewCenter];
+//    animation.fromValue = [NSValue valueWithCGPoint:CGPointMake(self.sloganView.centerX, self.sloganView.centerY)];
+//    animation.toValue = [NSValue valueWithCGPoint:CGPointMake(self.sloganView.centerX, endCenterY)];
+//    animation.springBounciness = 10;
+//    animation.springSpeed = 20;
+//    animation.beginTime = CACurrentMediaTime() + 0.05*self.buttonArray.count;
+//    [self.sloganView pop_addAnimation:animation forKey:nil];
+//    [animation setCompletionBlock:^(POPAnimation *anim, BOOL finished) {
+//        [self removeFromSuperview];
+//        _window.hidden = YES;
+//        _window = nil;
+//        !completionBlock?:completionBlock();
+//        
+//    }];
+
     
 }
 -(void)cancelPublish{
-    [self removeFromSuperview];
-    _window.hidden = YES;
-    _window = nil;
+    [self cancelWithCompletion:nil];
 }
 
 static UIWindow *_window;
