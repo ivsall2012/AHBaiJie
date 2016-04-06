@@ -53,6 +53,8 @@
 		A19AAB1C1CADB8A8004941B0 /* AHPushGuideView.m in Sources */ = {isa = PBXBuildFile; fileRef = A19AAB1B1CADB8A8004941B0 /* AHPushGuideView.m */; };
 		A19AAB1E1CADB8C0004941B0 /* AHPushGuideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A19AAB1D1CADB8C0004941B0 /* AHPushGuideView.xib */; };
 		A1A0D2A21CADEEC00064943B /* AHSectionTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A0D2A11CADEEC00064943B /* AHSectionTabBar.m */; };
+		A1A37BFF1CB5B1A900CABA4A /* AHTopicCellVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A37BFE1CB5B1A900CABA4A /* AHTopicCellVideoView.m */; };
+		A1A37C011CB5B1BF00CABA4A /* AHTopicCellVideoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1A37C001CB5B1BF00CABA4A /* AHTopicCellVideoView.xib */; };
 		A1FCF6DC1CAC9187003A5547 /* AHLoginRegisterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FCF6DA1CAC9187003A5547 /* AHLoginRegisterVC.m */; };
 		A1FCF6DD1CAC9187003A5547 /* AHLoginRegisterVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1FCF6DB1CAC9187003A5547 /* AHLoginRegisterVC.xib */; };
 		A1FCF6E01CAC9B1E003A5547 /* AHStackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FCF6DF1CAC9B1E003A5547 /* AHStackButton.m */; };
@@ -141,6 +143,9 @@
 		A19AAB1D1CADB8C0004941B0 /* AHPushGuideView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AHPushGuideView.xib; sourceTree = "<group>"; };
 		A1A0D2A01CADEEC00064943B /* AHSectionTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHSectionTabBar.h; sourceTree = "<group>"; };
 		A1A0D2A11CADEEC00064943B /* AHSectionTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHSectionTabBar.m; sourceTree = "<group>"; };
+		A1A37BFD1CB5B1A900CABA4A /* AHTopicCellVideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHTopicCellVideoView.h; sourceTree = "<group>"; };
+		A1A37BFE1CB5B1A900CABA4A /* AHTopicCellVideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHTopicCellVideoView.m; sourceTree = "<group>"; };
+		A1A37C001CB5B1BF00CABA4A /* AHTopicCellVideoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AHTopicCellVideoView.xib; sourceTree = "<group>"; };
 		A1FCF6D91CAC9187003A5547 /* AHLoginRegisterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHLoginRegisterVC.h; sourceTree = "<group>"; };
 		A1FCF6DA1CAC9187003A5547 /* AHLoginRegisterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHLoginRegisterVC.m; sourceTree = "<group>"; };
 		A1FCF6DB1CAC9187003A5547 /* AHLoginRegisterVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AHLoginRegisterVC.xib; sourceTree = "<group>"; };
@@ -219,6 +224,9 @@
 		A12832841CABB97E00389300 /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				A1689F081CB20ABE00BFEA6B /* AHFullPictureVC.h */,
+				A1689F091CB20ABE00BFEA6B /* AHFullPictureVC.m */,
+				A1689F0A1CB20ABE00BFEA6B /* AHFullPictureVC.xib */,
 				A1A0D2A31CAE41220064943B /* TableViewVC */,
 				A16AF34A1CA88E870004BFCE /* AHEssenceVC.h */,
 				A16AF34B1CA88E870004BFCE /* AHEssenceVC.m */,
@@ -244,9 +252,9 @@
 				A1689F001CB1D6DD00BFEA6B /* AHTopicCellPictureView.xib */,
 				A1689F051CB206D300BFEA6B /* AHProgress.h */,
 				A1689F061CB206D300BFEA6B /* AHProgress.m */,
-				A1689F081CB20ABE00BFEA6B /* AHFullPictureVC.h */,
-				A1689F091CB20ABE00BFEA6B /* AHFullPictureVC.m */,
-				A1689F0A1CB20ABE00BFEA6B /* AHFullPictureVC.xib */,
+				A1A37BFD1CB5B1A900CABA4A /* AHTopicCellVideoView.h */,
+				A1A37BFE1CB5B1A900CABA4A /* AHTopicCellVideoView.m */,
+				A1A37C001CB5B1BF00CABA4A /* AHTopicCellVideoView.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -526,6 +534,7 @@
 				A17504081CA9F3BE0074328E /* AHRecommendVC.xib in Resources */,
 				A10CE5591CA8DA0F00895EAA /* TestVC_three.xib in Resources */,
 				A1689F0C1CB20ABE00BFEA6B /* AHFullPictureVC.xib in Resources */,
+				A1A37C011CB5B1BF00CABA4A /* AHTopicCellVideoView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -599,6 +608,7 @@
 				A1A0D2A21CADEEC00064943B /* AHSectionTabBar.m in Sources */,
 				A18082D71CA8B22800CD922C /* UIBarButtonItem+Extension.m in Sources */,
 				A13A23CF1CAA33F6001BDD4B /* AHRecommendUser.m in Sources */,
+				A1A37BFF1CB5B1A900CABA4A /* AHTopicCellVideoView.m in Sources */,
 				A1689F041CB1DEEB00BFEA6B /* AHConstants.m in Sources */,
 				A175040F1CA9FD740074328E /* AHRecommendCategoryCell.m in Sources */,
 				A1FCF6DC1CAC9187003A5547 /* AHLoginRegisterVC.m in Sources */,

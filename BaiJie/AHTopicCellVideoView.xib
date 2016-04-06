@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AHTopicCellVideoView">
+            <rect key="frame" x="0.0" y="0.0" width="551" height="463"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e5p-mN-i1y">
+                    <rect key="frame" x="0.0" y="0.0" width="551" height="463"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4kP-9D-4cE" userLabel="PlayCount">
+                    <rect key="frame" x="0.0" y="446" width="36" height="17"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.76000000000000001" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E4k-gf-HDA" userLabel="TimeLength">
+                    <rect key="frame" x="515" y="446" width="36" height="17"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.76422614020270274" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="htU-cY-vSl" userLabel="PlayButton">
+                    <rect key="frame" x="240" y="196" width="71" height="71"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="71" id="9p9-o5-df6"/>
+                        <constraint firstAttribute="height" constant="71" id="fuu-UJ-wnu"/>
+                    </constraints>
+                    <state key="normal" image="video-play"/>
+                    <connections>
+                        <action selector="play:" destination="iN0-l3-epB" eventType="touchUpInside" id="3EU-wQ-MRy"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="4kP-9D-4cE" secondAttribute="bottom" id="46o-VJ-a0K"/>
+                <constraint firstItem="htU-cY-vSl" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="FeB-ga-4ue"/>
+                <constraint firstItem="e5p-mN-i1y" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Xbl-VD-o0Z"/>
+                <constraint firstAttribute="bottom" secondItem="E4k-gf-HDA" secondAttribute="bottom" id="ZD2-6w-KbH"/>
+                <constraint firstItem="e5p-mN-i1y" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="aBD-OV-mIc"/>
+                <constraint firstAttribute="trailing" secondItem="E4k-gf-HDA" secondAttribute="trailing" id="k7u-Wv-O1c"/>
+                <constraint firstAttribute="trailing" secondItem="e5p-mN-i1y" secondAttribute="trailing" id="kY8-jq-95k"/>
+                <constraint firstItem="4kP-9D-4cE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="nuV-Cd-oPC"/>
+                <constraint firstItem="htU-cY-vSl" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ooZ-Wx-BTi"/>
+                <constraint firstAttribute="bottom" secondItem="e5p-mN-i1y" secondAttribute="bottom" id="t3v-0F-bPB"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="imageView" destination="e5p-mN-i1y" id="pkZ-gz-U0W"/>
+                <outlet property="playButton" destination="htU-cY-vSl" id="Orv-ZV-owq"/>
+                <outlet property="playCountLabel" destination="4kP-9D-4cE" id="okx-7z-E9h"/>
+                <outlet property="timeLengthLabel" destination="E4k-gf-HDA" id="cWc-d7-wSD"/>
+            </connections>
+            <point key="canvasLocation" x="224.5" y="401.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="video-play" width="71" height="71"/>
+    </resources>
+</document>

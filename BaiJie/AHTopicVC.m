@@ -68,6 +68,7 @@ static NSString *TopicCellID = @"TopicCellID";
     self.params = params;
     [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php" parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
         if(self.params != params) return;
+        [responseObject writeToFile:@"/Users/Hurricane/Go/jie.plist" atomically:YES];
         NSMutableArray *newTopics = [AHTopic mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
         self.maxtime = responseObject[@"info"][@"maxtime"];
         self.topicArray = newTopics;

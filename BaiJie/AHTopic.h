@@ -24,12 +24,15 @@
 @property (nonatomic,copy) NSString *image0; // small
 @property (nonatomic,copy) NSString *image1; // big
 @property (nonatomic,copy) NSString *image2; // medium
-
 @property (nonatomic,copy) NSString *largeImage;
 @property (nonatomic,copy) NSString *smallImage;
 @property (nonatomic,copy) NSString *mediumImage;
-
 @property (nonatomic,assign) CGRect pictureFrame;
+
+
+@property (nonatomic,copy) NSString *videotime;
+@property (nonatomic,copy) NSString *playcount;
+@property (nonatomic, assign) CGRect videoFrame;
 
 @property (nonatomic, assign,getter=isPictureTooBig) BOOL pictureTooBig;
 

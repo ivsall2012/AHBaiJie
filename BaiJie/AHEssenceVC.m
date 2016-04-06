@@ -24,12 +24,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.navigationItem.titleView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"MainTitle"]];
-//    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImage:@"MainTagSubIcon" highImage:@"MainTagSubIconClick" target:self action:@selector(clickTag)];
-//    
-//    [self setupTableViews];
-//    [self SetupSectionTabBar];
-//    [self setupMainScrollView];
+    self.navigationItem.titleView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"MainTitle"]];
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImage:@"MainTagSubIcon" highImage:@"MainTagSubIconClick" target:self action:@selector(clickTag)];
+    
+    [self setupTableViews];
+    [self SetupSectionTabBar];
+    [self setupMainScrollView];
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];

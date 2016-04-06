@@ -10,6 +10,9 @@
 #import "AHTopic.h"
 #import "AHTopicCellPictureView.h"
 #import <UIImageView+WebCache.h>
+#import "AHTopicCellVideoView.h"
+
+
 @interface AHTopicCell()
 @property (weak, nonatomic) IBOutlet UIImageView *icon;
 @property (weak, nonatomic) IBOutlet UILabel *name;
@@ -20,9 +23,18 @@
 @property (weak, nonatomic) IBOutlet UIButton *comment;
 @property (weak, nonatomic) IBOutlet UILabel *contentText;
 @property (nonatomic, weak) AHTopicCellPictureView *pictureView;
-
+@property (nonatomic, weak) AHTopicCellVideoView *videoView;
 @end
 @implementation AHTopicCell
+-(AHTopicCellVideoView *)videoView{
+    if (!_videoView) {
+        AHTopicCellVideoView *videoView = [AHTopicCellVideoView videoView];
+        _videoView = videoView;
+        [self.contentView addSubview:videoView];
+        
+    }
+    return _videoView;
+}
 -(AHTopicCellPictureView *)pictureView{
     if (!_pictureView) {
         AHTopicCellPictureView *pictureView = [AHTopicCellPictureView pictureView];
@@ -54,7 +66,9 @@
     if (self.topic.type == AHTopicTypePicture) {
         self.pictureView.frame = topic.pictureFrame;
         self.pictureView.topic = topic;
-        
+    }else if(self.topic.type == AHTopicTypeVideo){
+        self.videoView.frame = topic.videoFrame;
+        self.videoView.topic = topic;
     }
     self.contentText.text = topic.text;
 }

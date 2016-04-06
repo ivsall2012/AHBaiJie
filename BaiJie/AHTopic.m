@@ -45,6 +45,9 @@
                 break;
             }
             case AHTopicTypeVideo:{
+                CGFloat videoH = (AHTopicCellMaxWidth * self.height) / self.width;
+                self.videoFrame = CGRectMake(AHTopicCellMargin, _cellHeight, AHTopicCellMaxWidth, videoH);
+                _cellHeight += videoH;
                 
                 break;
             }
