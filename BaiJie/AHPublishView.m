@@ -85,12 +85,14 @@
     }
     
     UIImageView *slogan = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"app_slogan"]];
-    [self addSubview:slogan];
+    
     self.sloganView = slogan;
     
     CGFloat endY = screenH*0.2;
     CGFloat centerX = screenW*0.5;
     CGFloat startY = endY - screenH;
+    self.sloganView.Y = startY;
+    
     
     POPSpringAnimation *springAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewCenter];
     springAnimation.fromValue = [NSValue valueWithCGPoint:CGPointMake(centerX, startY)];
@@ -99,7 +101,7 @@
     springAnimation.springSpeed = 20;
     springAnimation.beginTime = CACurrentMediaTime() + 0.05*images.count;
     [slogan pop_addAnimation:springAnimation forKey:nil];
-    
+    [self addSubview:slogan];
     
 }
 -(void)clickButton:(AHStackButton *)buttom{
@@ -114,10 +116,14 @@
     self.userInteractionEnabled = NO;
     
     
-    POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewAlpha];
-    animation.toValue = @(0);
-    animation.beginTime = CACurrentMediaTime() + 0.05*self.buttonArray.count;
-    [self pop_addAnimation:animation forKey:nil];
+//    POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewAlpha];
+//    animation.toValue = @(0);
+//    animation.beginTime = CACurrentMediaTime() + 0.05*self.buttonArray.count;
+//    [self pop_addAnimation:animation forKey:nil];
+    
+    [UIView animateWithDuration:0.05*self.buttonArray.count animations:^{
+        self.alpha = 0;
+    }];
     
     for (int i=0; i <self.buttonArray.count; i++) {
         AHStackButton *button = self.buttonArray[i];
