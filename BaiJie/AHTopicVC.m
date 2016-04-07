@@ -14,6 +14,8 @@
 #import <MJRefresh.h>
 #import "AHTopic.h"
 #import "AHTopicCell.h"
+#import "AHCommentVC.h"
+
 
 @interface AHTopicVC ()
 @property (nonatomic, copy) NSString *maxtime;
@@ -92,5 +94,12 @@ static NSString *TopicCellID = @"TopicCellID";
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     AHTopic *topic = self.topicArray[indexPath.row];
     return topic.cellHeight;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    AHTopic *selectedTopic = self.topicArray[indexPath.row];
+    AHCommentVC *commentVC = [[AHCommentVC alloc]init];
+    commentVC.topic = selectedTopic;
+    [self.navigationController pushViewController:commentVC animated:YES];
+    
 }
 @end

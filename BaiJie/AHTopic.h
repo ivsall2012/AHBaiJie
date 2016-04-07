@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 @interface AHTopic : NSObject
+@property (nonatomic,copy) NSString *ID;
 @property (nonatomic,copy) NSString *text;
 @property (nonatomic,copy) NSString *profile_image;
 @property (nonatomic,copy) NSString *comment;

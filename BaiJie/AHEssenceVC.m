@@ -51,29 +51,32 @@
     AHTopicVC *pictureVC = [[AHTopicVC alloc]init];
     pictureVC.title = @"图片";
     pictureVC.topicType = AHTopicTypePicture;
+    [self addChildViewController:pictureVC];
     
     AHTopicVC *allVC = [[AHTopicVC alloc]init];
     allVC.title = @"推荐";
     allVC.topicType = AHTopicTypeAllKinds;
+    [self addChildViewController:allVC];
     
     AHTopicVC *videoVC = [[AHTopicVC alloc]init];
     videoVC.title = @"视频";
     videoVC.topicType = AHTopicTypeVideo;
-    
+    [self addChildViewController:videoVC];
     
     
     AHTopicVC *jokeVC = [[AHTopicVC alloc]init];
     jokeVC.title = @"段子";
     jokeVC.topicType = AHTopicTypeJoke;
+    [self addChildViewController:jokeVC];
     
     AHTopicVC *voiceVC = [[AHTopicVC alloc]init];
     voiceVC.title = @"声音";
     voiceVC.topicType = AHTopicTypeVoice;
-    
+    [self addChildViewController:voiceVC];
     
 //    self.childViewControllers = @[allVC,videoVC,voiceVC,pictureVc,jokeVC];
     // the order of VCs here is the order on display
-    [self setValue:@[pictureVC,allVC,videoVC,jokeVC,voiceVC] forKey:@"childViewControllers"];
+//    [self setValue:@[pictureVC,allVC,videoVC,jokeVC,voiceVC] forKey:@"childViewControllers"];
 }
 -(void)SetupSectionTabBar{
     AHSectionTabBar *sectionTabBar = [[AHSectionTabBar alloc]init];
@@ -115,6 +118,7 @@
 -(void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
     // here we need absolute page number -- index of child VCs
     NSInteger page = scrollView.contentOffset.x/scrollView.width;
+//    AHLog(@"%@",self.navigationController.childViewControllers);
     UITableViewController *VC = self.childViewControllers[page];
     // tableView will adjust its y automatically, cant skip these settings
     VC.tableView.X = scrollView.contentOffset.x;

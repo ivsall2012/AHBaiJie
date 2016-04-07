@@ -57,6 +57,9 @@
 		A1A37C011CB5B1BF00CABA4A /* AHTopicCellVideoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1A37C001CB5B1BF00CABA4A /* AHTopicCellVideoView.xib */; };
 		A1A37C071CB5CBAE00CABA4A /* AHTopicCellVoiceView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A37C061CB5CBAE00CABA4A /* AHTopicCellVoiceView.m */; };
 		A1A37C091CB5CBBA00CABA4A /* AHTopicCellVoiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1A37C081CB5CBBA00CABA4A /* AHTopicCellVoiceView.xib */; };
+		A1A37C0C1CB6102000CABA4A /* AHComment.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A37C0B1CB6102000CABA4A /* AHComment.m */; };
+		A1A37C151CB6228900CABA4A /* AHCommentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A37C131CB6228900CABA4A /* AHCommentVC.m */; };
+		A1A37C161CB6228900CABA4A /* AHCommentVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1A37C141CB6228900CABA4A /* AHCommentVC.xib */; };
 		A1FCF6DC1CAC9187003A5547 /* AHLoginRegisterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FCF6DA1CAC9187003A5547 /* AHLoginRegisterVC.m */; };
 		A1FCF6DD1CAC9187003A5547 /* AHLoginRegisterVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1FCF6DB1CAC9187003A5547 /* AHLoginRegisterVC.xib */; };
 		A1FCF6E01CAC9B1E003A5547 /* AHStackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FCF6DF1CAC9B1E003A5547 /* AHStackButton.m */; };
@@ -151,6 +154,11 @@
 		A1A37C051CB5CBAE00CABA4A /* AHTopicCellVoiceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHTopicCellVoiceView.h; sourceTree = "<group>"; };
 		A1A37C061CB5CBAE00CABA4A /* AHTopicCellVoiceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHTopicCellVoiceView.m; sourceTree = "<group>"; };
 		A1A37C081CB5CBBA00CABA4A /* AHTopicCellVoiceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AHTopicCellVoiceView.xib; sourceTree = "<group>"; };
+		A1A37C0A1CB6102000CABA4A /* AHComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHComment.h; sourceTree = "<group>"; };
+		A1A37C0B1CB6102000CABA4A /* AHComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHComment.m; sourceTree = "<group>"; };
+		A1A37C121CB6228900CABA4A /* AHCommentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHCommentVC.h; sourceTree = "<group>"; };
+		A1A37C131CB6228900CABA4A /* AHCommentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHCommentVC.m; sourceTree = "<group>"; };
+		A1A37C141CB6228900CABA4A /* AHCommentVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AHCommentVC.xib; sourceTree = "<group>"; };
 		A1FCF6D91CAC9187003A5547 /* AHLoginRegisterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHLoginRegisterVC.h; sourceTree = "<group>"; };
 		A1FCF6DA1CAC9187003A5547 /* AHLoginRegisterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHLoginRegisterVC.m; sourceTree = "<group>"; };
 		A1FCF6DB1CAC9187003A5547 /* AHLoginRegisterVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AHLoginRegisterVC.xib; sourceTree = "<group>"; };
@@ -229,14 +237,18 @@
 		A12832841CABB97E00389300 /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				A153E9DE1CB0E75700A30AA8 /* AHTopicVC.h */,
+				A153E9DF1CB0E75700A30AA8 /* AHTopicVC.m */,
 				A1689F081CB20ABE00BFEA6B /* AHFullPictureVC.h */,
 				A1689F091CB20ABE00BFEA6B /* AHFullPictureVC.m */,
 				A1689F0A1CB20ABE00BFEA6B /* AHFullPictureVC.xib */,
-				A1A0D2A31CAE41220064943B /* TableViewVC */,
 				A16AF34A1CA88E870004BFCE /* AHEssenceVC.h */,
 				A16AF34B1CA88E870004BFCE /* AHEssenceVC.m */,
 				A12832811CABB8AB00389300 /* AHRecommendSubsribeVC.h */,
 				A12832821CABB8AB00389300 /* AHRecommendSubsribeVC.m */,
+				A1A37C121CB6228900CABA4A /* AHCommentVC.h */,
+				A1A37C131CB6228900CABA4A /* AHCommentVC.m */,
+				A1A37C141CB6228900CABA4A /* AHCommentVC.xib */,
 			);
 			name = VC;
 			sourceTree = "<group>";
@@ -274,6 +286,8 @@
 				A12832881CABBA7600389300 /* AHRecommendSubsriber.m */,
 				A11736611CAF4B87001B47FF /* AHTopic.h */,
 				A11736621CAF4B87001B47FF /* AHTopic.m */,
+				A1A37C0A1CB6102000CABA4A /* AHComment.h */,
+				A1A37C0B1CB6102000CABA4A /* AHComment.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -457,15 +471,6 @@
 			name = VC;
 			sourceTree = "<group>";
 		};
-		A1A0D2A31CAE41220064943B /* TableViewVC */ = {
-			isa = PBXGroup;
-			children = (
-				A153E9DE1CB0E75700A30AA8 /* AHTopicVC.h */,
-				A153E9DF1CB0E75700A30AA8 /* AHTopicVC.m */,
-			);
-			name = TableViewVC;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -538,6 +543,7 @@
 				A128328E1CABBAC300389300 /* AHRecommendSubscribeCell.xib in Resources */,
 				A13A23CC1CAA2EF5001BDD4B /* AHRecommendUserCell.xib in Resources */,
 				A17504101CA9FD740074328E /* AHRecommendCategoryCell.xib in Resources */,
+				A1A37C161CB6228900CABA4A /* AHCommentVC.xib in Resources */,
 				A10CE55B1CA8DA0F00895EAA /* TestVC_two.xib in Resources */,
 				A10CE5571CA8DA0F00895EAA /* TestVC_one.xib in Resources */,
 				A17504081CA9F3BE0074328E /* AHRecommendVC.xib in Resources */,
@@ -628,12 +634,14 @@
 				A143E1EE1CAD040F00A72147 /* AHLoginTextField.m in Sources */,
 				A16AF3281CA873300004BFCE /* AppDelegate.m in Sources */,
 				A10CE5561CA8DA0F00895EAA /* TestVC_one.m in Sources */,
+				A1A37C151CB6228900CABA4A /* AHCommentVC.m in Sources */,
 				A1689EFF1CB1D6CE00BFEA6B /* AHTopicCellPictureView.m in Sources */,
 				A12832831CABB8AB00389300 /* AHRecommendSubsribeVC.m in Sources */,
 				A16AF3251CA873300004BFCE /* main.m in Sources */,
 				A10CE5581CA8DA0F00895EAA /* TestVC_three.m in Sources */,
 				A153E9E01CB0E75700A30AA8 /* AHTopicVC.m in Sources */,
 				A10343C91CB3344D008542AB /* AHPublishView.m in Sources */,
+				A1A37C0C1CB6102000CABA4A /* AHComment.m in Sources */,
 				A16AF3521CA88EAC0004BFCE /* AHFriendTrendsVC.m in Sources */,
 				A16AF3551CA88EBB0004BFCE /* AHMeVC.m in Sources */,
 				A10CE55E1CA8DD3600895EAA /* AHNavigationVC.m in Sources */,
