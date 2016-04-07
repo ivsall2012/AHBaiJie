@@ -52,7 +52,9 @@
                 break;
             }
             case AHTopicTypeVoice:{
-                
+                CGFloat voiceH = (AHTopicCellMaxWidth * self.height) / self.width;
+                self.voiceFrame = CGRectMake(AHTopicCellMargin, _cellHeight, AHTopicCellMaxWidth, voiceH);
+                _cellHeight += voiceH;
                 break;
             }
             case AHTopicTypeJoke:{

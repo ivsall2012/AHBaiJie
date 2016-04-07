@@ -34,6 +34,11 @@
 @property (nonatomic,copy) NSString *playcount;
 @property (nonatomic, assign) CGRect videoFrame;
 
+
+@property (nonatomic,copy) NSString *voicetime;
+@property (nonatomic,assign) CGRect voiceFrame;
+
+
 @property (nonatomic, assign,getter=isPictureTooBig) BOOL pictureTooBig;
 
 @property (nonatomic, assign) CGFloat imageProgress;

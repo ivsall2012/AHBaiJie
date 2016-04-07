@@ -11,7 +11,7 @@
 #import "AHTopicCellPictureView.h"
 #import <UIImageView+WebCache.h>
 #import "AHTopicCellVideoView.h"
-
+#import "AHTopicCellVoiceView.h"
 
 @interface AHTopicCell()
 @property (weak, nonatomic) IBOutlet UIImageView *icon;
@@ -24,8 +24,17 @@
 @property (weak, nonatomic) IBOutlet UILabel *contentText;
 @property (nonatomic, weak) AHTopicCellPictureView *pictureView;
 @property (nonatomic, weak) AHTopicCellVideoView *videoView;
+@property (nonatomic, weak) AHTopicCellVoiceView *voiceView;
 @end
 @implementation AHTopicCell
+-(AHTopicCellVoiceView *)voiceView{
+    if (!_voiceView) {
+        AHTopicCellVoiceView *voiceView= [AHTopicCellVoiceView voiceView];
+        [self.contentView addSubview:voiceView];
+        self.voiceView = voiceView;
+    }
+    return _voiceView;
+}
 -(AHTopicCellVideoView *)videoView{
     if (!_videoView) {
         AHTopicCellVideoView *videoView = [AHTopicCellVideoView videoView];
@@ -64,11 +73,32 @@
     [self.repost setTitle:topic.repost forState:UIControlStateNormal];
     [self.comment setTitle:topic.comment forState:UIControlStateNormal];
     if (self.topic.type == AHTopicTypePicture) {
+        self.voiceView.hidden = YES;
+        self.videoView.hidden =YES;
+        self.pictureView.hidden = NO;
+        
         self.pictureView.frame = topic.pictureFrame;
         self.pictureView.topic = topic;
     }else if(self.topic.type == AHTopicTypeVideo){
+        self.pictureView.hidden = YES;
+        self.voiceView.hidden = YES;
+        self.videoView.hidden = NO;
+        
         self.videoView.frame = topic.videoFrame;
         self.videoView.topic = topic;
+    }else if (self.topic.type == AHTopicTypeVoice){
+        self.pictureView.hidden = YES;
+        self.videoView.hidden = YES;
+        self.voiceView.hidden = NO;
+        
+        self.voiceView.frame = topic.voiceFrame;
+        self.voiceView.topic = topic;
+    }else{
+        // joke, no extra view needed
+        self.pictureView.hidden =YES;
+        self.voiceView.hidden = YES;
+        self.videoView.hidden = YES;
+        
     }
     self.contentText.text = topic.text;
 }

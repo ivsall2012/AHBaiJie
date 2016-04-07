@@ -55,6 +55,8 @@
 		A1A0D2A21CADEEC00064943B /* AHSectionTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A0D2A11CADEEC00064943B /* AHSectionTabBar.m */; };
 		A1A37BFF1CB5B1A900CABA4A /* AHTopicCellVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A37BFE1CB5B1A900CABA4A /* AHTopicCellVideoView.m */; };
 		A1A37C011CB5B1BF00CABA4A /* AHTopicCellVideoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1A37C001CB5B1BF00CABA4A /* AHTopicCellVideoView.xib */; };
+		A1A37C071CB5CBAE00CABA4A /* AHTopicCellVoiceView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A37C061CB5CBAE00CABA4A /* AHTopicCellVoiceView.m */; };
+		A1A37C091CB5CBBA00CABA4A /* AHTopicCellVoiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1A37C081CB5CBBA00CABA4A /* AHTopicCellVoiceView.xib */; };
 		A1FCF6DC1CAC9187003A5547 /* AHLoginRegisterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FCF6DA1CAC9187003A5547 /* AHLoginRegisterVC.m */; };
 		A1FCF6DD1CAC9187003A5547 /* AHLoginRegisterVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1FCF6DB1CAC9187003A5547 /* AHLoginRegisterVC.xib */; };
 		A1FCF6E01CAC9B1E003A5547 /* AHStackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FCF6DF1CAC9B1E003A5547 /* AHStackButton.m */; };
@@ -146,6 +148,9 @@
 		A1A37BFD1CB5B1A900CABA4A /* AHTopicCellVideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHTopicCellVideoView.h; sourceTree = "<group>"; };
 		A1A37BFE1CB5B1A900CABA4A /* AHTopicCellVideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHTopicCellVideoView.m; sourceTree = "<group>"; };
 		A1A37C001CB5B1BF00CABA4A /* AHTopicCellVideoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AHTopicCellVideoView.xib; sourceTree = "<group>"; };
+		A1A37C051CB5CBAE00CABA4A /* AHTopicCellVoiceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHTopicCellVoiceView.h; sourceTree = "<group>"; };
+		A1A37C061CB5CBAE00CABA4A /* AHTopicCellVoiceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHTopicCellVoiceView.m; sourceTree = "<group>"; };
+		A1A37C081CB5CBBA00CABA4A /* AHTopicCellVoiceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AHTopicCellVoiceView.xib; sourceTree = "<group>"; };
 		A1FCF6D91CAC9187003A5547 /* AHLoginRegisterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHLoginRegisterVC.h; sourceTree = "<group>"; };
 		A1FCF6DA1CAC9187003A5547 /* AHLoginRegisterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHLoginRegisterVC.m; sourceTree = "<group>"; };
 		A1FCF6DB1CAC9187003A5547 /* AHLoginRegisterVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AHLoginRegisterVC.xib; sourceTree = "<group>"; };
@@ -255,6 +260,9 @@
 				A1A37BFD1CB5B1A900CABA4A /* AHTopicCellVideoView.h */,
 				A1A37BFE1CB5B1A900CABA4A /* AHTopicCellVideoView.m */,
 				A1A37C001CB5B1BF00CABA4A /* AHTopicCellVideoView.xib */,
+				A1A37C051CB5CBAE00CABA4A /* AHTopicCellVoiceView.h */,
+				A1A37C061CB5CBAE00CABA4A /* AHTopicCellVoiceView.m */,
+				A1A37C081CB5CBBA00CABA4A /* AHTopicCellVoiceView.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -522,6 +530,7 @@
 			files = (
 				A1689F011CB1D6DD00BFEA6B /* AHTopicCellPictureView.xib in Resources */,
 				A19AAB1E1CADB8C0004941B0 /* AHPushGuideView.xib in Resources */,
+				A1A37C091CB5CBBA00CABA4A /* AHTopicCellVoiceView.xib in Resources */,
 				A10CE5611CA8F55100895EAA /* AHFriendTrendsVC.xib in Resources */,
 				A16AF3301CA873300004BFCE /* Assets.xcassets in Resources */,
 				A1FCF6DD1CAC9187003A5547 /* AHLoginRegisterVC.xib in Resources */,
@@ -600,6 +609,7 @@
 				A153E9DC1CB0C36500A30AA8 /* AHTopicCell.m in Sources */,
 				A11736631CAF4B87001B47FF /* AHTopic.m in Sources */,
 				A128328D1CABBAC300389300 /* AHRecommendSubscribeCell.m in Sources */,
+				A1A37C071CB5CBAE00CABA4A /* AHTopicCellVoiceView.m in Sources */,
 				A16AF34F1CA88E9A0004BFCE /* AHNewVC.m in Sources */,
 				A12832891CABBA7600389300 /* AHRecommendSubsriber.m in Sources */,
 				A1689F071CB206D300BFEA6B /* AHProgress.m in Sources */,

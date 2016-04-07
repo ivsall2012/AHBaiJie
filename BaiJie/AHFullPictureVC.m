@@ -62,7 +62,7 @@
     if (pictureH > screenH) {
         imageView.centerX = screenW*0.5;
         imageView.Y = 50;
-        self.scrollView.contentSize = CGSizeMake(0, pictureH);
+        self.scrollView.contentSize = CGSizeMake(0, pictureH+50);
     }else{
         // here self.scrollView haven't waken up frim nib till the view is used(view is lazy loading even in xib)
         // dont use self.view --> xib scale
