@@ -39,6 +39,7 @@
 @property (nonatomic,copy) NSString *voicetime;
 @property (nonatomic,assign) CGRect voiceFrame;
 
+@property (nonatomic,assign) CGRect jokeFrame;
 
 @property (nonatomic, assign,getter=isPictureTooBig) BOOL pictureTooBig;
 

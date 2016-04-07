@@ -59,7 +59,6 @@
                 break;
             }
             case AHTopicTypeJoke:{
-
                 break;
             }
         }

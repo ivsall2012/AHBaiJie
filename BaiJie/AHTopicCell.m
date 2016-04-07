@@ -56,6 +56,9 @@
 - (void)awakeFromNib {
     self.backgroundView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"mainCellBackground"]];
 }
++(instancetype)cell{
+    return [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self) owner:nil options:nil] lastObject];
+}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
@@ -100,16 +103,19 @@
         self.videoView.hidden = YES;
         
     }
+    self.width = AHTopicCellMaxWidth;
     self.contentText.text = topic.text;
 }
+
 -(void)setFrame:(CGRect)frame{
     CGFloat margin = 8.0;
     frame.origin.y += margin;
-    frame.size.height -= margin;
+    frame.size.height = self.topic.cellHeight - margin;
     frame.origin.x = margin;
     frame.size.width -= 2 *margin;
-    
+
     
     [super setFrame:frame];
 }
+                      
 @end

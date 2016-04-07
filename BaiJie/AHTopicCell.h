@@ -10,4 +10,5 @@
 #import "AHTopic.h"
 @interface AHTopicCell : UITableViewCell
 @property (nonatomic, strong) AHTopic *topic;
++(instancetype)cell;
 @end
