@@ -33,7 +33,7 @@
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [self.sectionTabBar selectTabBarByTitle:@"图片"];
+    [self.sectionTabBar selectTabBarByTitle:@"段子"];
 }
 -(void)setupMainScrollView{
     self.automaticallyAdjustsScrollViewInsets = NO;

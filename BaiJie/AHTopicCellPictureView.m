@@ -37,7 +37,11 @@
 -(void)setTopic:(AHTopic *)topic{
     _topic = topic;
     
-    [self.progressView setProgress:topic.imageProgress animated:NO];
+    if (topic.imageProgress <= 98) {
+        [self.progressView setProgress:topic.imageProgress animated:NO];
+    }else{
+        self.progressView.hidden = YES;
+    }
     
     [self.mainImageView sd_setImageWithURL:[NSURL URLWithString:topic.largeImage] placeholderImage:nil options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
         self.progressView.hidden = NO;

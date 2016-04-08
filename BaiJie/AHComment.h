@@ -7,8 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-
+@class AHUser;
 @interface AHComment : NSObject
-@property (nonatomic,copy) NSString *ID;
 @property (nonatomic,copy) NSString *content;
+@property (nonatomic,copy) NSString *like_count;
+@property (nonatomic, strong) AHUser *user;
+@property (nonatomic,assign) CGFloat cellHeight;
 @end

@@ -7,7 +7,18 @@
 //
 
 #import "AHComment.h"
-
+#import <MJExtension.h>
+#import "AHUser.h"
 @implementation AHComment
-
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"%@\n %@", self.user.username,self.user.profile_image];
+}
+-(CGFloat)cellHeight{
+    if (!_cellHeight) {
+        CGSize contentSize  = [self.content boundingRectWithSize:CGSizeMake(AHTopicCellMaxWidth, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:AHTextFont} context:nil].size;
+        _cellHeight = 36 + contentSize.height + 8;
+    }
+    return _cellHeight;
+}
 @end

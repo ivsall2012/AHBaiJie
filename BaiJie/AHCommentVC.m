@@ -8,6 +8,11 @@
 
 #import "AHCommentVC.h"
 #import "AHTopicCell.h"
+#import <MJRefresh.h>
+#import "AHCommentCell.h"
+#import <AFNetworking.h>
+#import <MJExtension.h>
+#import "AHComment.h"
 typedef enum {
     AHCommentSectionTypeMainTopic=0,
     AHCOmmentSectionTypeTopComment,
@@ -20,17 +25,63 @@ typedef enum {
 @property (weak, nonatomic) IBOutlet UIView *toolBarView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) AHTopicCell *topicCell;
+@property (nonatomic, strong) NSArray *topCommentArray;
+@property (nonatomic, strong) NSMutableArray *commentArray;
+@property (nonatomic,copy) NSString *lastcid;
 @end
 
+static NSString *commentID = @"commentID";
 @implementation AHCommentVC
-
+-(NSArray *)topCommentArray{
+    if (!_topCommentArray) {
+        NSArray *topCommentArray = [NSArray array];
+        _topCommentArray = topCommentArray;
+    }
+    return _topCommentArray;
+}
+-(NSMutableArray *)commentArray{
+    if (!_commentArray) {
+        NSMutableArray *commentArray = [NSMutableArray array];
+        _commentArray = commentArray;
+    }
+    return _commentArray;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [self initTableView];
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [AHNotificationCenter addObserver:self selector:@selector(keyBoardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
+    [self initRefreshControl];
+}
+-(void)initRefreshControl{
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewComments)];
+//    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreComments)];
+    [self.tableView.mj_header beginRefreshing];
+    [self.tableView.mj_header setAutomaticallyChangeAlpha:YES];
+}
+-(void)loadNewComments{
+    
+    [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php" parameters:@{@"a":@"dataList",@"c":@"comment",@"data_id":self.topic.ID,@"hot":@(1)} progress:nil
+      success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
+          self.commentArray = [AHComment mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+          self.topCommentArray = [AHComment mj_objectArrayWithKeyValuesArray:responseObject[@"hot"]];
+          [self.tableView.mj_header endRefreshing];
+          [self.tableView reloadData];
+          AHLog(@"---");
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
+}
+-(void)loadMoreComments{
+    [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php" parameters:@{@"a":@"dataList",@"c":@"comment",@"data_id":self.topic.ID} progress:nil
+    success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
 }
 -(void)initTableView{
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 35, 0);self.tableView.delegate = self;
@@ -38,16 +89,33 @@ typedef enum {
     self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 35, 0);
     self.topicCell = [AHTopicCell cell];
     self.topicCell.topic = self.topic;
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([AHCommentCell class]) bundle:nil] forCellReuseIdentifier:commentID];
+
     
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
+    if (self.topCommentArray.count) {
+        return 3;
+    }
+    if (self.commentArray.count) {
+        return 2;
+    }
+    return 1;
+    
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section == AHCommentSectionTypeMainTopic) {
         return 1;
     }
-    return 50;
+    if (section == AHCOmmentSectionTypeTopComment) {
+        NSInteger topCount = self.topCommentArray.count;
+        NSInteger count = self.commentArray.count;
+        return topCount?topCount:count;
+    }else if(section == AHCOmmentSectionTypeNewComment && self.commentArray.count){
+        
+        return self.commentArray.count;
+    }
+    return 0;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == AHCommentSectionTypeMainTopic) {
@@ -55,21 +123,42 @@ typedef enum {
         return self.topicCell;
     }
     
-    static NSString *ID = @"myself";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-    if (!cell) {
-        cell= [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
+    AHCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:commentID];
+    if (indexPath.section == 1) {
+        NSInteger topCount =self.topCommentArray.count;
+        if (topCount) {
+            cell.comment = self.topCommentArray[indexPath.row];
+        }else{
+            cell.comment = self.commentArray[indexPath.row];
+        }
+    }else{
+        cell.comment = self.commentArray[indexPath.row];
     }
-    NSString *content = [NSString stringWithFormat:@"row: %ld",indexPath.row];
-    cell.textLabel.text = content;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"random:%u",arc4random_uniform(999)];
     return cell;
 }
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    if (section == 0) {
+        return nil;
+    }
+    if (section == 1) {
+        return self.topCommentArray.count?@"最热评论":@"最新评论";
+    }
+    return @"最新评论";
+}
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section == AHCommentSectionTypeMainTopic) {
+    if (indexPath.section == 0) {
         return self.topic.cellHeight;
     }
-    return 49;
+    AHComment *comment = nil;
+    if (indexPath.section == 1) {
+        if (self.topCommentArray.count) {
+            comment = self.topCommentArray[indexPath.row];
+            return comment.cellHeight;
+        }
+    }
+    comment = self.commentArray[indexPath.row];
+    return comment.cellHeight;
+    
 }
 #pragma mark - toolBar handling
 -(void)keyBoardWillChangeFrame:(NSNotification *)notification{
