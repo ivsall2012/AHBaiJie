@@ -12,8 +12,8 @@
 #import <UIImageView+WebCache.h>
 #import "AHUser.h"
 @interface AHCommentCell()
-@property (weak, nonatomic) IBOutlet UILabel *likeCountLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *iconView;
+
+@property (weak, nonatomic) IBOutlet UIButton *iconView;
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 @property (weak, nonatomic) IBOutlet UIButton *genderButton;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -42,10 +42,8 @@
     UIImageView *imageView = [[UIImageView alloc]init];
     [imageView sd_setImageWithURL:[NSURL URLWithString:user.profile_image] placeholderImage:[UIImage imageNamed:@"defaultUserIcon"] options:SDWebImageRetryFailed completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
        [self.iconView setImage:imageView.image forState:UIControlStateNormal];
-        self.iconView.contentMode = UIViewContentModeScaleAspectFill;
-    
-        self.iconView.backgroundColor = AHRedColor;
-        self.iconView.imageView.autoresizingMask = UIViewAutoresizingNone;
+//        self.iconView.contentMode = UIViewContentModeScaleAspectFill;
+//        [self.iconView setContentMode:UIViewContentModeScaleAspectFit];
         
     }];
     
@@ -58,6 +56,6 @@
     
     self.nameLabel.text = user.username;
     self.contentLabel.text = comment.content;
-    self.likeCountLabel.text = [NSString stringWithFormat:@"+%@",comment.like_count];
+    [self.likeButton setTitle:[NSString stringWithFormat:@"+%@",comment.like_count] forState:UIControlStateNormal];
 }
 @end

@@ -67,7 +67,6 @@ static NSString *commentID = @"commentID";
           self.topCommentArray = [AHComment mj_objectArrayWithKeyValuesArray:responseObject[@"hot"]];
           [self.tableView.mj_header endRefreshing];
           [self.tableView reloadData];
-          AHLog(@"---");
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
     }];

@@ -33,14 +33,15 @@
 -(void)layoutSubviews{
     [super layoutSubviews];
     
-    self.imageView.X = self.imageView.Y = 0;
-    self.imageView.width = self.width;
-    self.imageView.height = self.imageView.width;
+    self.imageView.centerX = self.width*0.5;
+    self.imageView.Y = 0;
+    self.imageView.width = self.currentImage.size.width;
+    self.imageView.height = self.currentImage.size.height;
     
     
-    self.titleLabel.width = self.imageView.width;
+    self.titleLabel.width = self.width;
     self.titleLabel.height = self.height - self.imageView.height;
-    self.titleLabel.X = self.imageView.X;
+    self.titleLabel.X = 0;
     self.titleLabel.Y = CGRectGetMaxY(self.imageView.frame);
 }
 

@@ -20,6 +20,7 @@
 		A11707441CB6627D00DD78E5 /* AHCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A11707421CB6627D00DD78E5 /* AHCommentCell.xib */; };
 		A11707471CB66C1D00DD78E5 /* AHUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A11707461CB66C1D00DD78E5 /* AHUser.m */; };
 		A11736631CAF4B87001B47FF /* AHTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = A11736621CAF4B87001B47FF /* AHTopic.m */; };
+		A127F0A01CB751B70022F39D /* AHCommentUserIconButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A127F09F1CB751B70022F39D /* AHCommentUserIconButton.m */; };
 		A12832831CABB8AB00389300 /* AHRecommendSubsribeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A12832821CABB8AB00389300 /* AHRecommendSubsribeVC.m */; };
 		A12832891CABBA7600389300 /* AHRecommendSubsriber.m in Sources */ = {isa = PBXBuildFile; fileRef = A12832881CABBA7600389300 /* AHRecommendSubsriber.m */; };
 		A128328D1CABBAC300389300 /* AHRecommendSubscribeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A128328B1CABBAC300389300 /* AHRecommendSubscribeCell.m */; };
@@ -91,6 +92,8 @@
 		A11707461CB66C1D00DD78E5 /* AHUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHUser.m; sourceTree = "<group>"; };
 		A11736611CAF4B87001B47FF /* AHTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHTopic.h; sourceTree = "<group>"; };
 		A11736621CAF4B87001B47FF /* AHTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHTopic.m; sourceTree = "<group>"; };
+		A127F09E1CB751B70022F39D /* AHCommentUserIconButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHCommentUserIconButton.h; sourceTree = "<group>"; };
+		A127F09F1CB751B70022F39D /* AHCommentUserIconButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHCommentUserIconButton.m; sourceTree = "<group>"; };
 		A12832811CABB8AB00389300 /* AHRecommendSubsribeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHRecommendSubsribeVC.h; sourceTree = "<group>"; };
 		A12832821CABB8AB00389300 /* AHRecommendSubsribeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHRecommendSubsribeVC.m; sourceTree = "<group>"; };
 		A12832871CABBA7600389300 /* AHRecommendSubsriber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHRecommendSubsriber.h; sourceTree = "<group>"; };
@@ -286,6 +289,8 @@
 				A11707401CB6627D00DD78E5 /* AHCommentCell.h */,
 				A11707411CB6627D00DD78E5 /* AHCommentCell.m */,
 				A11707421CB6627D00DD78E5 /* AHCommentCell.xib */,
+				A127F09E1CB751B70022F39D /* AHCommentUserIconButton.h */,
+				A127F09F1CB751B70022F39D /* AHCommentUserIconButton.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -636,6 +641,7 @@
 				A16AF3581CA8944B0004BFCE /* AHTabBar.m in Sources */,
 				A19AAB1C1CADB8A8004941B0 /* AHPushGuideView.m in Sources */,
 				A1A0D2A21CADEEC00064943B /* AHSectionTabBar.m in Sources */,
+				A127F0A01CB751B70022F39D /* AHCommentUserIconButton.m in Sources */,
 				A18082D71CA8B22800CD922C /* UIBarButtonItem+Extension.m in Sources */,
 				A13A23CF1CAA33F6001BDD4B /* AHRecommendUser.m in Sources */,
 				A1A37BFF1CB5B1A900CABA4A /* AHTopicCellVideoView.m in Sources */,
