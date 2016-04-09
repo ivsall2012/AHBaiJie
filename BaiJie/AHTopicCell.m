@@ -24,6 +24,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *contentText;
 @property (nonatomic, weak) AHTopicCellPictureView *pictureView;
 @property (nonatomic, weak) AHTopicCellVideoView *videoView;
+
+@property (weak, nonatomic) IBOutlet UIView *hotCommentView;
+@property (weak, nonatomic) IBOutlet UILabel *hotCommentContent;
 @property (nonatomic, weak) AHTopicCellVoiceView *voiceView;
 @end
 @implementation AHTopicCell
@@ -103,6 +106,14 @@
         self.videoView.hidden = YES;
         
     }
+    
+    if (self.topic.top_cm) {
+        self.hotCommentView.hidden = NO;
+        self.hotCommentContent.text = self.topic.hotCommentString;
+    }else{
+        self.hotCommentView.hidden = YES;
+    }
+    
     self.contentText.text = topic.text;
 }
 

@@ -8,7 +8,8 @@
 
 #import "AHTopic.h"
 #import <MJExtension.h>
-
+#import "AHComment.h"
+#import "AHUser.h"
 
 
 @implementation AHTopic
@@ -18,7 +19,8 @@
              @"smallImage" : @"image0",
              @"largeImage" : @"image1",
              @"mediumImage" : @"image2",
-             @"ID":@"id"
+             @"ID":@"id",
+             @"top_cm":@"top_cm[0]"
              };
 }
 
@@ -42,7 +44,7 @@
                     self.pictureTooBig = YES;
                 }// else is within (0,AHTopicCellMaxHeight) ok to scroll several screen-width
                 self.pictureFrame = CGRectMake(AHTopicCellMargin, _cellHeight, AHTopicCellMaxWidth, pictureH);
-                _cellHeight += pictureH;
+                _cellHeight += pictureH + AHTopicCellMargin;
                 break;
             }
             case AHTopicTypeVideo:{
@@ -61,6 +63,12 @@
             case AHTopicTypeJoke:{
                 break;
             }
+        }
+        if (self.top_cm) {
+            AHUser *user = self.top_cm.user;
+            self.hotCommentString = [NSString stringWithFormat:@"@%@: %@",user.username,self.top_cm.content];
+            CGSize contentSize = [self.hotCommentString boundingRectWithSize:CGSizeMake(AHTopicCellMaxWidth, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:AHTextFont} context:nil].size;
+            _cellHeight += AHTopicCellMargin + 20 + contentSize.height;
         }
         _cellHeight += 35 + AHTopicCellMargin;
         

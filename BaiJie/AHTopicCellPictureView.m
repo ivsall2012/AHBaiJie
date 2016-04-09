@@ -45,7 +45,6 @@
         [self.progressView setProgress:progress animated:NO];
     } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         self.progressView.hidden = YES;
-        topic.complete = YES;
         if (topic.isPictureTooBig) {
             UIGraphicsBeginImageContextWithOptions(CGSizeMake(AHTopicCellMaxWidth, AHTopicCellNomalHeight), YES, 1.0);
             CGFloat imageH = (AHTopicCellMaxWidth * topic.height) / topic.width;

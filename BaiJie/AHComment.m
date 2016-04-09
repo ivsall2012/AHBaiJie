@@ -9,10 +9,16 @@
 #import "AHComment.h"
 #import <MJExtension.h>
 #import "AHUser.h"
+
 @implementation AHComment
 - (NSString *)description
 {
     return [NSString stringWithFormat:@"%@\n %@", self.user.username,self.user.profile_image];
+}
++(NSDictionary *)mj_replacedKeyFromPropertyName{
+    return @{
+             @"ID":@"id"
+             };
 }
 -(CGFloat)cellHeight{
     if (!_cellHeight) {

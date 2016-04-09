@@ -8,7 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AHCommentVC">
             <connections>
                 <outlet property="tableView" destination="whq-Oy-0bh" id="cXA-t0-WLo"/>
-                <outlet property="tooBarBottomConstraint" destination="F1L-XO-fjF" id="4pf-9R-6TH"/>
+                <outlet property="tooBarBottomConstraint" destination="F1L-XO-fjF" id="juA-Wa-Jis"/>
                 <outlet property="toolBarView" destination="Roi-sO-OXC" id="tpZ-iv-hR8"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

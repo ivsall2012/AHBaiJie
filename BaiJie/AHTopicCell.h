@@ -10,5 +10,7 @@
 #import "AHTopic.h"
 @interface AHTopicCell : UITableViewCell
 @property (nonatomic, strong) AHTopic *topic;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *toolBarToBottom;
+
 +(instancetype)cell;
 @end

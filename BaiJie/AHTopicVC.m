@@ -37,6 +37,7 @@ static NSString *TopicCellID = @"TopicCellID";
     [self setupRefreshControl];
     [self registerTopicCell];
     self.tableView.backgroundColor = [UIColor clearColor];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
 }
 -(void)registerTopicCell{

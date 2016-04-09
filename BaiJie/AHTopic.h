@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+@class AHComment;
 @interface AHTopic : NSObject
 @property (nonatomic,copy) NSString *ID;
 @property (nonatomic,copy) NSString *text;
@@ -34,19 +35,14 @@
 @property (nonatomic,copy) NSString *videotime;
 @property (nonatomic,copy) NSString *playcount;
 @property (nonatomic, assign) CGRect videoFrame;
-
-
 @property (nonatomic,copy) NSString *voicetime;
 @property (nonatomic,assign) CGRect voiceFrame;
-
 @property (nonatomic,assign) CGRect jokeFrame;
-
 @property (nonatomic, assign,getter=isPictureTooBig) BOOL pictureTooBig;
-
 @property (nonatomic, assign) CGFloat imageProgress;
-/**
- *  image completion check
- */
-@property (nonatomic,assign,getter=isComplete) BOOL complete;
+
+
+@property (nonatomic,strong) AHComment *top_cm;
+@property (nonatomic,copy) NSString *hotCommentString;
 @property (nonatomic,assign) CGFloat cellHeight;
 @end

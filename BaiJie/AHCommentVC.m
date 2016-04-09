@@ -21,12 +21,12 @@ typedef enum {
 
 
 @interface AHCommentVC ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tooBarBottomConstraint;
 @property (weak, nonatomic) IBOutlet UIView *toolBarView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) AHTopicCell *topicCell;
 @property (nonatomic, strong) NSArray *topCommentArray;
 @property (nonatomic, strong) NSMutableArray *commentArray;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tooBarBottomConstraint;
 @property (nonatomic,copy) NSString *lastcid;
 @end
 
@@ -55,7 +55,7 @@ static NSString *commentID = @"commentID";
 }
 -(void)initRefreshControl{
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewComments)];
-//    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreComments)];
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreComments)];
     [self.tableView.mj_header beginRefreshing];
     [self.tableView.mj_header setAutomaticallyChangeAlpha:YES];
 }
@@ -65,6 +65,8 @@ static NSString *commentID = @"commentID";
       success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
           self.commentArray = [AHComment mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
           self.topCommentArray = [AHComment mj_objectArrayWithKeyValuesArray:responseObject[@"hot"]];
+          AHComment *lastComment = [self.commentArray lastObject];
+          self.lastcid = lastComment.ID;
           [self.tableView.mj_header endRefreshing];
           [self.tableView reloadData];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -72,9 +74,15 @@ static NSString *commentID = @"commentID";
     }];
 }
 -(void)loadMoreComments{
-    [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php" parameters:@{@"a":@"dataList",@"c":@"comment",@"data_id":self.topic.ID} progress:nil
+    [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php" parameters:@{@"a":@"dataList",@"c":@"comment",@"data_id":self.topic.ID,@"lastcid":self.lastcid} progress:nil
     success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
-        
+        NSMutableArray *commentArray= [AHComment mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        AHLog(@"%ld",commentArray.count);
+        [self.commentArray addObjectsFromArray:commentArray];
+        AHComment *lastComment = [commentArray lastObject];
+        self.lastcid = lastComment.ID;
+        [self.tableView.mj_footer endRefreshing];
+        [self.tableView reloadData];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
     }];
@@ -88,6 +96,8 @@ static NSString *commentID = @"commentID";
     self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 35, 0);
     self.topicCell = [AHTopicCell cell];
     self.topicCell.topic = self.topic;
+    self.topicCell.toolBarToBottom.constant = 20;
+    [self.view layoutIfNeeded];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([AHCommentCell class]) bundle:nil] forCellReuseIdentifier:commentID];
 
     
