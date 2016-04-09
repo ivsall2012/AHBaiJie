@@ -39,10 +39,10 @@
                         <state key="selected" image="Profile_womanIcon"/>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wBi-YU-7eV" customClass="AHStackButton">
-                        <rect key="frame" x="256" y="12" width="50" height="50"/>
+                        <rect key="frame" x="271" y="12" width="35" height="35"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="50" id="jci-ZS-8lZ"/>
-                            <constraint firstAttribute="width" constant="50" id="rIw-7b-aQr"/>
+                            <constraint firstAttribute="height" constant="35" id="jci-ZS-8lZ"/>
+                            <constraint firstAttribute="width" constant="35" id="rIw-7b-aQr"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <state key="normal" title="fsajkfsafads" image="commentLikeButton">
@@ -58,7 +58,7 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXo-AP-zGJ" userLabel="content">
-                        <rect key="frame" x="51" y="36" width="193" height="18"/>
+                        <rect key="frame" x="51" y="36" width="212" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -79,7 +79,7 @@
                     <constraint firstItem="tnZ-oy-rFg" firstAttribute="leading" secondItem="F9p-GW-ex5" secondAttribute="trailing" constant="8" id="gca-Gl-GDG"/>
                     <constraint firstItem="F9p-GW-ex5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="n8t-ac-fdb"/>
                     <constraint firstItem="wBi-YU-7eV" firstAttribute="top" secondItem="tnZ-oy-rFg" secondAttribute="top" id="qpw-9q-nnf"/>
-                    <constraint firstItem="wBi-YU-7eV" firstAttribute="leading" secondItem="fXo-AP-zGJ" secondAttribute="trailing" constant="12" id="vUJ-1g-ARE"/>
+                    <constraint firstItem="wBi-YU-7eV" firstAttribute="leading" secondItem="fXo-AP-zGJ" secondAttribute="trailing" constant="8" id="vUJ-1g-ARE"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

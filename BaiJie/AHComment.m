@@ -16,7 +16,7 @@
 }
 -(CGFloat)cellHeight{
     if (!_cellHeight) {
-        CGSize contentSize  = [self.content boundingRectWithSize:CGSizeMake(237, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:AHTextFont} context:nil].size;
+        CGSize contentSize  = [self.content boundingRectWithSize:CGSizeMake(AHCOmmentCellMaxWidth, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:AHTextFont} context:nil].size;
         _cellHeight = 36 + contentSize.height + 8;
     }
     return _cellHeight;

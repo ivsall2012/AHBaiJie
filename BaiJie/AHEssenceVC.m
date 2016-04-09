@@ -18,6 +18,7 @@
 @interface AHEssenceVC ()<AHSectionTabBarDelegate,UIScrollViewDelegate>
 @property (nonatomic, weak) AHSectionTabBar *sectionTabBar;
 @property (nonatomic, weak) UIScrollView *mainScrollView;
+@property (nonatomic, copy) NSString *currentSection;
 @end
 
 @implementation AHEssenceVC
@@ -33,7 +34,7 @@
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [self.sectionTabBar selectTabBarByTitle:@"段子"];
+    [self.sectionTabBar selectTabBarByTitle:self.currentSection];
 }
 -(void)setupMainScrollView{
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -52,6 +53,8 @@
     pictureVC.title = @"图片";
     pictureVC.topicType = AHTopicTypePicture;
     [self addChildViewController:pictureVC];
+    self.currentSection = pictureVC.title;
+    
     
     AHTopicVC *allVC = [[AHTopicVC alloc]init];
     allVC.title = @"推荐";

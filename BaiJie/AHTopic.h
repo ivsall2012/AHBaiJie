@@ -44,5 +44,9 @@
 @property (nonatomic, assign,getter=isPictureTooBig) BOOL pictureTooBig;
 
 @property (nonatomic, assign) CGFloat imageProgress;
+/**
+ *  image completion check
+ */
+@property (nonatomic,assign,getter=isComplete) BOOL complete;
 @property (nonatomic,assign) CGFloat cellHeight;
 @end

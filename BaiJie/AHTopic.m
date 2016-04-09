@@ -62,7 +62,7 @@
                 break;
             }
         }
-        _cellHeight += 35 + AHTopicCellMargin + AHTopicCellMargin;
+        _cellHeight += 35 + AHTopicCellMargin;
         
         
         

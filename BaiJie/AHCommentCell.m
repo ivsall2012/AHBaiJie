@@ -39,11 +39,9 @@
     _comment = comment;
     AHUser *user = comment.user;
 
-    UIImageView *imageView = [[UIImageView alloc]init];
-    [imageView sd_setImageWithURL:[NSURL URLWithString:user.profile_image] placeholderImage:[UIImage imageNamed:@"defaultUserIcon"] options:SDWebImageRetryFailed completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-       [self.iconView setImage:imageView.image forState:UIControlStateNormal];
-//        self.iconView.contentMode = UIViewContentModeScaleAspectFill;
-//        [self.iconView setContentMode:UIViewContentModeScaleAspectFit];
+    __weak UIButton *weakButton = self.iconView;
+    [self.iconView.imageView sd_setImageWithURL:[NSURL URLWithString:user.profile_image] placeholderImage:[UIImage imageNamed:@"defaultUserIcon"] options:SDWebImageRetryFailed completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+       [weakButton setImage:image forState:UIControlStateNormal];
         
     }];
     

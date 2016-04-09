@@ -22,6 +22,11 @@
     
     NSString *text = [NSString stringWithFormat:@"%.1f%%", progress * 100];
     self.progressLabel.text = [text stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    if (progress*100 >99) {
+        self.hidden = YES;
+    }else{
+        self.hidden = NO;
+    }
 }
 
 @end

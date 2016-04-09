@@ -103,7 +103,6 @@
         self.videoView.hidden = YES;
         
     }
-    self.width = AHTopicCellMaxWidth;
     self.contentText.text = topic.text;
 }
 
