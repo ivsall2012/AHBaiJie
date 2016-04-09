@@ -96,8 +96,6 @@ static NSString *commentID = @"commentID";
     self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 35, 0);
     self.topicCell = [AHTopicCell cell];
     self.topicCell.topic = self.topic;
-    self.topicCell.toolBarToBottom.constant = 20;
-    [self.view layoutIfNeeded];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([AHCommentCell class]) bundle:nil] forCellReuseIdentifier:commentID];
 
     
@@ -156,7 +154,7 @@ static NSString *commentID = @"commentID";
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        return self.topic.cellHeight;
+        return self.topic.cellHeight + AHTopicCellMargin;
     }
     AHComment *comment = nil;
     if (indexPath.section == 1) {

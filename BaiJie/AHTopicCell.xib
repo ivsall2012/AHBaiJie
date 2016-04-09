@@ -168,12 +168,21 @@
                             <constraint firstItem="D9O-Jv-stG" firstAttribute="top" secondItem="8bq-Tp-l8t" secondAttribute="bottom" id="rC4-vZ-NYE"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4rq-qd-tAh" userLabel="separator">
+                        <rect key="frame" x="0.0" y="465" width="498" height="1"/>
+                        <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="bIm-MK-YGm"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="4rq-qd-tAh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="3hn-uS-UfW"/>
                     <constraint firstItem="wJB-Hj-M8k" firstAttribute="trailing" secondItem="3FL-XB-bKK" secondAttribute="trailing" id="4n4-26-Drp"/>
                     <constraint firstAttribute="trailing" secondItem="zkY-m8-TZM" secondAttribute="trailing" id="7ny-q3-Ca1"/>
                     <constraint firstItem="3FL-XB-bKK" firstAttribute="top" secondItem="dly-UP-5XI" secondAttribute="top" id="Aav-PM-Xrb"/>
                     <constraint firstItem="wJB-Hj-M8k" firstAttribute="leading" secondItem="y2k-vj-Elt" secondAttribute="leading" id="GF0-2N-eZt"/>
+                    <constraint firstAttribute="bottom" secondItem="4rq-qd-tAh" secondAttribute="bottom" id="InF-Pl-nIc"/>
                     <constraint firstItem="y2k-vj-Elt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="JRC-Y4-4rV"/>
                     <constraint firstItem="y2k-vj-Elt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="KKb-QC-ixV"/>
                     <constraint firstItem="BwL-bf-fml" firstAttribute="bottom" secondItem="y2k-vj-Elt" secondAttribute="bottom" id="NK0-t2-7Jw"/>
@@ -181,6 +190,7 @@
                     <constraint firstAttribute="trailing" secondItem="H0R-XJ-Z4S" secondAttribute="trailing" constant="8" id="a6w-nV-N6O"/>
                     <constraint firstItem="dly-UP-5XI" firstAttribute="top" secondItem="y2k-vj-Elt" secondAttribute="top" id="bcU-st-CYV"/>
                     <constraint firstItem="zkY-m8-TZM" firstAttribute="top" secondItem="H0R-XJ-Z4S" secondAttribute="bottom" id="cw0-7q-6mD"/>
+                    <constraint firstAttribute="trailing" secondItem="4rq-qd-tAh" secondAttribute="trailing" id="e7M-Dz-ZML"/>
                     <constraint firstItem="H0R-XJ-Z4S" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="l46-7L-fiN"/>
                     <constraint firstItem="zkY-m8-TZM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="lDe-pX-gQD"/>
                     <constraint firstAttribute="bottom" secondItem="zkY-m8-TZM" secondAttribute="bottom" id="o6c-77-APM"/>
