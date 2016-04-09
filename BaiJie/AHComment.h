@@ -13,5 +13,9 @@
 @property (nonatomic,copy) NSString *like_count;
 @property (nonatomic, strong) AHUser *user;
 @property (nonatomic,copy) NSString *ID;
+@property (nonatomic,copy) NSString *voiceuri;
+@property (nonatomic,copy) NSString *voicetime;
+
+
 @property (nonatomic,assign) CGFloat cellHeight;
 @end

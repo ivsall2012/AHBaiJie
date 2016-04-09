@@ -58,11 +58,28 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXo-AP-zGJ" userLabel="content">
-                        <rect key="frame" x="51" y="36" width="212" height="18"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <rect key="frame" x="51" y="36" width="212" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CW7-H1-OQv" userLabel="VoiceReply">
+                        <rect key="frame" x="51" y="33" width="62" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="62" id="3Zx-rc-Nw1"/>
+                            <constraint firstAttribute="height" constant="17" id="pbX-Dy-Dep"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <inset key="imageEdgeInsets" minX="2" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <state key="normal" title="30''" image="play-voice-icon-3" backgroundImage="play-voice-bg">
+                            <color key="titleColor" white="0.53809450383771928" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <state key="highlighted" backgroundImage="play-voice-bgN"/>
+                        <connections>
+                            <action selector="clickVoiceButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="3Iy-kH-N2j"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="tnZ-oy-rFg" firstAttribute="top" secondItem="F9p-GW-ex5" secondAttribute="top" constant="4" id="11f-fA-k9w"/>
@@ -71,13 +88,17 @@
                     <constraint firstItem="CnQ-i1-1Pt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="AEz-LJ-uer"/>
                     <constraint firstItem="DY0-aD-ua7" firstAttribute="leading" secondItem="tnZ-oy-rFg" secondAttribute="trailing" constant="3" id="C0L-6Q-EZR"/>
                     <constraint firstItem="F9p-GW-ex5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="Dvz-Md-Qxx"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="fXo-AP-zGJ" secondAttribute="top" constant="17" id="Gu0-gc-U1k"/>
+                    <constraint firstItem="CW7-H1-OQv" firstAttribute="top" secondItem="DY0-aD-ua7" secondAttribute="bottom" constant="5" id="OLQ-ee-Ev8"/>
                     <constraint firstAttribute="bottom" secondItem="CnQ-i1-1Pt" secondAttribute="bottom" id="PvO-Yx-Def"/>
                     <constraint firstItem="DY0-aD-ua7" firstAttribute="top" secondItem="F9p-GW-ex5" secondAttribute="top" constant="2" id="Ti9-A3-Z8s"/>
                     <constraint firstItem="fXo-AP-zGJ" firstAttribute="leading" secondItem="tnZ-oy-rFg" secondAttribute="leading" id="ZUi-JR-ms0"/>
+                    <constraint firstItem="CW7-H1-OQv" firstAttribute="leading" secondItem="tnZ-oy-rFg" secondAttribute="leading" id="a2E-za-OwZ"/>
                     <constraint firstItem="fXo-AP-zGJ" firstAttribute="top" secondItem="DY0-aD-ua7" secondAttribute="bottom" constant="8" id="eln-09-tHu"/>
                     <constraint firstAttribute="trailing" secondItem="CnQ-i1-1Pt" secondAttribute="trailing" id="fwx-wh-uv8"/>
                     <constraint firstItem="tnZ-oy-rFg" firstAttribute="leading" secondItem="F9p-GW-ex5" secondAttribute="trailing" constant="8" id="gca-Gl-GDG"/>
                     <constraint firstItem="F9p-GW-ex5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="n8t-ac-fdb"/>
+                    <constraint firstItem="CW7-H1-OQv" firstAttribute="leading" secondItem="F9p-GW-ex5" secondAttribute="trailing" constant="8" id="ob1-vt-jxc"/>
                     <constraint firstItem="wBi-YU-7eV" firstAttribute="top" secondItem="tnZ-oy-rFg" secondAttribute="top" id="qpw-9q-nnf"/>
                     <constraint firstItem="wBi-YU-7eV" firstAttribute="leading" secondItem="fXo-AP-zGJ" secondAttribute="trailing" constant="8" id="vUJ-1g-ARE"/>
                 </constraints>
@@ -88,6 +109,7 @@
                 <outlet property="iconView" destination="F9p-GW-ex5" id="m2t-v4-rWT"/>
                 <outlet property="likeButton" destination="wBi-YU-7eV" id="sVg-8o-egW"/>
                 <outlet property="nameLabel" destination="DY0-aD-ua7" id="Cc9-es-ybh"/>
+                <outlet property="voicePlayButton" destination="CW7-H1-OQv" id="pRD-AD-4Ck"/>
             </connections>
             <point key="canvasLocation" x="322" y="421"/>
         </tableViewCell>
@@ -98,5 +120,8 @@
         <image name="commentLikeButton" width="18" height="18"/>
         <image name="commentLikeButtonClick" width="19" height="19"/>
         <image name="defaultUserIcon" width="50" height="50"/>
+        <image name="play-voice-bg" width="21" height="22"/>
+        <image name="play-voice-bgN" width="21" height="22"/>
+        <image name="play-voice-icon-3" width="15" height="15"/>
     </resources>
 </document>

@@ -132,7 +132,7 @@
     VC.tableView.width = scrollView.width;
 
     CGFloat topInset = CGRectGetMaxY(self.sectionTabBar.frame);
-    CGFloat bottomInset = self.tabBarController.tabBar.height;
+    CGFloat bottomInset = self.tabBarController.tabBar.height + 44;
     VC.tableView.contentInset = UIEdgeInsetsMake(topInset, 0, bottomInset, 0);
     VC.tableView.scrollIndicatorInsets = VC.tableView.contentInset;
     [self.mainScrollView addSubview:VC.tableView];

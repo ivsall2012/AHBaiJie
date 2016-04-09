@@ -28,6 +28,7 @@ typedef enum {
 @property (nonatomic, strong) NSMutableArray *commentArray;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tooBarBottomConstraint;
 @property (nonatomic,copy) NSString *lastcid;
+@property (nonatomic,assign) NSInteger total;
 @end
 
 static NSString *commentID = @"commentID";
@@ -57,34 +58,63 @@ static NSString *commentID = @"commentID";
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewComments)];
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreComments)];
     [self.tableView.mj_header beginRefreshing];
+    self.tableView.mj_footer.hidden = YES;
     [self.tableView.mj_header setAutomaticallyChangeAlpha:YES];
 }
 -(void)loadNewComments{
     
     [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php" parameters:@{@"a":@"dataList",@"c":@"comment",@"data_id":self.topic.ID,@"hot":@(1)} progress:nil
       success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
-          self.commentArray = [AHComment mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+          NSArray *comments = responseObject[@"data"];
+          if (!comments.count) {
+              self.tableView.mj_header.hidden = YES;
+              return;
+          }else{
+              self.tableView.mj_header.hidden = NO;
+          }
+          
+          self.commentArray = [AHComment mj_objectArrayWithKeyValuesArray:comments];
           self.topCommentArray = [AHComment mj_objectArrayWithKeyValuesArray:responseObject[@"hot"]];
           AHComment *lastComment = [self.commentArray lastObject];
           self.lastcid = lastComment.ID;
+          
+          
+          self.total = [responseObject[@"total"] integerValue];
+          if (self.total <= self.commentArray.count) {
+              self.tableView.mj_footer.hidden = YES;
+          }else{
+              self.tableView.mj_footer.hidden = NO;
+          }
           [self.tableView.mj_header endRefreshing];
+          
           [self.tableView reloadData];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
+        AHLogFunc;
     }];
 }
 -(void)loadMoreComments{
     [[AFHTTPSessionManager manager] GET:@"http://api.budejie.com/api/api_open.php" parameters:@{@"a":@"dataList",@"c":@"comment",@"data_id":self.topic.ID,@"lastcid":self.lastcid} progress:nil
     success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
+        if (![responseObject[@"data"] count]) {
+            [self.tableView.mj_header endRefreshing];
+            self.tableView.mj_header.hidden = YES;
+            return;
+        }else{
+            self.tableView.mj_header.hidden = NO;
+        }
         NSMutableArray *commentArray= [AHComment mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-        AHLog(@"%ld",commentArray.count);
+        
         [self.commentArray addObjectsFromArray:commentArray];
         AHComment *lastComment = [commentArray lastObject];
         self.lastcid = lastComment.ID;
-        [self.tableView.mj_footer endRefreshing];
+        if (self.total <= self.commentArray.count) {
+            self.tableView.mj_footer.hidden = YES;
+        }else{
+            [self.tableView.mj_footer endRefreshing];
+        }
         [self.tableView reloadData];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
+        AHLogFunc;
     }];
 }
 -(void)initTableView{

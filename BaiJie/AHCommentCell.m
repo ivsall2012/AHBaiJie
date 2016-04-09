@@ -18,16 +18,28 @@
 @property (weak, nonatomic) IBOutlet UIButton *genderButton;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet AHStackButton *likeButton;
+@property (weak, nonatomic) IBOutlet UIButton *voicePlayButton;
 
 @end
 
 
 @implementation AHCommentCell
+- (IBAction)clickVoiceButton:(UIButton *)button {
+    NSArray *imagePathes = @[@"play-voice-icon-1",@"play-voice-icon-2",@"play-voice-icon-3"];
+    NSMutableArray *images = [NSMutableArray array];
+    for (NSString *path in imagePathes) {
+        UIImage *image = [UIImage imageNamed:path];
+        [images addObject:image];
+    }
+    button.imageView.animationImages = images;
+    NSTimeInterval duration = [self.comment.voicetime doubleValue];
+    button.imageView.animationDuration = 1;
+    button.imageView.animationRepeatCount = duration;
+    [button.imageView startAnimating];
+}
 
 - (void)awakeFromNib {
-    self.iconView.contentEdgeInsets = UIEdgeInsetsZero;
-    self.iconView.imageEdgeInsets = UIEdgeInsetsZero;
-    self.iconView.titleEdgeInsets = UIEdgeInsetsZero;
+    self.genderButton.enabled = NO;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -52,8 +64,24 @@
         self.genderButton.selected = NO;
     }
     
+    
+    // random setting for text comments or voice
+    if (arc4random_uniform(100)%2) {
+        self.comment.voiceuri = @"fasdfads";
+        self.comment.voicetime = [NSString stringWithFormat:@"%d",arc4random_uniform(5)+1];// from [0,5) +1 --> [1,6)
+    }
+    
+    if (self.comment.voiceuri.length) {
+        self.contentLabel.hidden =YES;
+        self.voicePlayButton.hidden = NO;
+        [self.voicePlayButton setTitle:[NSString stringWithFormat:@"%@''",self.comment.voicetime] forState:UIControlStateNormal];
+    }else{
+        self.contentLabel.hidden =NO;
+        self.voicePlayButton.hidden = YES;
+        self.contentLabel.text = comment.content;
+    }
     self.nameLabel.text = user.username;
-    self.contentLabel.text = comment.content;
+    
     [self.likeButton setTitle:[NSString stringWithFormat:@"+%@",comment.like_count] forState:UIControlStateNormal];
 }
 @end
