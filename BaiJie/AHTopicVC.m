@@ -21,6 +21,7 @@
 @property (nonatomic, copy) NSString *maxtime;
 @property (nonatomic, strong) NSMutableArray *topicArray;
 @property (nonatomic, strong) NSDictionary *params;
+@property (nonatomic,assign) BOOL hideStatusBar;
 @end
 
 @implementation AHTopicVC
@@ -39,6 +40,9 @@ static NSString *TopicCellID = @"TopicCellID";
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
+}
+-(UIStatusBarAnimation)preferredStatusBarUpdateAnimation{
+    return UIStatusBarAnimationSlide;
 }
 -(void)registerTopicCell{
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([AHTopicCell class]) bundle:nil] forCellReuseIdentifier:TopicCellID];

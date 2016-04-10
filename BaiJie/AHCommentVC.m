@@ -30,10 +30,54 @@ typedef enum {
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tooBarBottomConstraint;
 @property (nonatomic,copy) NSString *lastcid;
 @property (nonatomic,assign) NSInteger total;
+@property (nonatomic, weak) UIView *statusBarView;
 @end
 
 static NSString *commentID = @"commentID";
+static UIWindow *window_;
+
 @implementation AHCommentVC
+-(UIView *)statusBarView{
+    if (!_statusBarView) {
+        UIView *statusBarView = [[UIView alloc]init];
+        statusBarView.frame = window_.bounds;
+        statusBarView.alpha = 0;
+        [window_ addSubview:statusBarView];
+        _statusBarView = statusBarView;
+        
+        UIButton *goBackButton = [[UIButton alloc]init];
+        goBackButton.frame =CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width/3, 20);
+        [goBackButton setImage:[UIImage imageNamed:@"navigationButtonReturn"] forState:UIControlStateNormal];
+        [goBackButton setImage:[UIImage imageNamed:@"navigationButtonReturnClick"] forState:UIControlStateHighlighted];
+        [goBackButton addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];
+        goBackButton.backgroundColor = AHRandomColor;
+        [_statusBarView addSubview:goBackButton];
+        
+        UIButton *goTop = [[UIButton alloc]init];
+        goTop.X = CGRectGetMaxX(goBackButton.frame);
+        goTop.Y = goBackButton.Y;
+        goTop.width = goBackButton.width;
+        goTop.height = goBackButton.height;
+        goTop.backgroundColor = AHRandomColor;
+        [goTop setTitle:@"Top" forState:UIControlStateNormal];
+        [goTop addTarget:self action:@selector(goTop) forControlEvents:UIControlEventTouchUpInside];
+        [_statusBarView addSubview:goTop];
+        
+        UIButton *shareButton = [[UIButton alloc]init];
+        shareButton.X = CGRectGetMaxX(goTop.frame);
+        shareButton.Y = goTop.Y;
+        shareButton.width = goTop.width;
+        shareButton.height = goTop.height;
+        [shareButton addTarget:self action:@selector(goShare) forControlEvents:UIControlEventTouchUpInside];
+        shareButton.backgroundColor = AHRandomColor;
+        [shareButton setTitle:@"分享" forState:UIControlStateNormal];
+        [_statusBarView addSubview:shareButton];
+        
+        _statusBarView.alpha = 0;
+        
+    }
+    return _statusBarView;
+}
 -(NSArray *)topCommentArray{
     if (!_topCommentArray) {
         NSArray *topCommentArray = [NSArray array];
@@ -51,7 +95,6 @@ static NSString *commentID = @"commentID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"评论";
-    
     [self setupLightningMode];
     [self initTableView];
     [AHNotificationCenter addObserver:self selector:@selector(keyBoardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
@@ -60,10 +103,28 @@ static NSString *commentID = @"commentID";
     
     
 }
+-(void)setupLightningMode{
+    window_ = [[UIWindow alloc]init];
+    window_.frame = CGRectMake([UIScreen mainScreen].bounds.size.width, 0, [UIScreen mainScreen].bounds.size.width, 20);
+    window_.hidden = NO;
+    window_.windowLevel = UIWindowLevelAlert;
+    
+    [self statusBarView];
+}
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     //    [self.navigationController.navigationBar setBarStyle:UIBarStyleBlackTranslucent];
     [self.navigationController setNavigationBarHidden:YES];
+    [UIView animateWithDuration:0.2 animations:^{
+        window_.X = 0;
+    }];
+
+}
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [UIView animateWithDuration:0.3 animations:^{
+        self.statusBarView.alpha = 1;
+    }];
 }
 -(BOOL)prefersStatusBarHidden{
     return YES;
@@ -71,43 +132,13 @@ static NSString *commentID = @"commentID";
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [self.navigationController setNavigationBarHidden:NO];
+    [UIView animateWithDuration:0.2 animations:^{
+        window_.X = [UIScreen mainScreen].bounds.size.width;
+    }];
+}
+-(void)dealloc{
     window_.hidden = YES;
     window_ = nil;
-}
-static UIWindow *window_;
--(void)setupLightningMode{
-    window_ = [[UIWindow alloc]init];
-    window_.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 20);
-    window_.hidden = NO;
-    window_.windowLevel = UIWindowLevelAlert;
-    
-    UIButton *goBackButton = [[UIButton alloc]init];
-    goBackButton.frame =CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width/3, 20);
-    [goBackButton setImage:[UIImage imageNamed:@"navigationButtonReturn"] forState:UIControlStateNormal];
-    [goBackButton setImage:[UIImage imageNamed:@"navigationButtonReturnClick"] forState:UIControlStateHighlighted];
-    [goBackButton addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];
-    goBackButton.backgroundColor = AHRandomColor;
-    [window_ addSubview:goBackButton];
-    
-    UIButton *goTop = [[UIButton alloc]init];
-    goTop.X = CGRectGetMaxX(goBackButton.frame);
-    goTop.Y = goBackButton.Y;
-    goTop.width = goBackButton.width;
-    goTop.height = goBackButton.height;
-    goTop.backgroundColor = AHRandomColor;
-    [goTop setTitle:@"Top" forState:UIControlStateNormal];
-    [goTop addTarget:self action:@selector(goTop) forControlEvents:UIControlEventTouchUpInside];
-    [window_ addSubview:goTop];
-    
-    UIButton *shareButton = [[UIButton alloc]init];
-    shareButton.X = CGRectGetMaxX(goTop.frame);
-    shareButton.Y = goTop.Y;
-    shareButton.width = goTop.width;
-    shareButton.height = goTop.height;
-    [shareButton addTarget:self action:@selector(goShare) forControlEvents:UIControlEventTouchUpInside];
-    shareButton.backgroundColor = AHRandomColor;
-    [shareButton setTitle:@"分享" forState:UIControlStateNormal];
-    [window_ addSubview:shareButton];
 }
 -(void)goShare{
     AHLogFunc;
