@@ -115,14 +115,14 @@ static UIWindow *window_;
     [super viewWillAppear:animated];
     //    [self.navigationController.navigationBar setBarStyle:UIBarStyleBlackTranslucent];
     [self.navigationController setNavigationBarHidden:YES];
-    [UIView animateWithDuration:0.2 animations:^{
+    [UIView animateWithDuration:AHPushPopAnimationDuration animations:^{
         window_.X = 0;
     }];
 
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:AHPushPopAnimationDuration animations:^{
         self.statusBarView.alpha = 1;
     }];
 }
@@ -132,7 +132,7 @@ static UIWindow *window_;
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [self.navigationController setNavigationBarHidden:NO];
-    [UIView animateWithDuration:0.2 animations:^{
+    [UIView animateWithDuration:AHPushPopAnimationDuration animations:^{
         window_.X = [UIScreen mainScreen].bounds.size.width;
     }];
 }

@@ -102,6 +102,7 @@
 }
 -(void)sectionTabBar:(AHSectionTabBar *)sectionTabBar didSelectionTabBarTitle:(NSString *)title{
     NSInteger index = -1;
+    self.currentSection = title;
     for (int i=0; i<self.childViewControllers.count; i++) {
         UIViewController *vc = self.childViewControllers[i];
         if ([vc.title isEqualToString:title]) {
@@ -146,6 +147,7 @@
     // click button manually
     NSInteger page = scrollView.contentOffset.x/scrollView.width;
     UIViewController *vc = self.childViewControllers[page];
+    
     [self.sectionTabBar selectTabBarByTitle:vc.title];
 }
 @end
