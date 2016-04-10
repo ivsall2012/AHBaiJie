@@ -13,6 +13,7 @@
 #import <AFNetworking.h>
 #import <MJExtension.h>
 #import "AHComment.h"
+#import "AHNavigationVC.h"
 typedef enum {
     AHCommentSectionTypeMainTopic=0,
     AHCOmmentSectionTypeTopComment,
@@ -49,17 +50,81 @@ static NSString *commentID = @"commentID";
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"评论";
     
+    [self setupLightningMode];
     [self initTableView];
     [AHNotificationCenter addObserver:self selector:@selector(keyBoardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
     [self initRefreshControl];
+    [self loadNewComments];
+    
+    
 }
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    //    [self.navigationController.navigationBar setBarStyle:UIBarStyleBlackTranslucent];
+    [self.navigationController setNavigationBarHidden:YES];
+}
+-(BOOL)prefersStatusBarHidden{
+    return YES;
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self.navigationController setNavigationBarHidden:NO];
+    window_.hidden = YES;
+    window_ = nil;
+}
+static UIWindow *window_;
+-(void)setupLightningMode{
+    window_ = [[UIWindow alloc]init];
+    window_.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 20);
+    window_.hidden = NO;
+    window_.windowLevel = UIWindowLevelAlert;
+    
+    UIButton *goBackButton = [[UIButton alloc]init];
+    goBackButton.frame =CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width/3, 20);
+    [goBackButton setImage:[UIImage imageNamed:@"navigationButtonReturn"] forState:UIControlStateNormal];
+    [goBackButton setImage:[UIImage imageNamed:@"navigationButtonReturnClick"] forState:UIControlStateHighlighted];
+    [goBackButton addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];
+    goBackButton.backgroundColor = AHRandomColor;
+    [window_ addSubview:goBackButton];
+    
+    UIButton *goTop = [[UIButton alloc]init];
+    goTop.X = CGRectGetMaxX(goBackButton.frame);
+    goTop.Y = goBackButton.Y;
+    goTop.width = goBackButton.width;
+    goTop.height = goBackButton.height;
+    goTop.backgroundColor = AHRandomColor;
+    [goTop setTitle:@"Top" forState:UIControlStateNormal];
+    [goTop addTarget:self action:@selector(goTop) forControlEvents:UIControlEventTouchUpInside];
+    [window_ addSubview:goTop];
+    
+    UIButton *shareButton = [[UIButton alloc]init];
+    shareButton.X = CGRectGetMaxX(goTop.frame);
+    shareButton.Y = goTop.Y;
+    shareButton.width = goTop.width;
+    shareButton.height = goTop.height;
+    [shareButton addTarget:self action:@selector(goShare) forControlEvents:UIControlEventTouchUpInside];
+    shareButton.backgroundColor = AHRandomColor;
+    [shareButton setTitle:@"分享" forState:UIControlStateNormal];
+    [window_ addSubview:shareButton];
+}
+-(void)goShare{
+    AHLogFunc;
+}
+-(void)goTop{
+    [self.tableView setContentOffset:CGPointMake(0, -20) animated:YES];
+}
+-(void)cancel{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 -(void)initRefreshControl{
-    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewComments)];
+//    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewComments)];
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreComments)];
-    [self.tableView.mj_header beginRefreshing];
+//    [self.tableView.mj_header beginRefreshing];
     self.tableView.mj_footer.hidden = YES;
-    [self.tableView.mj_header setAutomaticallyChangeAlpha:YES];
+//    [self.tableView.mj_header setAutomaticallyChangeAlpha:YES];
 }
 -(void)loadNewComments{
     
@@ -109,6 +174,8 @@ static NSString *commentID = @"commentID";
         self.lastcid = lastComment.ID;
         if (self.total <= self.commentArray.count) {
             self.tableView.mj_footer.hidden = YES;
+            [self.tableView reloadData];
+            return;
         }else{
             [self.tableView.mj_footer endRefreshing];
         }
@@ -121,9 +188,9 @@ static NSString *commentID = @"commentID";
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 35, 0);self.tableView.delegate = self;
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 40, 0);
+    self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 35, 0);
     self.topicCell = [AHTopicCell cell];
     self.topicCell.topic = self.topic;
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([AHCommentCell class]) bundle:nil] forCellReuseIdentifier:commentID];

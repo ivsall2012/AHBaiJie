@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface AHNavigationVC : UINavigationController
-
+-(void)clickBackButton;
 @end
