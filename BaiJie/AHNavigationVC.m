@@ -9,6 +9,10 @@
 #import "AHNavigationVC.h"
 #import "UIBarButtonItem+Extension.h"
 
+@interface AHNavigationVC()<UINavigationControllerDelegate>
+@property (nonatomic, strong) id popDelegate;
+@end
+
 @implementation AHNavigationVC
 +(void)initialize{
     UINavigationBar *navItem = [UINavigationBar appearance];
@@ -17,6 +21,14 @@
 }
 -(void)viewDidLoad{
     [super viewDidLoad];
+    self.delegate = self;
+}
+-(void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
+    if (viewController == [self.viewControllers firstObject]) {
+        // it's the root VC, recover pop gesture delegate
+        self.interactivePopGestureRecognizer.delegate = self.popDelegate;
+        
+    }
 }
 -(void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
     // DO NOT TRY to share the same color by setting only for navVC's view -- makes animation transition bad when pushing
@@ -38,6 +50,10 @@
         }];
         viewController.navigationItem.rightBarButtonItem = forwardButton;
         viewController.hidesBottomBarWhenPushed = YES;
+        
+        // to have slide-back buit-in func
+        self.popDelegate = self.interactivePopGestureRecognizer.delegate;
+        self.navigationController.interactivePopGestureRecognizer.delegate = nil;
     }
     [super pushViewController:viewController animated:YES];
 }
