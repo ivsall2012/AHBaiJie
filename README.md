@@ -4,7 +4,7 @@ A vine-liked app. It's a copy of 百思不得姐 -- it has all the funny, weird,
 It's a standard tableView-post-based app.
 
 ### Demo
-https://youtu.be/ZyCHVASN69I
+https://youtu.be/KN_iyu9mX_I
 
 ### A Few Words
 This project was finished about over a year ago at which was a few months for me getting into iOS world.
