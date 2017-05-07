@@ -70,7 +70,7 @@ static UIWindow *window_;
         shareButton.height = goTop.height;
         [shareButton addTarget:self action:@selector(goShare) forControlEvents:UIControlEventTouchUpInside];
         shareButton.backgroundColor = AHRandomColor;
-        [shareButton setTitle:@"分享" forState:UIControlStateNormal];
+        [shareButton setTitle:@"Share" forState:UIControlStateNormal];
         [_statusBarView addSubview:shareButton];
         
         _statusBarView.alpha = 0;
@@ -94,7 +94,7 @@ static UIWindow *window_;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"评论";
+    self.title = @"Comment";
     [self setupLightningMode];
     [self initTableView];
     [AHNotificationCenter addObserver:self selector:@selector(keyBoardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
@@ -276,9 +276,9 @@ static UIWindow *window_;
         return nil;
     }
     if (section == 1) {
-        return self.topCommentArray.count?@"最热评论":@"最新评论";
+        return self.topCommentArray.count?@"Hot":@"New";
     }
-    return @"最新评论";
+    return @"New";
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {

@@ -50,7 +50,7 @@
     CGFloat margin = 10;
     
     NSArray *images = @[@"publish-video",@"publish-picture",@"publish-text",@"publish-audio",@"publish-review",@"publish-offline"];
-    NSArray *titles = @[@"发视频", @"发图片", @"发段子", @"发声音", @"审帖", @"离线下载"];
+    NSArray *titles = @[@"New Video", @"New Picture", @"New Joke", @"New Voice", @"Post Monitor", @"Download"];
     CGFloat buttonWidth = 72;
     CGFloat buttonHeight = buttonWidth + 30;
     CGFloat buttonStartY = screenH*0.3;

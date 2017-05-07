@@ -50,30 +50,30 @@
 }
 -(void)setupTableViews{
     AHTopicVC *pictureVC = [[AHTopicVC alloc]init];
-    pictureVC.title = @"图片";
+    pictureVC.title = @"Images";
     pictureVC.topicType = AHTopicTypePicture;
     [self addChildViewController:pictureVC];
     self.currentSection = pictureVC.title;
     
     
     AHTopicVC *allVC = [[AHTopicVC alloc]init];
-    allVC.title = @"推荐";
+    allVC.title = @"Trending";
     allVC.topicType = AHTopicTypeAllKinds;
     [self addChildViewController:allVC];
     
     AHTopicVC *videoVC = [[AHTopicVC alloc]init];
-    videoVC.title = @"视频";
+    videoVC.title = @"Videos";
     videoVC.topicType = AHTopicTypeVideo;
     [self addChildViewController:videoVC];
     
     
     AHTopicVC *jokeVC = [[AHTopicVC alloc]init];
-    jokeVC.title = @"段子";
+    jokeVC.title = @"Jokes";
     jokeVC.topicType = AHTopicTypeJoke;
     [self addChildViewController:jokeVC];
     
     AHTopicVC *voiceVC = [[AHTopicVC alloc]init];
-    voiceVC.title = @"声音";
+    voiceVC.title = @"Voices";
     voiceVC.topicType = AHTopicTypeVoice;
     [self addChildViewController:voiceVC];
     

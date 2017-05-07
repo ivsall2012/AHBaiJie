@@ -26,16 +26,16 @@
 }
 -(void)setupVCs{
     AHEssenceVC *vc1 = [[AHEssenceVC alloc]init];
-    [self createVC:vc1 title:@"精华" iamge:@"tabBar_essence_icon" selectedImage:@"tabBar_essence_click_icon"];
+    [self createVC:vc1 title:@"Essence" iamge:@"tabBar_essence_icon" selectedImage:@"tabBar_essence_click_icon"];
     
     AHNewVC *vc2 = [[AHNewVC alloc]init];
-    [self createVC:vc2 title:@"新帖" iamge:@"tabBar_new_icon" selectedImage:@"tabBar_new_click_icon"];
+    [self createVC:vc2 title:@"New" iamge:@"tabBar_new_icon" selectedImage:@"tabBar_new_click_icon"];
     
     AHFriendTrendsVC *vc3 = [[AHFriendTrendsVC alloc]init];
-    [self createVC:vc3 title:@"关注" iamge:@"tabBar_friendTrends_icon" selectedImage:@"tabBar_friendTrends_click_icon"];
+    [self createVC:vc3 title:@"Following" iamge:@"tabBar_friendTrends_icon" selectedImage:@"tabBar_friendTrends_click_icon"];
     
     AHMeVC *vc4 = [[AHMeVC alloc]init];
-    [self createVC:vc4 title:@"我的" iamge:@"tabBar_me_icon" selectedImage:@"tabBar_me_click_icon"];
+    [self createVC:vc4 title:@"Me" iamge:@"tabBar_me_icon" selectedImage:@"tabBar_me_click_icon"];
     
     
     AHTabBar *tabBar = [[AHTabBar alloc]init];

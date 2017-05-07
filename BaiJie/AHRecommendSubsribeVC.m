@@ -27,7 +27,7 @@ static NSString * const recommendSubscribeCellID = @"subscribeCell";
     
 }
 -(void)initTableView{
-    self.title = @"推荐订阅";
+    self.title = @"Recommended Subscritions";
     self.tableView.rowHeight = 70;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
