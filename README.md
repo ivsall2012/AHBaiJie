@@ -2,6 +2,7 @@
 A vine-liked app. It's a copy of 百思不得姐 -- it has all the funny, weird, stupid stuff in it.
 
 It's a standard tableView-post-based app.
+![alt text](https://github.com/ivsall2012/AHBaiJie/blob/demo/AHBeijie.png)
 
 ### Demo
 https://youtu.be/KN_iyu9mX_I (1.5 minutes)
